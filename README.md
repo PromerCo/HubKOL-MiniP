@@ -1,2 +1,2 @@
 # HubKOL-MiniP
-HubKOL-MiniP Init
+HubKOL-MiniP Init Test
