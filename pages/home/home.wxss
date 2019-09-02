@@ -1,0 +1,4 @@
+@import '../../components/dist/styles/index.wxss';
+.wrap{
+  padding:20rpx;
+}

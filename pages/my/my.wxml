@@ -1,0 +1,4 @@
+
+<view class='container'>
+        <button bindtap="setDisabled">一键登陆</button>
+</view>
