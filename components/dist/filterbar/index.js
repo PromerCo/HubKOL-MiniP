@@ -1,1 +1,424 @@
-"use strict";var _observers,_baseComponent=_interopRequireDefault(require("../helpers/baseComponent")),_classNames=_interopRequireDefault(require("../helpers/classNames")),_index=require("../index");function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance")}function _iterableToArray(e){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e))return Array.from(e)}function _arrayWithoutHoles(e){if(Array.isArray(e)){for(var t=0,n=new Array(e.length);t<e.length;t++)n[t]=e[t];return n}}function _objectSpread(t){for(var e=1;e<arguments.length;e++)if(e%2){var n=null!=arguments[e]?arguments[e]:{},r=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(r=r.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),r.forEach(function(e){_defineProperty(t,e,n[e])})}else Object.defineProperties(t,Object.getOwnPropertyDescriptors(arguments[e]));return t}function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function getLabels(){return(0<arguments.length&&void 0!==arguments[0]?arguments[0]:[]).filter(function(e){return e.checked}).map(function(e){return e.label}).join(",")}function getDisplayValues(){var n=!(1<arguments.length&&void 0!==arguments[1])||arguments[1];return(0<arguments.length&&void 0!==arguments[0]?arguments[0]:[]).reduce(function(e,t){switch(t.type){case"radio":case"checkbox":e.push(getLabels(t.children||[])||(n?t.label:""));break;case"filter":e.push(getDisplayValues(t.children||[],!1));break;default:e.push(t.label)}return e},[])}function getSortValue(e){return"number"==typeof e&&[1,-1].includes(e)?e:1}function getValue(){var e=1<arguments.length&&void 0!==arguments[1]&&arguments[1],t=(0<arguments.length&&void 0!==arguments[0]?arguments[0]:[]).filter(function(e){return e.checked}).map(function(e){return e.value});return e?t[0]||"":t}function getValues(){return(0<arguments.length&&void 0!==arguments[0]?arguments[0]:[]).reduce(function(e,t){switch(t.type){case"radio":e.push(getValue(t.children,!0));break;case"checkbox":e.push(getValue(t.children,!1));break;case"text":e.push(t.checked?t.value:"");break;case"sort":e.push(t.checked?getSortValue(t.sort):"");break;case"filter":e.push(getValues(t.children))}return e},[])}function getChangedValues(){var r=1<arguments.length&&void 0!==arguments[1]?arguments[1]:[],o=2<arguments.length&&void 0!==arguments[2]?arguments[2]:"options";return(0<arguments.length&&void 0!==arguments[0]?arguments[0]:[]).reduce(function(e,t,n){return"radio"===t.type?_objectSpread({},e,_defineProperty({},"".concat(o,"[").concat(n,"].children"),t.children.map(function(e){return _objectSpread({},e,{checked:e.value===r[n]})}))):"checkbox"===t.type?_objectSpread({},e,_defineProperty({},"".concat(o,"[").concat(n,"].children"),t.children.map(function(e){return _objectSpread({},e,{checked:!!Array.isArray(r[n])&&r[n].includes(e.value)})}))):"filter"===t.type?_objectSpread({},e,{},getChangedValues(t.children,r[n]||[],"options[".concat(n,"].children"))):e},{})}function getShowOptions(){var r=1<arguments.length&&void 0!==arguments[1]?arguments[1]:[];return(0<arguments.length&&void 0!==arguments[0]?arguments[0]:[]).reduce(function(e,t,n){return["radio","checkbox"].includes(t.type)?[].concat(_toConsumableArray(e),[_objectSpread({},t,{selected:getLabels(t.children||[])})]):"filter"===t.type?[].concat(_toConsumableArray(e),[_objectSpread({},t,{children:getShowOptions(t.children||[],r[n])})]):e},[])}(0,_baseComponent.default)({properties:{prefixCls:{type:String,value:"wux-filterbar"},items:{type:Array,value:[]},cancelText:{type:String,value:"重置"},confirmText:{type:String,value:"确定"}},data:{displayValues:[],values:[]},observers:(_observers={},_defineProperty(_observers,"items.**",function(e){this.setData({options:e,values:getValues(e)})}),_defineProperty(_observers,"options.**",function(e){this.updatedDisplayValues(e)}),_observers),computed:{classes:["prefixCls",function(e){return{wrap:(0,_classNames.default)(e),bd:"".concat(e,"__bd"),item:"".concat(e,"__item"),text:"".concat(e,"__text"),icon:"".concat(e,"__icon"),pop:"".concat(e,"__pop"),scrollView:"".concat(e,"__scroll-view"),panel:"".concat(e,"__panel"),panelHd:"".concat(e,"__panel-hd"),panelTitle:"".concat(e,"__panel-title"),panelSelected:"".concat(e,"__panel-selected"),panelBd:"".concat(e,"__panel-bd"),groups:"".concat(e,"__groups"),group:"".concat(e,"__group"),radio:"".concat(e,"__radio"),btn:"".concat(e,"__btn"),check:"".concat(e,"__check"),btns:"".concat(e,"__btns"),select:"".concat(e,"__select")}}]},methods:{updatedValues:function(e,t){this.data.values!==e&&this.setData({values:e},t)},updatedDisplayValues:function(e){var t=getDisplayValues(0<arguments.length&&void 0!==e?e:this.data.options);this.data.displayValues!==t&&this.setData({displayValues:t})},onClose:function(e){var t=e.currentTarget.dataset.index;this.onSelectClose(t)},onPopupSelectChange:function(e){var t=_toConsumableArray(this.data.values),n=this.showOptions||JSON.parse(JSON.stringify(this.data.options)),r=e.detail.value,o=e.currentTarget.dataset,a=o.index,i=o.parentIndex;t[i]=t[i]||[],t[i][a]=r,n[i].children[a]&&n[i].children[a].children&&(n[i].children[a].children=n[i].children[a].children.map(function(e){return _objectSpread({},e,{checked:r.includes(e.value)})}),this.updatedDisplayValues(n),this.showOptions=n),this.updatedValues(t)},onSelectChange:function(e){var t=_toConsumableArray(this.data.values),n=e.currentTarget.dataset,r=n.index,o=n.type,a=e.detail.selectedValue;t[r]=a,this.updatedValues(t),"radio"===o&&this.onSelectConfirm(e)},onSelectClose:function(e,t){var n=this,r=_defineProperty({values:getValues(this.data.options)},"options[".concat(e,"].visible"),!1);this.setData(r,function(){"function"==typeof t&&t.call(n),n.showOptions=null,n.$wuxBackdrop.release()})},onSelectReset:function(e){var t=_toConsumableArray(this.data.values);t[e.currentTarget.dataset.index]=[],this.updatedValues(t);var n=this.showOptions||JSON.parse(JSON.stringify(this.data.options));n&&0<n.length&&(n.forEach(function(e,t){"filter"===e.type&&(e.children=e.children.reduce(function(e,t){return[].concat(_toConsumableArray(e),[_objectSpread({},t,{children:t.children.map(function(e){return _objectSpread({},e,{checked:!1})})})])},[]))}),this.updatedDisplayValues(n),this.showOptions=null)},onSelectConfirm:function(e){var t=this,n=this.data,r=n.options,o=n.values,a=e.currentTarget.dataset.index,i=getChangedValues(r,o);this.setData(i,function(){return t.onSelectClose(a,t.onChange)})},onClick:function(e){var t=e.currentTarget.dataset.index,n=this.data.options,r=getValues(n);n[t].visible||this.setData({values:r}),this.onOpenSelect(n,t)},onOpenSelect:function(e,t){var o=this,n=0<arguments.length&&void 0!==e?e:[],a=1<arguments.length&&void 0!==t?t:0,i=n[a],r=n.map(function(e,t){var n=Object.assign({},e,{checked:a===t&&!e.checked});if(e.checked){var r=o.getDifference(e.groups,i.groups);n.checked=!!r.length,a===t||r.length||("object"===_typeof(n.children)&&(["radio","checkbox"].includes(e.type)&&(n.children=n.children.map(function(e){return Object.assign({},e,{checked:!1})})),["filter"].includes(e.type)&&(n.children=n.children.map(function(e){return Object.assign({},e,{children:e.children.map(function(e){return Object.assign({},e,{checked:!1})}),selected:""})}))),["sort"].includes(e.type)&&(n.sort=void 0))}return["radio","checkbox","filter"].includes(e.type)&&(n.visible=a===t&&!e.visible,"filter"===e.type&&o.$wuxBackdrop[a===t?e.visible?"release":"retain":"release"]()),a===t&&["sort"].includes(e.type)&&(n.sort="number"==typeof n.sort?-n.sort:1),n});this.setData({options:r,index:a},function(){["radio","checkbox","filter"].includes(i.type)||o.onChange()})},onCloseSelect:function(){var e=this.data.options.reduce(function(e,t,n){return t.checked&&t.visible?_objectSpread({},e,_defineProperty({},"options[".concat(n,"].visible"),!1)):e},{});this.setData(e)},getDifference:function(e,t){var n=1<arguments.length&&void 0!==t?t:[];return(0<arguments.length&&void 0!==e?e:[]).filter(function(e){return n.includes(e)})},onChange:function(){var e=this,t=this.data.options,n=getValues(t),r=getShowOptions(t,n);this.updatedValues(n,function(){e.onCloseSelect(),e.triggerEvent("change",{checkedItems:r.filter(function(e){return e.checked}),items:r,checkedValues:n})})},onScroll:function(e){this.triggerEvent("scroll",e)},onEnter:function(e){this.triggerEvent("open",e)},onExit:function(e){this.triggerEvent("close",e)}},created:function(){this.$wuxBackdrop=(0,_index.$wuxBackdrop)("#wux-backdrop",this)},attached:function(){var e=this.data.items;this.setData({options:e,values:getValues(e)})}});
+import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
+import { $wuxBackdrop } from '../index'
+
+function getLabels(children = []) {
+   return children.filter((v) => v.checked).map((v) => v.label).join(',')
+}
+
+function getDisplayValues(options = [], extra = true) {
+    return options.reduce((acc, option) => {
+        switch (option.type) {
+            case 'radio':
+            case 'checkbox':
+                acc.push(getLabels(option.children || []) || (extra ? option.label : ''))
+                break
+            case 'filter':
+                acc.push(getDisplayValues(option.children || [], false))
+                break
+            default:
+                acc.push(option.label)
+        }
+        return acc
+    }, [])
+}
+
+function getSortValue(sort) {
+    if (typeof sort === 'number' && [1, -1].includes(sort)) {
+        return sort
+    }
+    return 1
+}
+
+function getValue(children = [], single = false) {
+    const allValues = children.filter((v) => v.checked).map((v) => v.value)
+    if (!single) return allValues
+    return allValues[0] || ''
+}
+
+function getValues(options = []) {
+    return options.reduce((acc, option) => {
+        switch (option.type) {
+            case 'radio':
+                acc.push(getValue(option.children, true))
+                break
+            case 'checkbox':
+                acc.push(getValue(option.children, false))
+                break
+            case 'text':
+                acc.push(option.checked ? option.value : '')
+                break
+            case 'sort':
+                acc.push(option.checked ? getSortValue(option.sort) : '')
+                break
+            case 'filter':
+                acc.push(getValues(option.children))
+                break
+        }
+        return acc
+    }, [])
+}
+
+function getChangedValues(options = [], values = [], prefix = 'options') {
+    return options.reduce((acc, option, index) => {
+        if (option.type === 'radio') {
+            return {
+                ...acc,
+                [`${prefix}[${index}].children`]: option.children.map((v) => ({ ...v, checked: v.value === values[index] })),
+            }
+        }
+        if (option.type === 'checkbox') {
+            return {
+                ...acc,
+                [`${prefix}[${index}].children`]: option.children.map((v) => ({ ...v, checked: Array.isArray(values[index]) ? values[index].includes(v.value) : false })),
+            }
+        }
+        if (option.type === 'filter') {
+            return {
+                ...acc,
+                ...getChangedValues(option.children, values[index] || [], `options[${index}].children`),
+            }
+        }
+        return acc
+    }, {})
+}
+
+function getShowOptions(options = [], values = []) {
+    return options.reduce((acc ,option, index) => {
+        if (['radio', 'checkbox'].includes(option.type)) {
+            return [...acc, { ...option, selected: getLabels(option.children || []) }]
+        }
+        if (option.type === 'filter') {
+            return [...acc, { ...option, children: getShowOptions(option.children || [], values[index]) }]
+        }
+        return acc
+    }, [])
+}
+
+baseComponent({
+    properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-filterbar',
+        },
+        items: {
+            type: Array,
+            value: [],
+        },
+        cancelText: {
+            type: String,
+            value: '重置',
+        },
+        confirmText: {
+            type: String,
+            value: '确定',
+        },
+    },
+    data: {
+        displayValues: [],
+        values: [],
+    },
+    observers: {
+        ['items.**'](newVal) {
+            this.setData({ options: newVal, values: getValues(newVal) })
+        },
+        ['options.**'](newVal) {
+            this.updatedDisplayValues(newVal)
+        },
+    },
+    computed: {
+        classes: ['prefixCls', function(prefixCls) {
+            const wrap = classNames(prefixCls)
+            const bd = `${prefixCls}__bd`
+            const item = `${prefixCls}__item`
+            const text = `${prefixCls}__text`
+            const icon = `${prefixCls}__icon`
+            const pop = `${prefixCls}__pop`
+            const scrollView = `${prefixCls}__scroll-view`
+            const panel = `${prefixCls}__panel`
+            const panelHd = `${prefixCls}__panel-hd`
+            const panelTitle = `${prefixCls}__panel-title`
+            const panelSelected = `${prefixCls}__panel-selected`
+            const panelBd = `${prefixCls}__panel-bd`
+            const groups = `${prefixCls}__groups`
+            const group = `${prefixCls}__group`
+            const radio = `${prefixCls}__radio`
+            const btn = `${prefixCls}__btn`
+            const check = `${prefixCls}__check`
+            const btns = `${prefixCls}__btns`
+            const select = `${prefixCls}__select`
+
+            return {
+                wrap,
+                bd,
+                item,
+                text,
+                icon,
+                pop,
+                scrollView,
+                panel,
+                panelHd,
+                panelTitle,
+                panelSelected,
+                panelBd,
+                groups,
+                group,
+                radio,
+                btn,
+                check,
+                btns,
+                select,
+            }
+        }],
+    },
+    methods: {
+        updatedValues(values, callback) {
+            if (this.data.values !== values) {
+                this.setData({ values }, callback)
+            }
+        },
+        updatedDisplayValues(options = this.data.options) {
+            const displayValues = getDisplayValues(options)
+            if (this.data.displayValues !== displayValues) {
+                this.setData({ displayValues })
+            }
+        },
+        /**
+         * 关闭侧边栏筛选框
+         * @param {Object} e 事件对象
+         * @param {Function} callback 回调函数
+         */
+        onClose(e) {
+            const { index } = e.currentTarget.dataset
+            this.onSelectClose(index)
+        },
+        onPopupSelectChange(e) {
+            const values = [...this.data.values]
+            const options = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
+            const { value } = e.detail
+            const { index, parentIndex } = e.currentTarget.dataset
+
+            values[parentIndex] = values[parentIndex] || []
+            values[parentIndex][index] = value
+
+            if (options[parentIndex].children[index] && options[parentIndex].children[index].children) {
+                options[parentIndex].children[index].children = options[parentIndex].children[index].children.map((v) => ({ ...v, checked: value.includes(v.value) }))
+                this.updatedDisplayValues(options)
+                this.showOptions = options
+            }
+            
+            this.updatedValues(values)
+        },
+        /**
+         * 下拉框内多项选择触发 change 事件
+         * @param {Object} e 事件对象
+         */
+        onSelectChange(e) {
+            const values = [...this.data.values]
+            const { index, type } = e.currentTarget.dataset
+            const { selectedValue: value } = e.detail
+
+            values[index] = value
+
+            this.updatedValues(values)
+
+            // trigger onChange
+            if (type === 'radio') {
+                this.onSelectConfirm(e)
+            }
+        },
+        onSelectClose(index, callback) {
+            const params = {
+                values: getValues(this.data.options),
+                [`options[${index}].visible`]: false,
+            }
+
+            this.setData(params, () => {
+                if (typeof callback === 'function') {
+                    callback.call(this)
+                }
+                this.showOptions = null
+                this.$wuxBackdrop.release()
+            })
+        },
+        onSelectReset(e) {
+            const values = [...this.data.values]
+            const { index } = e.currentTarget.dataset
+
+            values[index] = []
+
+            this.updatedValues(values)
+
+            const showOptions = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
+            if (showOptions && showOptions.length > 0) {
+                showOptions.forEach((option, index) => {
+                    if (option.type === 'filter') {
+                        option.children = option.children.reduce((acc, child) => {
+                            return [...acc, { ...child, children: child.children.map((v) => ({ ...v, checked: false })) }]
+                        }, [])
+                    }
+                })
+                this.updatedDisplayValues(showOptions)
+                this.showOptions = null
+            }
+        },
+        onSelectConfirm(e) {
+            const { options, values } = this.data
+            const { index } = e.currentTarget.dataset
+            const params = getChangedValues(options, values)
+            
+            this.setData(params, () => this.onSelectClose(index, this.onChange))
+        },
+        /**
+         * 点击事件
+         * @param {Object} e 事件对象
+         */
+        onClick(e) {
+            const { index } = e.currentTarget.dataset
+            const { options } = this.data
+            const values = getValues(options)
+
+            // calc real values
+            if (!options[index].visible) {
+                this.setData({ values })
+            }
+            
+            // open
+            this.onOpenSelect(options, index)
+        },
+        /**
+         * 打开下拉框
+         * @param {Array} data 菜单数据
+         * @param {Number} index 当前索引
+         */
+        onOpenSelect(data = [], index = 0) {
+            const current = data[index]
+            const options = data.map((n, i) => {
+                const params = Object.assign({}, n, {
+                    checked: index === i ? !n.checked : false,
+                })
+
+                // 判断已选择的元素是否同组
+                if (n.checked) {
+                    const has = this.getDifference(n.groups, current.groups)
+
+                    params.checked = !!has.length
+
+                    // 判断非同组的元素清空选择内容
+                    if (index !== i && !has.length) {
+                        if (typeof params.children === 'object') {
+                            if (['radio', 'checkbox'].includes(n.type)) {
+                                params.children = params.children.map((n) => Object.assign({}, n, {
+                                    checked: false,
+                                }))
+                            }
+
+                            if (['filter'].includes(n.type)) {
+                                params.children = params.children.map((n) => {
+                                    return Object.assign({}, n, {
+                                        children: n.children.map((m) => Object.assign({}, m, {
+                                            checked: false,
+                                        })),
+                                        selected: '',
+                                    })
+                                })
+                            }
+                        }
+
+                        if (['sort'].includes(n.type)) {
+                            params.sort = undefined
+                        }
+                    }
+                }
+
+                // 展开或隐藏下拉框
+                if (['radio', 'checkbox', 'filter'].includes(n.type)) {
+                    params.visible = index === i ? !n.visible : false
+
+                    if (n.type === 'filter') {
+                        this.$wuxBackdrop[index === i ? !n.visible ? 'retain' : 'release' : 'release']()
+                    }
+                }
+
+                // 当前点击排序做出处理
+                if (index === i && ['sort'].includes(n.type)) {
+                    params.sort = typeof params.sort === 'number' ? -params.sort : 1
+                }
+
+                return params
+            })
+
+            this.setData({ options, index }, () => {
+                if (!['radio', 'checkbox', 'filter'].includes(current.type)) {
+                    this.onChange()
+                }
+            })
+        },
+        /**
+         * 关闭下拉框
+         */
+        onCloseSelect() {
+            const params = this.data.options.reduce((acc, option, index) => {
+                if (option.checked && option.visible) {
+                    return { ...acc, [`options[${index}].visible`]: false }
+                }
+                return acc
+            }, {})
+
+            this.setData(params)
+        },
+        /**
+         * 获取两个数组相同的元素
+         * @param {Array} data 数组
+         * @param {Array} values 数组
+         */
+        getDifference(data = [], values = []) {
+            return data.filter(v => values.includes(v))
+        },
+        /**
+         * 元素发生变化时的事件
+         */
+        onChange() {
+            const { options } = this.data
+            const checkedValues = getValues(options)
+            const items = getShowOptions(options, checkedValues)
+
+            this.updatedValues(checkedValues, () => {
+                this.onCloseSelect()
+                this.triggerEvent('change', {
+                    checkedItems: items.filter((n) => n.checked),
+                    items,
+                    checkedValues,
+                })
+            })
+        },
+        /**
+         * scroll-view 滚动时触发的事件
+         * @param {Object} e 事件对象
+         */
+        onScroll(e) {
+            this.triggerEvent('scroll', e)
+        },
+        /**
+         * 打开 select 或 filter 时触发的回调函数
+         * @param {Object} e 事件对象
+         */
+        onEnter(e) {
+            this.triggerEvent('open', e)
+        },
+        /**
+         * 关闭 select 或 filter 时触发的回调函数
+         * @param {Object} e 事件对象
+         */
+        onExit(e) {
+            this.triggerEvent('close', e)
+        },
+    },
+    created() {
+        this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
+    },
+    attached() {
+        const { items: newVal } = this.data
+        this.setData({ options: newVal, values: getValues(newVal) })
+    },
+})

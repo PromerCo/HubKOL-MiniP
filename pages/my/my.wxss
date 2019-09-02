@@ -1,0 +1,25 @@
+.header{
+  margin-top:-120rpx;
+}
+.header_img{
+  width:200rpx;
+  height:200rpx;
+  border-radius:50%;
+}
+.nick_name{
+text-align:center;
+margin-top:24rpx;
+}
+
+
+.header_img image{
+width:100%;
+height:100%;
+border-radius:50%;
+}
+.login{
+font-size:32rpx;
+border:none !important;
+background:white;
+
+}

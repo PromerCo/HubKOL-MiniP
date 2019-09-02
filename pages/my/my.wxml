@@ -1,4 +1,34 @@
 
 <view class='container'>
-        <button bindtap="setDisabled">一键登陆</button>
+
+          <view class='header'>
+            <view wx:if="{{isHide}}" class='auth'>
+                <view class='header_img' >
+                <image src='../../imgs/icon/rw.png'></image>
+                </view>
+                <view class='nick_name'>
+                 <button bindtap="setDisabled" class='login'>一键登陆</button>
+                </view>
+            </view>
+             <view wx:else  class='auth'>
+                  <view class='header_img' >
+                 <image src='{{userInfo.avatarUrl}}'></image>
+                </view>
+                <view class='nick_name'>
+                 <p>{{userInfo.nickName}}</p>
+                </view>
+             </view>
+          </view>
+
+          <view wx:if='{{phoneNumber}}'>
+             <view >{{phoneNumber}}</view>
+          </view>
+          <view wx:else>
+              <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">一键绑定手机号</button>
+          </view>
+     
+      
+       
+     
 </view>
+

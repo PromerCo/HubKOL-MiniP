@@ -1,4 +1,4 @@
-@import '../../components/dist/styles/index.wxss';
-.wrap{
-  padding:20rpx;
+/* pages/home/home.wxss */
+.casket{
+
 }

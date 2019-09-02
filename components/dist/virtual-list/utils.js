@@ -1,1 +1,28 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getVisibleItemBounds=exports.mapVirtualToProps=void 0;var mapVirtualToProps=function(t,e){var o=t.items,r=t.itemHeight,i=e.startIndex,s=e.endIndex,a=-1<s?o.slice(i,s+1):[],n=o.length*r,p=i*r;return{virtual:{items:a,style:"height: ".concat(n,"px; padding-top: ").concat(p,"px; box-sizing: border-box;")}}};exports.mapVirtualToProps=mapVirtualToProps;var getVisibleItemBounds=function(t,e,o,r,i){var s=Math.max(0,t),a=Math.max(0,Math.floor(s/r));return{startIndex:a,endIndex:Math.min(a+Math.ceil(e/r)+i-1,o)}};exports.getVisibleItemBounds=getVisibleItemBounds;
+export const mapVirtualToProps = ({ items, itemHeight }, { startIndex, endIndex }) => {
+    const visibleItems = endIndex > -1 ? items.slice(startIndex, endIndex + 1) : []
+
+    // style
+    const height = items.length * itemHeight
+    const paddingTop = startIndex * itemHeight
+
+    return {
+        virtual: {
+            items: visibleItems,
+            style: `height: ${height}px; padding-top: ${paddingTop}px; box-sizing: border-box;`,
+        }
+    }
+}
+
+export const getVisibleItemBounds = (viewTop, viewHeight, itemCount, itemHeight, itemBuffer) => {
+    // visible list inside view
+    const listViewTop = Math.max(0, viewTop)
+
+    // visible item indexes
+    const startIndex = Math.max(0, Math.floor(listViewTop / itemHeight))
+    const endIndex = Math.min(startIndex + Math.ceil(viewHeight / itemHeight) + itemBuffer - 1, itemCount)
+
+    return {
+        startIndex,
+        endIndex,
+    }
+}

@@ -1,36 +1,54 @@
-// pages/my/my.js
-Page({
+import { Login } from 'login-model.js';
+var login = new Login(); //实例化 首页 对象
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
     hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     isHide: true,
     showDialog: false,
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
     var that = this
     //判断是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          console.log('已经授权')
-          that.setData({
-            isHide: false
-          });
-        } else {
-          console.log('未授权')
-          that.setData({
-            isHide: true
-          });
-        }
-      }
-    })
+  },
+
+  bindGetUserInfo:function(e){
+    // var nickName = e.detail.rawData.nickName
+    // var gender = e.detail.rawData.nickName
+    // var avatarUrl = e.detail.rawData.nickName
+    var userInfo = e.detail.rawData  
+
+    login.getUserAhth(userInfo, (data) => {
+    
+          if (data.code == 201){
+            let pages = getCurrentPages(); //页面栈
+            let currPage = pages[pages.length - 1]; //当前页面
+            let prevPage = pages[pages.length - 2]; // 上一个页面
+            prevPage.setData({
+              userInfo: JSON.parse(userInfo), // 假数据,
+              isHide:false
+            })
+            wx.navigateBack({
+              delta: 1
+            })
+
+          }else{
+            wx.showToast({
+              title: '授权失败',//提示文字
+              duration: 500,//显示时长
+              mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+              icon: 'none', //图标，支持"success"、"loading"  
+            })
+          }
+
+    });
 
   },
   /**
