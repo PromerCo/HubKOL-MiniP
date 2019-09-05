@@ -4,15 +4,12 @@
 
 // var Base = require('../../utils/base.js').base;
 import { Base } from '../../utils/base.js';
-
 class Login extends Base {
   constructor() {
     super();
   }
-
   getUserAhth(param,callback) {
     var object = JSON.parse(param); 
-    console.log(object)
     var nickName = object.nickName
     var avatarUrl = object.avatarUrl
     var param = {

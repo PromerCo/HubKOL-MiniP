@@ -1,4 +1,71 @@
-/* pages/home/home.wxss */
-.casket{
-
+.wrap {
+  width: 100%;
+  height: auto;
+}
+.head {
+  width: 95%;
+  height: 240rpx;
+  margin: 0px auto;
+  border-radius: 18rpx;
+  border: 1px solid gray;
+  margin-top: 20rpx;
+}
+.card-left {
+  width: 160rpx;
+  height: 160rpx;
+  float: left;
+  margin: 40rpx 20rpx;
+}
+.card-left image {
+  width: 160rpx;
+  height: 160rpx;
+  display: inline-block;
+}
+.card-right {
+  width: 500rpx;
+  height: 240rpx;
+  float: left;
+  margin-top: 20rpx;
+}
+.sub {
+  height: 60rpx;
+  margin-top: 50rpx;
+  line-height: 30rpx;
+}
+.sup {
+  height: 60rpx;
+  margin-top: 30rpx;
+}
+.title {
+  width: 200rpx;
+  font-size: 28rpx;
+  float: left;
+  padding-left: 15rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.time {
+  float: right;
+  width: 150rpx;
+  font-size: 24rpx;
+}
+.content {
+  width: 200rpx;
+  float: left;
+  color: #ccc;
+  font-size: 24rpx;
+  padding-left: 15rpx;
+  margin-top: -20rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden;
+}
+.category {
+  float: right;
+  color: #ccc;
+  font-size: 12px;
+  margin-top: -15rpx;
+  margin-right: 30rpx;
 }

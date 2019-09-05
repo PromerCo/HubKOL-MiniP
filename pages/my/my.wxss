@@ -1,4 +1,4 @@
-.header{
+/* .header{
   margin-top:-120rpx;
 }
 .header_img{
@@ -10,8 +10,6 @@
 text-align:center;
 margin-top:24rpx;
 }
-
-
 .header_img image{
 width:100%;
 height:100%;
@@ -21,5 +19,157 @@ border-radius:50%;
 font-size:32rpx;
 border:none !important;
 background:white;
+}
+.phonenumber{
+  margin-top:50rpx;
+} */
+/* 信息 */
+::-webkit-scrollbar-x{
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+page {
+  background-color: rgb(247, 247, 247);
+}
+/* 名字 */
+.information {
+  width: 100%;
+  height: 400rpx;
+  background-color: white;
+}
 
+.Consignee {
+  width: 90%;
+  height: 350rpx;
+  border-bottom: 1px solid #ccc;
+  margin: 0 auto;
+}
+
+.Consignee_left {
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+  padding-top: 10rpx;
+  padding-left: 60rpx;
+  line-height: 200rpx;
+}
+
+.Consignee_left image {
+  width: 200rpx;
+  height: 200rpx;
+  display: inline-block;
+  border-radius: 25rpx;
+  margin-left: -40rpx;
+  margin-top: 40rpx;
+}
+
+.Consignee_right {
+  width: 400rpx;
+  height: 200rpx;
+  float: left;
+  margin-top: -30rpx;
+}
+
+/* 分类 */
+
+.name {
+  width: 400rpx;
+  padding-top: 35rpx;
+}
+
+.name p:nth-of-type(1) {
+  padding-left: 0rpx;
+}
+
+.name p {
+  padding-left: 60rpx;
+}
+
+.com {
+  margin-top: 40rpx;
+}
+
+.com p {
+  width: 120rpx;
+  float: left;
+}
+
+.com input {
+  padding-left: 40rpx;
+}
+
+/* 分类 */
+
+/* 广告组 */
+
+.sort {
+  width: 100%;
+  height:120rpx;
+  line-height: 120rpx;
+  margin-top:40rpx;
+  font-size: 34rpx;
+  background-color:white;
+}
+.tag{
+  margin-left:30rpx;
+}
+.star{
+  padding-left:10rpx;
+  color: red;
+}
+/* 网红 */
+.Internet{
+  width: 100%;
+  height: auto;
+  background-color: rgb(247, 247, 247);
+  margin-top:40rpx;
+}
+.whole_sup{
+width: 100%;
+height: 360rpx;
+ background-color: white;
+}
+.hole{
+  width: 90%;
+  height: 120rpx;
+  line-height: 120rpx;
+  border-bottom: 1px solid #ccc;
+  margin:0px auto;
+}
+.city:nth-of-type(3){
+   border-bottom: 1px solid transparent;
+}
+.fans:nth-of-type(4){
+  border-bottom: 1px solid transparent;
+}
+.whole_sub{
+width: 100%;
+height: 480rpx;
+margin-top:40rpx;
+ background-color: white;
+}
+/*广告*/
+.Advertisement{
+  width: 100%;
+  height: auto;
+  background-color:white;
+  margin-top:40rpx;
+}
+.ment_sup{
+width: 100%;
+height: 720rpx;
+ background-color: white;
+}
+.home{
+  width: 90%;
+  height: 120rpx;
+  line-height: 120rpx;
+  border-bottom: 1px solid #ccc;
+  margin:0px auto;
+}
+.media{
+  font-size:36rpx;
+  margin-left:80rpx;
 }

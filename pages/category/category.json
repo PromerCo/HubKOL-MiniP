@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "KOL"
+  "navigationBarTitleText": "HubKOL",
+  "usingComponents":{
+    "pickerr": "/picker/picker"}
 }

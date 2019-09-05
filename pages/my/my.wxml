@@ -1,34 +1,97 @@
-
-<view class='container'>
-
-          <view class='header'>
-            <view wx:if="{{isHide}}" class='auth'>
-                <view class='header_img' >
-                <image src='../../imgs/icon/rw.png'></image>
-                </view>
-                <view class='nick_name'>
-                 <button bindtap="setDisabled" class='login'>一键登陆</button>
-                </view>
-            </view>
-             <view wx:else  class='auth'>
-                  <view class='header_img' >
-                 <image src='{{userInfo.avatarUrl}}'></image>
-                </view>
-                <view class='nick_name'>
-                 <p>{{userInfo.nickName}}</p>
-                </view>
-             </view>
-          </view>
-
-          <view wx:if='{{phoneNumber}}'>
-             <view >{{phoneNumber}}</view>
-          </view>
-          <view wx:else>
-              <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">一键绑定手机号</button>
-          </view>
-     
-      
-       
-     
+<!-- <view class='container'>
+  <view class='header'>
+    <view wx:if="{{isHide}}" class='auth'>
+      <view class='header_img'>
+        <image src='../../imgs/icon/rw.png'></image>
+      </view>
+      <view class='nick_name'>
+        <button bindtap="setDisabled" class='login'>一键登陆</button>
+      </view>
+    </view>
+    <view wx:else class='auth'>
+      <view class='header_img'>
+        <image src='{{userInfo.avatarUrl}}'></image>
+      </view>
+      <view class='nick_name'>
+        <p>{{userInfo.nickName}}</p>
+      </view>
+    </view>
+  </view>
+  <view wx:if='{{phoneNumber}}' class="phonenumber">
+    <view>{{phoneNumber}}</view>
+  </view>
+  <view wx:else class="phonenumber">
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">一键绑定手机号</button>
+  </view>
+</view> -->
+<view class="information">
+  <view class="Consignee">
+    <view class="Consignee_left">
+      <image src="../../imgs/icon/photo.jpg"></image>
+    </view>
+    <view class="Consignee_right">
+      <view class=" com name ">
+        <p>微信号:</p>
+        <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input-text"></input>
+      </view>
+      <view class=" com phone ">
+        <p>电话:</p>
+        <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input-text"></input>
+      </view>
+      <view class="com email">
+        <p>email:</p>
+        <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input-text"></input>
+      </view>
+    </view>
+  </view>
 </view>
-
+<!-- 分类 -->
+<view class="section sort">
+  <view bindtap="showPicker_01" class="tag">
+    分类标签
+    <p class="star">*</p>：{{picker_01_data}}
+  </view>
+  <pickerr date-index="{{index}}" isShowPicker="{{isShow_01}}" bindsure="sureCallBack_01" bindcancle="cancleCallBack_01" scrollType="normal" listData="{{listData_01}}" indicatorStyle="height:47px" titleText="行业">
+  </pickerr>
+</view>
+<!-- 网红 -->
+<view wx:if="{{picker_01_index=='[1]'}}" class="Internet">
+  <view class="whole_sup">
+    <view class="mcn hole">MCN机构</view>
+    <view class="compony hole">公司</view>
+    <view class=" city hole" bindtap="showPicker_09">
+      城市：
+      <p>{{picker_09_data[0].name}} {{picker_09_data[1].name}} {{picker_09_data[2].name}}</p>
+    </view>
+    <pickerr isShowPicker="{{isShow_09}}" keyWordsOfShow="name" defaultPickData="{{defaultPickData_09}}" bindsure="sureCallBack_09" bindcancle="cancleCallBack_09" scrollType="link" listData="{{listData_09}}"></pickerr>
+  </view>
+  <view class="whole_sub">
+    <view class="hole" bindtap="showPicker_02">
+      平台 {{picker_02_data}}
+    </view>
+    <pickerr date-index="{{index}}" isShowPicker="{{isShow_02}}" bindsure="sureCallBack_02" bindcancle="cancleCallBack_02" scrollType="normal" listData="{{listData_02}}" indicatorStyle="height:47px" titleText="行业"> </pickerr>
+      <view class="hole">领域</view>
+      <view class=" hole">账号</view>
+      <view class="fans hole">粉丝</view>
+  </view>
+</view>
+<!-- 广告 -->
+<view wx:else class="Advertisement">
+  <view class="ment_sup">
+    <view class="hangye home">
+      行业:
+    </view>
+    <view class="compony home">公司</view>
+    <view class="moc home">品牌</view>
+    <view class="position home" bindtap="showPicker_03">
+      职位:
+      <p class="media">{{picker_03_data}}</p>
+    </view>
+    <pickerr isShowPicker="{{isShow_03}}" bindsure="sureCallBack_03" bindcancle="cancleCallBack_03" scrollType="normal" listData="{{listData_03}}"></pickerr>
+    <view class=" city home" bindtap="showPicker_08">
+      城市：
+      <p>{{picker_08_data[0].name}} {{picker_08_data[1].name}} {{picker_08_data[2].name}}</p>
+    </view>
+    <pickerr isShowPicker="{{isShow_08}}" keyWordsOfShow="name" defaultPickData="{{defaultPickData_08}}" bindsure="sureCallBack_08" bindcancle="cancleCallBack_08" scrollType="link" listData="{{listData_08}}"></pickerr>
+  </view>
+</view>
