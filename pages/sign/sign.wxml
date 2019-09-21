@@ -1,0 +1,15 @@
+<view class="project">
+ <view class="content" wx:for="{{list}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
+    <view class="x_head">
+      <image class="timg" src="{{url}}{{itemName.logo}}"></image>
+      <p class="head_text">{{itemName.title}}</p>
+    </view>
+    <view class="data">
+      <view class="reset_data">状态:
+        <p>活动进行中</p>
+      </view>
+      <view class="see" bindtap="see">查看详情</view>
+    </view>
+
+</view>
+</view>

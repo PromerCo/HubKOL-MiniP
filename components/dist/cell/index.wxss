@@ -14,13 +14,16 @@
   width: auto!important;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
-  padding: 20rpx 30rpx;
   position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  background: #fff
+  background: #fff;
+  height: 100rpx;
+  font-size: 24rpx;
+  line-height:100rpx;
+
 }
 .wux-cell:after {
   display: block;
@@ -51,39 +54,47 @@
   display: none
 }
 .wux-cell--hover {
-  background-color: #ececec!important
+  /* background-color: #ececec!important */
 }
 .wux-cell--disabled {
   opacity: .3
 }
-.wux-cell__thumb {
+
+ .wux-cell__thumb {
   display: block;
   width: 40rpx;
   height: 40rpx;
-  margin-right: 10rpx
+  margin-right: 10rpx;
 }
 .wux-cell__bd {
   -ms-flex: 1;
   flex: 1
 }
+
 .wux-cell__text {
-  text-align: left
+  text-align: left;
+  margin-left: 20rpx;
 }
 .wux-cell__desc {
   text-align: left;
   line-height: 1.2;
   font-size: 24rpx;
-  color: grey
+  color: grey;
 }
 .wux-cell__ft {
   text-align: right;
   color: grey
 }
 .wux-cell--access .wux-cell__ft {
-  padding-right: 26rpx;
-  position: relative
+  /* padding-right: 26rpx; */
+  /* position: absolute; */
+  background:white;
+  border:none;
+  text-align:right;
+  width:100%;
 }
-.wux-cell--access .wux-cell__ft:after {
+
+/* .wux-cell--access .wux-cell__ft:after {
   content: " ";
   display: inline-block;
   height: 12rpx;
@@ -92,10 +103,10 @@
   border-color: #c8c8cd;
   border-style: solid;
   transform: matrix(.71,.71,-.71,.71,0,0);
-  position: relative;
   top: -4rpx;
   position: absolute;
   top: 50%;
   margin-top: -8rpx;
-  right: 4rpx
-}
+  margin-left: 10rpx;
+
+} */

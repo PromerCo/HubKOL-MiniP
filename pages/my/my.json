@@ -1,7 +1,9 @@
 {
   "navigationBarTitleText": "HubKOL",
     "usingComponents": {
-      "pickerr": "/picker/picker"
+      "pickerr": "/picker/picker",
+      "wux-cell-group": "../../components/dist/cell-group/index",
+      "wux-cell": "../../components/dist/cell/index"
     }
   
 }

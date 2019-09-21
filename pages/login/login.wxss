@@ -21,7 +21,7 @@
 
 .zan-dialog__container {
     position: fixed;
-    bottom: 400rpx;
+    bottom: 600rpx;
     width: 650rpx;
     height: 520rpx;
     margin-left: 50rpx;

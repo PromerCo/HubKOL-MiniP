@@ -1,6 +1,6 @@
 import { Login } from 'login-model.js';
 var login = new Login(); //实例化 首页 对象
-
+var app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -20,17 +20,20 @@ Page({
   },
 
   bindGetUserInfo:function(e){
-    // var nickName = e.detail.rawData.nickName
-    // var gender = e.detail.rawData.nickName
-    // var avatarUrl = e.detail.rawData.nickName
-    var userInfo = e.detail.rawData  
+    console.log(e)
 
+    var userInfo = e.detail.rawData  
     login.getUserAhth(userInfo, (data) => {
-    
+   
+          var data = JSON.parse(data); 
+      
           if (data.code == 201){
             let pages = getCurrentPages(); //页面栈
             let currPage = pages[pages.length - 1]; //当前页面
             let prevPage = pages[pages.length - 2]; // 上一个页面
+
+            wx.setStorageSync('userInfo', JSON.parse(userInfo));  //用户信息缓存
+
             prevPage.setData({
               userInfo: JSON.parse(userInfo), // 假数据,
               isHide:false

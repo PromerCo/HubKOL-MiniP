@@ -13,6 +13,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
+  font-size:28rpx;
   align-items: center
 }
 .wux-accordion__hd:after {
@@ -45,6 +46,7 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   transform: rotate(90deg);
+  padding-right:45rpx;
   transition: transform .2s ease
 }
 .wux-accordion--current > .wux-accordion__hd > .wux-accordion__arrow {

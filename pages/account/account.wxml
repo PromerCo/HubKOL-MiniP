@@ -1,0 +1,9 @@
+
+<view class="wrap">
+  <view class="account" wx:for="{{list}}" wx:for-index="idx" wx:key="index" wx:for-item="itemName" bindtap="showPicker_03">
+    <p>{{itemName.name}}：</p>
+    <p class="num_first">{{itemName.number}}</p>
+    <wux-selectable color="light" value="{{ itemName.id }}"   data-item="{{itemName}}"  controlled   checked="{{ value === itemName.id }}"  bind:change="onCheckboxChange" class="select" />
+  </view>
+</view>
+

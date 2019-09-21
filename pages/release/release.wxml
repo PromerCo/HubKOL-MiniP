@@ -1,0 +1,88 @@
+<view class="wrap">
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <!-- 标题 -->
+  <view class="title name">
+     <p>标题:</p>
+     <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input_common"  name="title" ></input>
+  </view>
+ 
+  <!-- 平台 -->
+  <view class="platform name" catchtap="showPicker_02" >
+    <p>平台：</p>
+    <span style="margin-left:80rpx" class="dj">{{picker_02_data}}</span> 
+
+   <input type=" text"  hidden name="platform_code" value='{{platfrom_code}}'></input>
+   <input type=" text" hidden name="platform" value='{{picker_02_data}}'></input>
+
+  </view>
+  <pickerr date-index="{{index}}" isShowPicker="{{isShow_02}}" bindsure="sureCallBack_02" bindcancle="cancleCallBack_02" scrollType="normal" listData="{{listData_02}}" indicatorStyle="height:47px" titleText=""> </pickerr>
+
+<view>
+             <view class='territory'>
+        
+              <p  class="{{item.check}}" wx:for="{{tag}}" data-index='{{index}}'   catchtap="check" data-id="{{item.id}}">{{item.title}}
+              
+              </p>
+            </view>
+</view>
+
+
+  <!-- 参与人数 -->
+  <view class="participants name">
+    <p>召集人数:</p>
+    <input   placeholder="必填" placeholder-class="phcolor" type="number"  class="input_common" name="convene"></input>
+  </view>
+    <!-- 预计消费 -->
+  <view class="participants name">
+    <p>人均消费:</p>
+    <input placeholder="必填" placeholder-class="phcolor" type="number" class="input_common" name="budget"></input>
+  </view>
+
+      <!-- 预计消费 -->
+  <view class="participants name">
+    <!-- <p>粉丝量:</p>
+    <input placeholder="必填" placeholder-class="phcolor" type="number" class="input_common" name="follow_level"></input> -->
+      <picker bindchange="bindCheckfollow" value="{{array[findex].title}}" range="{{array}}" range-key="title"  >
+
+    <view class="picker">
+        粉丝量：<span class="follow_picker"> {{array[findex].title}} </span>
+        <input name="follow_level"  hidden  value='{{array[findex].id}}'></input>
+    </view>
+    
+
+  </picker>
+  
+
+
+  </view>
+
+  <!-- 过期时间 -->
+  <view class="time name">
+    <p>过期时间:</p>
+
+            <wux-date-picker   minDate="{{date}}" mode="datetime" value="{{ value1 }}" lang="{{ lang }}" data-index="1" data-mode="datetime" bind:confirm="onConfirm">
+               <view>
+               <wux-cell is-link extra="{{ displayValue1 }}"></wux-cell>
+               <input hidden name="expire_time" value='{{expire_time}}'></input>   
+               </view> 
+            </wux-date-picker>
+  </view>
+  <!-- 简介 -->
+  <view class="introduction ">
+  <p>简介：</p>
+  </view>
+  <textarea class="in_intro" type="text" name="describe"></textarea>
+
+  <view class='footer'>
+       <button  form-type="submit"  class='save_button' type="primary" >发布</button>
+  </view>
+
+  </form>
+
+</view> 
+
+
+
+
+ 

@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "HubKOL",
+  "navigationBarBackgroundColor": "#970a15",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "pickerr": "/picker/picker",
+    "wux-segmented-control": "../../components/dist/segmented-control/index",
+    "wux-date-picker": "../../components/dist/date-picker/index",
+    "wux-cell-group": "../../components/dist/cell-group/index",
+    "wux-cell": "../../components/dist/cell/index"
+
+
+  }
+}

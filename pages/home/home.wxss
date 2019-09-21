@@ -1,24 +1,47 @@
+page {
+  /* background-color: rgb(247, 247, 247); */
+}
 .wrap {
   width: 100%;
   height: auto;
+  
 }
 .head {
-  width: 95%;
-  height: 240rpx;
-  margin: 0px auto;
-  border-radius: 18rpx;
-  border: 1px solid gray;
-  margin-top: 20rpx;
+width:96%;
+height:300rpx;
+margin:0px auto;
+/* border-radius:30rpx; */
+margin-top:10rpx;
+background:white;
+border-bottom:1rpx solid rgb(243, 239, 239);
+overflow:hidden;
+padding:4rpx;
+
+
 }
 .card-left {
-  width: 160rpx;
-  height: 160rpx;
-  float: left;
-  margin: 40rpx 20rpx;
+  width:80rpx;
+  height:80rpx;
+  float:left;
+  margin:30rpx 30rpx;
+}
+.card_buttom_first{
+  position:absolute;
+  margin-left:-300rpx;
+
+}
+.sup_title{
+float:left;
+margin-top:30rpx;
+margin-left:-108rpx;
+}
+.sup_title span{
+font-size:32rpx;
 }
 .card-left image {
-  width: 160rpx;
-  height: 160rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
   display: inline-block;
 }
 .card-right {
@@ -28,14 +51,47 @@
   margin-top: 20rpx;
 }
 .sub {
-  height: 60rpx;
-  margin-top: 50rpx;
+  margin-top: 15rpx;
   line-height: 30rpx;
 }
-.sup {
-  height: 60rpx;
-  margin-top: 30rpx;
+
+
+/* 名称 */
+.sub .user_name{
+font-size:28rpx;
 }
+
+/* 平台 */
+.sub .user_platform{
+font-size:26rpx;
+margin-top:15rpx;
+color:gray;
+}
+
+/* 参与人数 和 围观人数 */
+.card_buttom{
+font-size:26rpx;
+float:right;
+margin-right:30rpx;
+color:gray;
+}
+
+.sup_content{
+font-size:28rpx;
+margin-top:90rpx;
+position:absolute;
+margin-left:-108rpx;
+color:#d0d0d0;
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+width:90%;
+}
+
+.card_buttom span{
+  margin-left:30rpx;
+}
+
 .title {
   width: 200rpx;
   font-size: 28rpx;
@@ -68,4 +124,131 @@
   font-size: 12px;
   margin-top: -15rpx;
   margin-right: 30rpx;
+}
+.publish{
+
+position:fixed;
+bottom:50rpx;
+right:50rpx;
+}
+
+.publish image{
+width: 80rpx;
+height: 80rpx;
+}
+.empty{
+text-align:center;
+display:flex;
+align-items:center;
+justify-content:center;
+height:999rpx;
+margin:0;
+padding:0;
+}
+
+.empty image{
+width:300rpx;
+height:200rpx;
+
+}
+.head_left_img{
+display:flex;
+flex-direction:column;
+width:60rpx;
+margin-top:21rpx;
+overflow:hidden;
+vertical-align:middle;
+height:100%;
+margin-left:10rpx;
+}
+.head_left_img image{
+width:32rpx;
+height:32rpx;
+display:block;
+margin-left:10rpx;
+margin-top:6rpx;
+border-radius:50%;
+}
+.head_content{
+margin-top:-320rpx;
+font-size:32rpx;
+margin-left:100rpx;
+}
+.head_content_make{
+color:20rpx;
+font-size:24rpx;
+margin-top:25rpx;
+margin-left:-8rpx;
+}
+.head_content_make span{
+
+margin-top:18rpx;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+width:55%;
+}
+.head_content_title{
+margin-top:24rpx;
+font-size:32rpx;
+}
+.head_content_title p{
+color:block;
+margin-left:-8rpx;
+}
+.head_content_make image{
+width:26rpx;
+height:26rpx;
+margin-top:20rpx;
+}
+
+.head_content_sculpture{
+width:30%;
+float:right;
+margin-top:-30rpx;
+color:gray;
+}
+.head_content_sculpture image{
+width:42rpx;
+height:42rpx;
+border-radius:50%;
+}
+.head_content_sculpture span{
+  font-size: 21rpx;
+  position:absolute;
+  margin:10rpx 10rpx;
+}
+.head_content_time{
+float:right;
+font-size:24rpx;
+margin-right:20rpx;
+color: gray;
+}
+.head_content_title image{
+  width:38rpx;
+  height:38rpx;
+  border-radius:50%;
+  margin-left: 10rpx;
+  position:absolute;
+}
+.head_content_right{
+margin-top:-40rpx;
+float:right;
+}
+.head_content_right p{
+   font-size: 24rpx;
+   margin-right:20rpx;
+   color:gray;
+}
+.head_content_right image{
+width:48rpx;
+height:48rpx;
+border-radius:50%;
+margin-top:-10rpx; 
+margin-right:30rpx;
+
+
+}
+.head_content_make view{
+  margin-top: 20rpx
 }

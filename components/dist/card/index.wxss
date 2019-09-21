@@ -6,7 +6,10 @@
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: #fff
+  background-color: #fff;
+  margin-top:50rpx;
+  height:380rpx;
+
 }
 .wux-card--bordered:before {
   content: " ";
@@ -83,7 +86,7 @@
   padding: 30rpx 30rpx 12rpx;
   font-size: 30rpx;
   color: #333;
-  min-height: 80rpx
+  min-height: 120rpx
 }
 .wux-card__ft {
   display: -ms-flexbox;

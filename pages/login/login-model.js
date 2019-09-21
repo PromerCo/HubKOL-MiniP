@@ -4,19 +4,25 @@
 
 // var Base = require('../../utils/base.js').base;
 import { Base } from '../../utils/base.js';
+
 class Login extends Base {
   constructor() {
     super();
   }
+
   getUserAhth(param,callback) {
     var object = JSON.parse(param); 
-    var nickName = object.nickName
-    var avatarUrl = object.avatarUrl
     var param = {
-      url:'user/saveUser',
+      url:'user/authorize',
       data:{ 
-        nickName: nickName,
-        avatarUrl: avatarUrl
+        nick_name: object.nickName,
+        avatar_url: object.avatarUrl,
+        city: object.city,
+        gender: object.gender,
+        language: object.language,
+        province: object.province,
+        country: object.country,
+        company: object.company
         },
       type: 'POST',
       sCallback: function (data) {

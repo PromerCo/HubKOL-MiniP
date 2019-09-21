@@ -1,0 +1,92 @@
+<view class="wrap"  hidden="{{!loadingHidden}}">
+  <!-- 第一部分 产品要求-->
+  <view class="content" >
+
+     <view class='head_content_make'> 
+
+      <view class='head_content_make_pt'>
+             <image src='{{url}}{{list.logo}}'></image>
+      </view>
+
+       <view class='head_content_make_tx'>
+        <image src='{{list.avatar_url}}'></image>
+       </view>
+
+
+       <view class='head_content_make_add'>
+          <image src='../../imgs/icon/sys-address.png'></image> 
+         <p> <span>{{list.city}}</span></p>
+       </view>
+
+       <view class='head_content_make_fs'>
+                 <image src='../../imgs/icon/kol-fs.png'></image> 
+          <p><span>20-50万</span></p>
+       </view>
+
+<view class='head_content_com'>
+
+      <view class='head_content_make_mcn'>
+      <image src='../../imgs/icon/zhanghao.png'></image> 
+      <p><span>{{list.mcn_organization}}</span></p>
+      </view>
+
+      <view class='head_content_make_bq'>
+                     <image src='../../imgs/icon/kol-bj.png'></image> 
+                   <p><span wx:for="{{list.tages}}">#{{item.title}}</span></p>
+       </view>
+</view>
+
+              <view class='head_content_make_name'>
+                    <p  >{{list.nick_name}}</p>
+           </view>
+
+
+     </view>
+
+
+
+    <view class='detailed'>
+          <p>简介</p>
+          <view class='detailed_content'>
+             <view class='skill'>{{info.describe}}</view> 
+          </view>
+    </view>
+    <view class='apply_kol'>
+        <view class='apply_kol_header'>
+         <p>已邀请KOL</p>
+         <p><span>500关注 / 20申请</span></p>
+        </view>
+     <view class="icon_wrap">
+      <view class="icon" wx:for='{{items}}' wx:for-index='index' wx:for-item="item">
+      <image src="{{item.avatar_url}}" class="image"></image>
+    </view>
+    </view>
+    </view>
+  </view>
+</view>
+
+  <!-- 固定定位 -->
+  <view class="share">
+     <view class="share_ewm" >
+ 
+         <image src="../../imgs/icon/fx.png"></image>
+    
+         <span class="share_word share_fx_color"> 分享 </span>
+     </view>
+
+
+    <view class="share_ewm" >
+        <image src="../../imgs/icon/sms-sc.png"></image>
+        <span class="share_word share_sc_color"> 关注 </span>
+    </view>
+
+    <view class="share_ewm">
+      <image src="../../imgs/icon/notice.png"></image>
+      <span class="share_word share_sq_color">邀请</span>
+    </view>
+
+  </view>
+
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>

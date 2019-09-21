@@ -1,64 +1,77 @@
-<!-- 第一部分 产品要求-->
-<view class="content">
-  <view class="x_head">
-    <image class="timg" src="../../imgs/icon/timg.jpg"></image>
-    <p class="head_text">意大利led化妆镜ins风</p>
-  </view>
-  <view class="data">
-    <view>截止日期:
-      <p>2017-11-13</p>
+<view class="wrap"  hidden="{{!loadingHidden}}">
+  <!-- 第一部分 产品要求-->
+  <view class="content">
+    <view class="x_head">
+      <image class="timg" src="{{url}}/{{info.logo}}"></image>
+      <p class="head_text">{{info.push_title}}</p>
+      <p class="head_create_time">30分钟前</p>
+    </view>
+
+     <view class='head_content_make'> 
+
+         <view >品牌：<span class="head_content_make_one"> {{info.brand}}</span></view>
+
+         <view >标签：<span wx:for="{{info.tages}}">#{{item.title}} </span></view>
+
+         <view >粉丝：<span> {{info.title}}</span></view>
+
+         <view >招募：<span>{{info.convene}}人</span></view>
+
+         <view >城市：<span>{{info.city}}</span></view>
+
+     </view>
+
+    <view class='genre_content'>
+
+        <image src="{{info.avatar_url}}" class="girl"></image>
+        <span class="nickname_left">{{info.nick_name}}—品牌推广</span>
+        <p class="nickname_right">5天后结束</p>
+
+    </view>
+
+    <view class='detailed'>
+          <p>详细描述</p>
+          <view class='detailed_content'>
+             <view class='skill'>{{info.describe}}</view> 
+          </view>
+    </view>
+    <view class='apply_kol'>
+        <view class='apply_kol_header'>
+         <p>已经申请KOL</p>
+         <p><span>500查看 / 10申请</span></p>
+        </view>
+     <view class="icon_wrap">
+      <view class="icon" wx:for='{{items}}' wx:for-index='index' wx:for-item="item">
+      <image src="{{item.avatar_url}}" class="image"></image>
+    </view>
+    </view>
     </view>
   </view>
-  <view class="number">
-    <view>
-      <image class="tupian" src="../../imgs/toolbar/my.png"></image>
-      <p>报名人数:</p>
+
+  <!-- 固定定位 -->
+  <view class="share">
+     <view class="share_ewm" >
+ 
+         <image src="../../imgs/icon/fx.png"></image>
+    
+         <span class="share_word share_fx_color"> 分享 </span>
+     </view>
+
+
+    <view class="share_ewm" >
+        <image src="../../imgs/icon/sms-sc.png"></image>
+        <span class="share_word share_sc_color"> 收藏 </span>
     </view>
-    <p>1000</p>
-  </view>
-  <view class="number">
-    <view>
-      <image class="tupian" src="../../imgs/toolbar/my.png"></image>
-      <p>产品品牌:</p>
+
+    <view class="share_ewm">
+      <image src="../../imgs/icon/notice.png"></image>
+      <span class="share_word share_sq_color">申请</span>
     </view>
-    <p>意大利品牌</p>
-  </view>
-  <view class="number">
-    <view>
-      <image class="tupian" src="../../imgs/toolbar/my.png"></image>
-      <p>粉丝要求:</p>
-    </view>
-    <p>不限</p>
-  </view>
-  <view class="number">
-    <view>
-      <image class="tupian" src="../../imgs/toolbar/my.png"></image>
-      <p>达人领域:</p>
-    </view>
-    <p>1000</p>
-  </view>
-  <view class="nickname">
-  <view class="nickname_left">
-  <image src="../../imgs/icon/girl.png" class="girl"></image>
-  <p>不二</p>
-  </view> 
-  <view class="nickname_right">2周前</view>
+
   </view>
 </view>
-<!-- 第二部分 详情要求 -->
-<view class="details">
-<view class="demand"><p class="gang"></p>详情要求</view>
-</view>
-<!-- 第三部分  联系方式 -->
-<view class="person">
-<view class="phone_person phone">
- 联系人：<p>dfcfdsef123</p>
-</view>
-<view class="phone_tell phone">
-联系方式：<p>报名可见联系方式</p>
-</view>
-</view>
-<!-- 第四部分  报名 -->
-<view class="enlist">
-<button>同意并报名</button>
-</view>
+
+
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
