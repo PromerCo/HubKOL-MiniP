@@ -19,7 +19,6 @@
       </view>
 
 
-
             <view wx:if="{{status != 0 }}">
         <view class="icon city">
           <image src="../../imgs/icon/sys-address.png" class="address"></image>

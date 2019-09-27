@@ -13,11 +13,11 @@
             <view class=" com phone ">
               <p>电话:</p>
               <view wx:if='{{message.phone}}' class="phonenumber com phone">
-                <input placeholder="必填" placeholder-class="phcolor"  bindblur="validate" maxlength="11" class="input-text" value='{{message.phone}}' name="phone"></input>
+                <input placeholder="\*" placeholder-class="phcolor"  bindblur="validate" maxlength="11" class="input-text" value='{{message.phone}}' name="phone"></input>
               </view>
               <view wx:else class="phonenumber">
                    <view wx:if="{{phoneNumber}}">
-                                   <input placeholder="必填" placeholder-class="phcolor"  bindblur="validate" maxlength="11" class="input-text" value='{{phoneNumber}}' name="phone"></input>
+                                   <input placeholder="\*" placeholder-class="phcolor"  bindblur="validate" maxlength="11" class="input-text" value='{{phoneNumber}}' name="phone"></input>
                    </view>
                    <view wx:else> <button class='phone_button' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">一键绑定</button>  </view>
 
@@ -25,12 +25,14 @@
             </view>
             <view class=" com name ">
               <p>微信:</p>
-              <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input-text" name="wx_name" value='{{message.wx_name}}'></input>
+              <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input-text" name="wx_name" value='{{message.wx_name}}'></input>
             </view>
-            <view class="com email">
+
+            <!-- <view class="com email">
               <p>邮箱:</p>
               <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input-text" name="email" value='{{message.email}}'></input>
-            </view>
+            </view> -->
+
           </view>
         </view>
 
@@ -46,18 +48,19 @@
         <view class="whole_sup">
           <view class=" home ">
             <p>M C N:</p>
-            <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input_common" name="kol_mcn"
+            <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common" name="kol_mcn"
 value='{{message.mcn_organization}}'></input>
           </view>
           <view class="home kol_compony"> 
             <p>公 司:</p>
-            <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input_common" name="kol_compony"
+            <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common" name="kol_compony"
             value='{{message.mcn_company}}'
             ></input>
           </view>
           <view class="city hole" bindtap="showPicker_09">
             城 市：
             <p wx:if="{{picker_09_data[0].name || picker_09_data[2].name }}">
+
              {{picker_09_data[0].name}} {{picker_09_data[2].name}}
             <input name="kol_city" value='{{picker_09_data[0].name}}' hidden></input>
             <input name="kol_city_code" value='{{picker_09_data[0].code}}' hidden></input>
@@ -78,14 +81,14 @@ value='{{message.mcn_organization}}'></input>
 
    <picker bindchange="bindCheckplatform" value="{{ploform[pindex].title}}" range="{{ploform}}" range-key="title"  >
     <view class="hole">
-       平 台:  <span style="margin-left:85rpx;"> {{ploform[pindex].title}} </span>
+       平 台:  <span style="margin-left:90rpx;"> {{ploform[pindex].title}} </span>
         <input name="kol_terrace"  hidden  value='{{ploform[pindex].id}}'></input>
     </view>
   </picker>
   
     <view class=" home ">
             <p>账 号:</p>
- <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input_common" name="kol_account" value='{{message.account}}'></input>
+ <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common" name="kol_account" value='{{message.account}}'></input>
           </view>
 
           <view class="fans hole">
@@ -127,11 +130,11 @@ value='{{message.mcn_organization}}'></input>
         <view class="ment_sup">
           <view class=" home">
             <p>公 司:</p>
-            <input placeholder="必填" value='{{message.company}}' placeholder-class="phcolor" type=" text" class="input_common" name="compony"></input>
+            <input placeholder="\*" value='{{message.company}}' placeholder-class="phcolor" type=" text" class="input_common" name="compony"></input>
           </view>
           <view class="moc home">
             <p>品 牌</p>
-            <input placeholder="必填" value='{{message.brand}}' placeholder-class="phcolor" type=" text" class="input_common" name="moc"></input>
+            <input placeholder="\*" value='{{message.brand}}' placeholder-class="phcolor" type=" text" class="input_common" name="moc"></input>
           </view>
           <view class="position home" bindtap="showPicker_03">
             <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
@@ -152,7 +155,7 @@ value='{{message.mcn_organization}}'></input>
           <view class=" city hole" bindtap="showPicker_08">
             城 市：
             <p wx:if="{{picker_08_data[0].name || picker_08_data[2].name }}">
-            
+
              {{picker_08_data[0].name}} {{picker_08_data[2].name}}
             <input name="city" value='{{picker_08_data[0].name}}' hidden></input>
             <input name="city_code" value='{{picker_08_data[0].code}}' hidden></input>
@@ -161,7 +164,7 @@ value='{{message.mcn_organization}}'></input>
               </p>
             <p wx:else>
        
-            {{message.province}} {{message.city}} 
+            {{message.province || '北京'}} {{message.city || '朝阳'}} 
             <input name="city" value='{{message.city}}' hidden></input>
             <input name="city_code" value='{{message.city_code}}' hidden></input>
             <input name="province" value='{{message.province}}' hidden></input>

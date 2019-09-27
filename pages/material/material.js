@@ -38,18 +38,18 @@ Page({
     isShow_08: false,
     tag_list:[],
     listData_08: citys,
-    picker_08_data: [],
+    picker_08_data: ['北京'],
     loadingHidden: false,
     isShow_09: false,
     defaultPickData_09: [{
-      code: '500000'
+      code: '110000'
     }, {
-      code: '500200'
+        code: '110100'
     }, {
-      code: '500243'
+        code: '110101'
     }],
     listData_09: citys,
-    picker_09_data: [],
+    picker_09_data: ['北京'],
     isShow_02: false,
     ploform: [],
     findex: 1,
@@ -70,7 +70,6 @@ Page({
 
     var message = JSON.parse(options.message);
 
-    console.log(message)
 
     var position = wx.getStorageSync('record').position  //职位(暂时未写)
 
@@ -93,11 +92,8 @@ Page({
     }
 
 
-
     if (message.type == 2){
       for (var i = 0; i < tag.length; i++) {
-
-        
         for (var j = 0; j < check_tags.length; j++) {
           if (tag[i]['id'] == check_tags[j]['id']) {
             tag[i]['check'] = 'check';
@@ -108,10 +104,6 @@ Page({
         }
       }
     }
-
-
-
-
 
     that.setData({
       message: message,
@@ -135,18 +127,18 @@ Page({
 
     var phone =   msg['phone']
     var wx_name = msg['wx_name']
-    var email =   msg['email']
+    // var email =   msg['email']
 
 
-    if (phone == undefined || phone == '') {
-      wx.showToast({
-        title: "手机号不能为空",
-        icon: 'none',
-        duration: 1200,
-        mask: true
-      });
-      return false;
-    } 
+    // if (phone == undefined || phone == '') {
+    //   wx.showToast({
+    //     title: "手机号不能为空",
+    //     icon: 'none',
+    //     duration: 1200,
+    //     mask: true
+    //   });
+    //   return false;
+    // } 
     if (wx_name == undefined || wx_name == '') {
       wx.showToast({
         title: "微信号不能为空",
@@ -157,19 +149,18 @@ Page({
       return false;
     }
 
-    if (email == undefined || email == '') {
-      wx.showToast({
-        title: "邮箱不能为空",
-        icon: 'none',
-        duration: 1200,
-        mask: true
-      });
-      return false;
-    }
+    // if (email == undefined || email == '') {
+    //   wx.showToast({
+    //     title: "邮箱不能为空",
+    //     icon: 'none',
+    //     duration: 1200,
+    //     mask: true
+    //   });
+    //   return false;
+    // }
 
     if (type == 1) {
       msg.type = 1;
-  
       material.saveData(msg, (data) => {
         var data = JSON.parse(data);
         if (data.code == 200) {
@@ -188,6 +179,7 @@ Page({
           msg.industry = msg.position
           //无信号
           msg.wx_name = wx_name
+          
           
           console.log(msg)
 
@@ -225,7 +217,7 @@ Page({
 
       var tid_s = this.data.tid_s
       var kol_territory = tid_s.join(',');
-      console.log(kol_territory)
+
 
 
       msg.kol_territory = kol_territory
@@ -241,10 +233,12 @@ Page({
       var tag_list = this.data.tag_list.join('#');
   
       msg.tag_list = tag_list  
-      console.log(msg)
+
+ 
 
       material.saveData(msg, (data) => {
       var data = JSON.parse(data);
+
   
       if (data.code == 200) {
         let pages = getCurrentPages(); //页面栈
@@ -338,7 +332,7 @@ Page({
     })
   },
   sureCallBack_09(e) {
-    console.log(JSON.stringify(e.detail.choosedIndexArr))
+    console.log(e.detail.choosedDat)
     this.setData({
       isShow_09: false,
       picker_09_data: e.detail.choosedData,

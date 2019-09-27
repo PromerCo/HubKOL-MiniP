@@ -73,8 +73,9 @@ border-radius:50%;
 width:420rpx;
 height:200rpx;
 float:left;
-margin-top:20rpx;
+margin-top:50rpx;
 margin-left:30rpx;
+
 }
 
 /* 分类 */
@@ -103,7 +104,7 @@ margin-top:10rpx;
 
 }
 .home p{
-width:150rpx;
+width:120rpx;
 float:left;
 font-size:28rpx;
 }
@@ -112,6 +113,8 @@ font-size:28rpx;
   line-height:100rpx;
   font-size: 24rpx;
   padding-left:12rpx;
+  margin-left:155rpx;
+
 
 }
 .com p {
@@ -183,7 +186,7 @@ padding-left:40rpx;
   padding-right:100rpx;
 }
 .follow_picker{
-  margin-left:60rpx;
+  margin-left:65rpx;
 
 }
 .follow_fs{
@@ -213,6 +216,9 @@ line-height:100rpx;
 margin:0px auto;
 font-size:28rpx;
 padding-left:40rpx;
+/* 
+border-bottom:1rpx solid rgb(247, 247, 247); */
+
 }
 .media{
   font-size:36rpx;
@@ -220,6 +226,7 @@ padding-left:40rpx;
 }
 .phcolor{
   font-size: 24rpx;
+  color: #FF3300
 }
 .phone_button{
 height:50rpx;
@@ -244,7 +251,7 @@ float:left;
 领域
 */
 .territory{
-border-bottom:0.5px solid rgb(247, 247, 247);
+
 text-align:center;
 padding-left:30rpx;
 color:gray;
@@ -252,7 +259,7 @@ font-size:21rpx;
 display:flex;
 flex-wrap:wrap;
 padding-right:30rpx;
-border-top:1rpx solid rgb(247, 247, 247);
+
 }
 .territory p{
 margin:10rpx;
@@ -363,6 +370,7 @@ border-bottom-right-radius:0rpx;
 .fans {
   left: 100rpx !important;
   top: 150rpx !important;
+  border:none !important;
 }
 
 .music {

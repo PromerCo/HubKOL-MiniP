@@ -8,9 +8,10 @@ class My extends Base {
   constructor() {
     super();
   }
-  /*
-  获取角色状态
-  */
+
+/*
+角色类型
+*/
   roleStatus(callback){
     var param = {
       url: 'means/miexhibit',

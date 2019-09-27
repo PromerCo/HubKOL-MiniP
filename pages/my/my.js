@@ -51,6 +51,7 @@ Page({
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userInfo']) {
+     
           that.setData({
             authHidding:true,
             loadingHidden:true
@@ -66,16 +67,16 @@ Page({
     var that = this
     var userInfo = e.detail.rawData
 
-
     wx.setStorageSync('userInfo', e.detail.userInfo)
 
 
     my.getUserAhth(userInfo, (data) => {
       var data = JSON.parse(data);
+
       if (data.code == 201) {
         that._loadData();
         that.setData({
-          userInfo: JSON.parse(userInfo), // 假数据,
+          userInfo: JSON.parse(userInfo),
           authHidding: false,
           status: 0
         })
@@ -191,12 +192,26 @@ Page({
   /*加载所有数据*/
   _loadData: function (callback) {
     var that = this
-    var userInfo = wx.getStorageSync('userInfo'); 
+   var userInfo = wx.getStorageSync('userInfo'); 
+
+  
 
     // let message = wx.getStorageSync('HubKol');
     // if (message == '' || message == null || message == undefined){
       my.roleStatus((data) => {
-      var data = JSON.parse(data);
+
+console.error(data)
+console.log(123)
+
+      if (data != undefined || data!=null){
+        var data = JSON.parse(data);
+      }else{
+        var data = [];
+        data.code = 201
+      }
+ 
+
+
      
       if (data.code == 201) {
           // wx.setStorageSync('HubKol', data.data);
@@ -217,6 +232,7 @@ Page({
           }
 
           data.data['wx_name'] = data.data['wechat']
+
           console.log(data)
           //已填写资料
           that.setData({
@@ -268,14 +284,24 @@ Page({
     var that    = this
     var message = that.data.message
     var type    = e.currentTarget.dataset.type
-    console.log(type)
-    console.log(message)
+
     
     if(message  == ""){
       var  message = [];
       message.type = type;
     }
+    console.log(message)
+
+    if (!message['wx_name']){
+
+    }else{
+      message['wx_name'] = message['wechat']
+    }
+
+
+
     var message = JSON.stringify(message)
+ 
     //跳转
     wx.navigateTo({
       url: '../../pages/material/material?message=' + message,
