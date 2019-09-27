@@ -6,17 +6,19 @@
 <view wx:else>
 
 <view class="wrap" wx:for="{{list}}"  wx:for-index="idx" wx:key="index" wx:for-item="itemName" >
-  <view class="head" bindtap="details" data-info='{{itemName}}'>
+  <view class="head" bindtap="details" data-id='{{itemName.id}}'>
 
   <view class='head_left_img' >
  
 <view wx:for="{{image_list}}" >
+      
        <view wx:if="{{item.id == itemName.platform_id}}">
-              <image src='https://yqc.yuezhikeji.cn{{itemName.logo}}'></image>
+              <image src='{{url}}{{itemName.logo}}'></image>
        </view>
        <view wx:else>
-            <image   src='{{item.logo}}'></image>
+             <image src='{{url}}/img/platform-{{item.id}}-0.png'></image>
        </view>
+    
 </view>
 
  
@@ -38,7 +40,6 @@
            粉丝： <span> {{itemName.title}}</span>
            </view>
             <view >
-
            招募： <span>{{itemName.convene}}人</span>
            </view>
      </view>
@@ -52,7 +53,8 @@
   </view>
 </view>
   </view>
-  <view class='publish' catchtap='publish'>
+
+  <view class='publish' catchtap='publish' hidden='{{!roleHidden}}'>
     <image src='../../imgs/icon/WechatIMG291.png'></image> 
   </view>
 

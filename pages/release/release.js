@@ -14,58 +14,18 @@ Page({
     // 平台
     isShow_02: false,
     isShow_03:false,
-    findex:1,
-    listData_02: [
-      ['抖音','快手', '哔哩', '美拍', '秒拍','西瓜', '火山', '微博'],
-    ],
+    findex:0,
+    index:1,
+    pindex:0,
+    number:['1','5','10','20','50','100','200','500'],
     logo:"/img/platform-100001.png",
-    listPt:[
-        { 'logo': '/img/platform-100001.png', 'title': '抖音' },
-        { 'logo': '/img/platform-100002.png', 'title': '快手' },
-        { 'logo': '/img/platform-100002.png', 'title': '哔哩' },
-        { 'logo': '/img/platform-100002.png', 'title': '美拍' },
-        { 'logo': '/img/platform-100002.png', 'title': '秒拍' },
-        { 'logo': '/img/platform-100002.png', 'title': '西瓜' },
-        { 'logo': '/img/platform-100002.png', 'title': '火山' },
-        { 'logo': '/img/platform-100002.png', 'title': '微博' },
-    ],
-    tag: [
-      { 'id': 1, 'title': '小姐姐'},
-      { 'id': 2, 'title': '小哥哥' },
-      { 'id': 3, 'title': '明星' },
-      { 'id': 4, 'title': '萌娃' },
-      { 'id': 5, 'title': '夫妻情侣'},
-      { 'id': 6, 'title': '老外'},
-      { 'id': 7, 'title': '搞笑' },
-      { 'id': 8, 'title': '剧情'},
-      { 'id': 9, 'title': '宠物'},
-      { 'id': 10, 'title': '时尚' },
-      { 'id': 11, 'title': '美妆'},
-      { 'id': 12, 'title': '美食'},
-      { 'id': 13, 'title': '旅游'},
-      { 'id': 14, 'title': '游戏'},
-      { 'id': 15, 'title': '娱乐'}
-    ],
-    array: [
-      { 'id': '100001','title': '1万以下'},
-      { 'id': '100002', 'title': '1万-5万'},
-      { 'id': '100003', 'title': '6万-10万' },
-      { 'id': '100004', 'title': '11万-20万' },
-      { 'id': '100005', 'title': '21万-50万' },
-      { 'id': '100006', 'title': '51万-1百万' },
-      { 'id': '100007', 'title': '1百万-2百万' },
-      { 'id': '100008', 'title': '2百万-5百万' },
-      { 'id': '100009', 'title': '5百万-1千万' },
-      {'id': '100010', 'title': '一千万以上' },
-      ],
-    listData_pt: [
-      100001, 100002, 100003, 100004, 100005, 100006, 100007, 100008
-    ],
+    tag: [], //标签
+    fans: [], //粉丝
+    ploform: [],//平台
     platfrom_code: 100001,
-
-    picker_02_data: ['抖音'],
-    // 城市
+    lang: 'zh_CN',
     isShow_09: false,
+    //默认城市code码
     defaultPickData_09: [
       { code: '500000' }, { code: '500200' }, { code: '500243' }
     ],
@@ -74,16 +34,39 @@ Page({
     date: util.formatTime(new Date()),
     value1: [],
     displayValue1: '请选择',
-    lang: 'zh_CN',
+    isHidePlaceholder: false,
     tid_s:[]
   },
 
-  onLoad: function () {
-
-
+  onLoad:function(){
+    var that = this
+    //标签
+    var tags = wx.getStorageSync('record').tages
+    //粉丝
+    var fans = wx.getStorageSync('record').fans
+    //平台
+    var ploform = wx.getStorageSync('record').ploform
+    ploform.splice(0, 1);
+    that.setData({
+      tag: tags,
+      fans: fans,
+      ploform: ploform
+    })
   },
-  onConfirm:function(e){
 
+
+/*
+切换平台
+*/
+  bindCheckplatform(e) {
+    var that = this
+
+    that.setData({
+      pindex: e.detail.value
+    })
+  },
+
+  onConfirm:function(e){
     var that = this
     that.setData({
       displayValue1: e.detail.displayValue[0] + e.detail.displayValue[1] + e.detail.displayValue[2],
@@ -96,13 +79,27 @@ Page({
       date: e.detail.value
     })
   },
+  getTextareaInput: function (e) {
+    var that = this;
+    if (e.detail.cursor > 0) {
+      that.setData({
+        isHidePlaceholder: true
+      })
+    } else {
+      that.setData({
+        isHidePlaceholder: false
+      })
+    }
+  },
 
+/*
+   粉丝量
+*/
   bindCheckfollow(e){
      var that = this
      that.setData({
        findex: e.detail.value
      })
- 
   },
 
   // 平台
@@ -110,6 +107,13 @@ Page({
     console.log(123)
     this.setData({
       isShow_02: true
+    })
+  },
+  
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
     })
   },
   sureCallBack_02(e) {
@@ -140,28 +144,26 @@ Page({
               tid_s.splice(i, 1);
           }
     }
+
     that.setData({
       tid_s: tid_s
     })
-
     }else{
         chek['check']  = 'check' 
         tid_s.push(t_id)
-
         that.setData({
           tid_s: tid_s
         })
-      
-      
     }
- 
+
+    console.log(tags)
+    console.log(tid_s)
 
 
     that.setData({
       tag: tags,
       tid_s: tid_s
     })
-
   },
 
   // 监听取消事件
@@ -171,13 +173,10 @@ Page({
     })
   },
 
-
-
-  formSubmit:function(e){
+  formSubmit: throttle(function (e) {
 
     var tid_s = this.data.tid_s
     var tid = tid_s.join(',');
-
     var info = e.detail.value
     if (info.title == null || info.title == undefined || info.title==''){
       wx.showToast({
@@ -239,59 +238,23 @@ Page({
 
     info.tags = tid
 
-
     release.kolSave(info, (data) => {
     var data = JSON.parse(data);
-
      if (data.code == 201){
+       info.id = data.data.push_id    //ID
+       info.nick_name = data.data.nick_name
+       info.avatar_url = data.data.avatar_url
 
-       info.id = data.data    //ID
-       info.nick_name = wx.getStorageSync('userInfo').nickName
-       info.avatar_url = wx.getStorageSync('userInfo').avatarUrl
-
-       if (info.avatar_url == null || info.avatar_url==undefined){
-         wx.showToast({
-           title: '请先授权',
-           icon: 'none',
-           duration: 1000,
-           mask: true,
-         })
-         return false;
-       }
-       if (info.nick_name == null || info.nick_name == undefined) {
-         wx.showToast({
-           title: '请先授权',
-           icon: 'none',
-           duration: 1000,
-           mask: true,
-         })
-         return false;
-       }
-       info.platform_title = info.platform
-       info.push_title = info.title
-       info.bystander_number = 0    //围观人数
-       info.convene = info.convene    //剩余名额 
-       info.enroll_number = 0    //入伍人数
-       info.enroll = null       //json
-       info.logo   = this.data.logo //logo
-       info.is_enroll = 0 //是否报名 （0 报名  1未报名）  
-       info.create_time = '刚刚'
-       var pages = getCurrentPages(); // 获取页面栈
-       var currPage = pages[pages.length - 1]; // 当前页面
-       var prevPage = pages[pages.length - 2]; // 上一个页面
-       var prevlist = prevPage.data.list
-       prevlist.unshift(info)
-
-       console.log(prevlist)
-
-       prevPage.setData({
-         list: prevlist   // 上一页数据
-       })
-       wx.navigateBack({
-         delta: 1
+       /*
+       跳转 ME 页面
+       */
+       wx.redirectTo({
+         url: '../../pages/sign/sign',
        })
   
      } else if (data.code == 412){
+
+
        wx.showToast({
          title: '请先完善资料',
          icon: 'none',
@@ -301,7 +264,7 @@ Page({
      }
 
     })
-  },
+  }, 1000),
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -351,3 +314,21 @@ Page({
 
   }
 })
+
+
+
+function throttle(fn, gapTime) {
+  if (gapTime == null || gapTime == undefined) {
+    gapTime = 1500
+  }
+
+  let _lastTime = null
+  // 返回新的函数
+  return function () {
+    let _nowTime = + new Date()
+    if (_nowTime - _lastTime > gapTime || !_lastTime) {
+      fn.apply(this, arguments)   //将this和参数传给原函数
+      _lastTime = _nowTime
+    }
+  }
+}

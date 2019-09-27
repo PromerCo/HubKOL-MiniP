@@ -1,4 +1,8 @@
-<view class="project">
+
+<view class="project" hidden="{{!loadingHidden}}">
+
+<view wx:if="{{list.length !=0}}">
+
  <view class="content" wx:for="{{list}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
     <view class="x_head">
       <image class="timg" src="{{url}}{{itemName.logo}}"></image>
@@ -8,8 +12,31 @@
       <view class="reset_data">状态:
         <p>活动进行中</p>
       </view>
-      <view class="see" bindtap="see">查看详情</view>
+      <view class="see" bindtap="see" data-push_id='{{itemName.id}}'>查看详情</view>
     </view>
+</view>
 
 </view>
+
+<view wx:else class='is_excer'>
+<image src='../../imgs/icon/wushuju.png'></image>
 </view>
+
+
+
+  <!-- <view class='publish' catchtap='publish' >
+    <image src='../../imgs/icon/WechatIMG291.png'></image> 
+  </view> -->
+
+
+<view class='footer'>
+   <view bindtap='navhome'  wx:if="{{type == 1}}">查看更多的HUB</view>
+   <view bindtap='publish' wx:else>立即发布</view>
+</view>
+
+
+</view>
+
+<loading hidden="{{loadingHidden}}">
+  {{presentation}}
+</loading>

@@ -1,9 +1,11 @@
 {
-  "navigationBarTitleText": "HubKOL",
+  "navigationBarTitleText": "Hub KOL",
     "usingComponents": {
       "pickerr": "/picker/picker",
       "wux-cell-group": "../../components/dist/cell-group/index",
-      "wux-cell": "../../components/dist/cell/index"
+      "wux-cell": "../../components/dist/cell/index",
+      "wux-picker": "../../components/dist/picker/index"
+
     }
   
 }

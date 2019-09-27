@@ -1,225 +1,135 @@
- .header{
-  margin-top:-120rpx;
-}
-.login{
-font-size:30rpx;
-border:none !important;
-background:white;
-height:75rpx;
-line-height:75rpx;
-width:280rpx;
-}
 
 
-/* 信息 */
-.header_img{
-  width:160rpx;
-  height:160rpx;
-  border-radius:50%;
-  margin:0 auto;
+/* 第一部分 产品要求 */
 
-}
-.nick_name{
-text-align:center;
-margin-top:24rpx;
-}
-.header_img image{
-width:100%;
-height:100%;
-border-radius:50%;
-}
-
-::-webkit-scrollbar-x{
-  width: 0;
-  height: 0;
-  color: transparent;
-  display: none;
-}
-page {
-  background-color: rgb(247, 247, 247);
-}
-/* 名字 */
-.information {
-  width: 100%;
-  height: 320rpx;
-  background-color: white;
-}
-
-.Consignee {
-  width: 90%;
-  height: 280rpx;
-  border-bottom: 1px solid #ccc;
+.content {
+  width: 95%;
+  height: auto;
   margin: 0 auto;
-  padding-top:20rpx;
 }
 
-.Consignee_left {
-  width: 200rpx;
-  height: 200rpx;
-  float: left;
-  line-height: 200rpx;
-}
+/* 第一部分详情 */
 
-.Consignee_left image {
-  width:180rpx;
-  height:180rpx;
-  display: inline-block;
-  border-radius: 25rpx;
-  margin-top: 30rpx;
-}
-
-.Consignee_right {
-width:420rpx;
-height:200rpx;
-float:left;
-margin-top:20rpx;
-margin-left:30rpx;
+.head_content_make {
+  width: 100%;
+  height: 400rpx;
 
 }
 
-/* 分类 */
+.top {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top:20rpx;
+
+}
+
+.center {
+  width: 100%;
+  height: 250rpx;
+  position: relative;
+}
+
+.pic {
+width:150rpx;
+height:150rpx ;
+border-radius:50%;
+margin:0 auto;
+display:block;
+
+}
+.city {
+  left: 68rpx !important;
+  top: 60rpx !important;
+}
+
+.fans {
+  left: 100rpx !important;
+  top: 150rpx !important;
+}
+
+.music {
+  left: 510rpx !important;
+  top: 60rpx !important;
+}
+
+.tag {
+  left: 400rpx !important;
+  top: 150rpx !important;
+}
 
 .name {
-  width: 400rpx;
-
+text-align:center;
+margin-top:100rpx;
 }
 
-.wx_name {
-  width: 400rpx;
-  padding-top: 35rpx;
-}
-
-.name p:nth-of-type(1) {
-  padding-left: 0rpx;
-}
-
-.name p {
-  padding-left: 60rpx;
-}
-
-.com {
-height:60rpx;
-margin-top:10rpx;
-
-}
-.home p{
-width:150rpx;
-float:left;
-font-size:28rpx;
-}
-.input_common{
-  height:120rpx;
-  line-height:120rpx;
-}
-.com p {
-  width: 120rpx;
-  float: left;
-  font-size: 28rpx;
-  line-height:50rpx;
-
-}
-
-/* 分类 */
-
-/* 广告组 */
-
-.sort {
-  width: 100%;
-  height:120rpx;
-  line-height: 120rpx;
-  margin-top:40rpx;
-  font-size: 34rpx;
-  background-color:white;
-}
-.tag{
-  margin-left:30rpx;
-}
-.star{
-  padding-left:10rpx;
-  color: red;
-}
-.position p{
-  margin-left:20rpx;
-}
-/* 网红 */
-.Internet{
-  width: 100%;
-  height: auto;
-  background-color: rgb(247, 247, 247);
-  margin-top:40rpx;
-}
-.whole_sup{
-width: 100%;
-height: 360rpx;
-background-color: white;
-font-size: 28rpx;
-}
-.hole{
-  width: 90%;
-  height: 120rpx;
-  line-height: 120rpx;
-  border-bottom: 1px solid #ccc;
-  margin:0px auto;
-  font-size: 28rpx;
-}
-
-
-.city:nth-of-type(3){
-   border-bottom: 1px solid transparent;
-}
-.fans:nth-of-type(4){
-  border-bottom: 1px solid transparent;
-}
-
-
-
-.whole_sub{
-width: 100%;
-height: 480rpx;
-margin-top:40rpx;
- background-color: white;
-}
-/*广告*/
-.Advertisement{
-  width: 100%;
-  height: auto;
-  background-color:white;
-  margin-top:40rpx;
-}
-.ment_sup{
-width: 100%;
-height: 720rpx;
- background-color: white;
-}
-.home{
-  width: 90%;
-  height: 120rpx;
-  line-height: 120rpx;
-  border-bottom: 1px solid #ccc;
-  margin:0px auto;
-  font-size: 32rpx;
-}
-.media{
-  font-size:36rpx;
-  margin-left:80rpx;
-}
-.phcolor{
-  font-size: 24rpx;
-}
-.phone_button{
+.top image {
+width:50rpx;
 height:50rpx;
-width:160rpx;
+float:right;
+border-radius:50%;
+
+}
+
+.address {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.icon {
+  display: flex;
+  position: absolute;
+  left: 120rpx;
+  top: 100rpx;
+}
+
+.icon p {
+margin-left:10rpx;
+margin-top:5rpx;
+white-space:nowrap;
+text-overflow:ellipsis;
+overflow:hidden;
 font-size:24rpx;
-line-height:50rpx;
-float:left;
 }
-.picker{
-  font-size: 28rpx;
+
+.text {
+  font-size: 28rpx !important;
 }
-.wux-cell{
-height:100rpx;
+
+.auth_button {
+text-align:center;
+width:38%;
+margin-top:auto;
+display:block;
+margin:80rpx auto;
+height:60rpx;
+line-height:60rpx;
+background:#FF3300 !important;
+color:white !important;
 font-size:28rpx;
+border-radius:10rpx;
+
 }
-.input-text{
-  font-size: 28rpx;
+.auth_img image{
+width:180rpx;
+height:180rpx;
+margin:0 auto;
+display:block;
+
+}
+
+.auth_img{
+width:90%;
+margin:0 auto;
+
+}
+
+.auth{
+margin-top:100rpx;
+
+}
+
+.page__bd{
+  margin-top:80rpx;
+
 }

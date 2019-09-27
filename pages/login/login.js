@@ -19,24 +19,23 @@ Page({
     //判断是否授权
   },
 
-  bindGetUserInfo:function(e){
-    console.log(e)
 
+  bindGetUserInfo:function(e){
     var userInfo = e.detail.rawData  
     login.getUserAhth(userInfo, (data) => {
-   
           var data = JSON.parse(data); 
-      
+ 
+    
           if (data.code == 201){
             let pages = getCurrentPages(); //页面栈
             let currPage = pages[pages.length - 1]; //当前页面
             let prevPage = pages[pages.length - 2]; // 上一个页面
-
             wx.setStorageSync('userInfo', JSON.parse(userInfo));  //用户信息缓存
-
+            
             prevPage.setData({
               userInfo: JSON.parse(userInfo), // 假数据,
-              isHide:false
+              authHidding:false,
+              status:0
             })
             wx.navigateBack({
               delta: 1
@@ -52,7 +51,6 @@ Page({
           }
 
     });
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

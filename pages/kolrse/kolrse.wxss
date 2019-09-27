@@ -49,10 +49,9 @@ margin-top:-10rpx;
   font-size: 28rpx;
 }
 .data view {
-
   margin-left:20rpx; 
-
 }
+button::after{ border: none; }
 .data p {
   color: red;
   margin-left: 10rpx;
@@ -261,6 +260,7 @@ height:120rpx;
 line-height:145rpx;
 width:30%;
 margin-left:50rpx;
+background:#f0f0f4;
 
 }
 .share_ewm image{

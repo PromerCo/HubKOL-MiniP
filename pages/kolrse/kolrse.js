@@ -23,9 +23,20 @@ Page({
     that.setData({
       list: info_obj
     })
-  
   },
 
+  follow:function(e){
+   
+  },
+
+ /*
+ 跳转KOL
+ */
+  navCategory:function(){
+    wx.switchTab({
+      url: '/pages/category/category'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

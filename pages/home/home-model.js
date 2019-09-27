@@ -21,9 +21,15 @@ class Home extends Base {
     this.request(param);
   }
 
-  getlist(callback){
+  getlist(param, callback) {
+    var info = param
+
     var param = {
       url: 'home/index',
+      data:{
+        start_page: info.start_page,
+        end_page:   info.end_page,
+        },
       type: 'POST',
       sCallback: function (data) {
         //  后台 data

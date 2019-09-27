@@ -9,24 +9,20 @@ class Category extends Base {
     super();
   }
 
-  column(callback) {
-      var param = {
-        url: 'kol/list',
-        type: 'POST',
-        sCallback: function (data) {
-          callback && callback(data);
-        }
-      };
-      this.request(param);
-};
 
 
   getList(param,callback){
     var msg = param;
+    console.log(msg.start_page)
+
     if (msg['type'] == 0){
       var param = {
         url: 'kol/spread',
         type: 'POST',
+        data: {
+          start_page: msg.start_page,
+   
+        },
         sCallback: function (data) {
           callback && callback(data);
         }
@@ -38,7 +34,7 @@ class Category extends Base {
         type: 'POST',
         data: {
           platform_id: msg.platform_id,
-          // tages_id: msg.tages_id,
+          start_page: msg.start_page,
           type: msg.type
         },
         sCallback: function (data) {

@@ -22,12 +22,15 @@ Page({
         data: "活动已截至"
       }
     ],
+    presentation:'正在加载',
+    loadingHidden:false,
+    type:1,
     url: app.globalData.url
   },
-  see() {
-    
+  see:function(e) {
+    var push_id = e.currentTarget.dataset.push_id
     wx.navigateTo({
-      url: '../../pages/details/details',
+      url: '../../pages/details/details?push_id=' + push_id,
     })
   },
   /**
@@ -35,8 +38,24 @@ Page({
    */
   onLoad: function (options) {
 
-    this._loadData();
+    var type = options.type
+    this.setData({
+      type:type
+    })
+    this._loadData()
 
+  },
+
+  navhome:function(e){
+    wx.switchTab({
+      url: '/pages/home/home'
+    })
+  },
+  
+  publish:function(e){
+    wx.navigateTo({
+      url: '../../pages/release/release',
+    })
   },
 
   _loadData: function (callback) {
@@ -44,13 +63,14 @@ Page({
     //栏目列表
     sign.getlist((data) =>{
       var data = JSON.parse(data); 
-      console.log(data)
+    
       if (data.code == 201){
       that.setData({
-        list:data.data
+        list:data.data,
+        loadingHidden:true
       })
       }
-      console.log(data)
+   
 
     })
 
@@ -66,6 +86,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+  
 
   },
 

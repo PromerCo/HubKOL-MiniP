@@ -1,5 +1,6 @@
 var app = getApp();
 import { Detalis } from 'details-model.js';
+
 var details = new Detalis(); //实例化 首页 对象
 
 let animationShowHeight = 300;
@@ -8,48 +9,109 @@ Page({
   /**
    * 页面的初始数据
    */
+  
   data: {
     items: [],
     info:[],
     shareImgSrc: '',// 画布转成图片的临时地
     loadingHidden: false,
     is_enroll:0,
-    url: app.globalData.url
+    collect:0,
+    agree:'申请',
+    enroll_number:0,
+    url: app.globalData.url,
+    sc_img:"../../imgs/icon/sms-sc.png"
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    var info = JSON.parse(options.info); 
-    var enroll = JSON.parse(info['enroll']);
-    if (enroll != null || enroll!=undefined){
-      var items = JSON.parse(enroll)
-    }else{
-      var  items = [];
-    }
+      //发请求
+    var push_id = options.push_id
+    //  列表
+    details.list_details(push_id, (data) => {
+      var info = data.data 
+      console.log(info.is_collect)
+      if (info.is_collect == 1){
+        that.setData({
+          sc_img: "../../imgs/icon/sms-sc-0.png"
+        })
+      }else{
+       that.setData({
+         sc_img: "../../imgs/icon/sms-sc.png"
+       })
+      }
 
-    that.setData({
-      info: info,
-      items: items,
-      loadingHidden: true,
-      is_enroll: info['is_enroll']
+      var enroll = JSON.parse(info['enroll']);
+      if (enroll != null || enroll != undefined) {
+        var items = JSON.parse(enroll)
+      } else {
+        var items = [];
+      }
+      that.setData({
+        info: info,
+        items: items,
+        collect: info['is_collect'],
+        is_enroll: info['is_enroll'],
+        enroll_number: info['enroll_number'],
+        loadingHidden:true
+      })
+      that._loadData();
     })
+    
 
-    that._loadData();
+
   },
 
+
+  navHome: throttle(function (e) {
+    wx.switchTab({
+      url: '/pages/home/home'
+    })
+  }, 1000),
+
+  collect:function(e){
+    var that = this
+    var msg = [];
+    
+    msg.collect = e.currentTarget.dataset.type
+    msg.push_id = that.data.info.id
+
+
+    //收藏
+    details.collect(msg,(data) => {
+
+      console.log(data.data)
+      if(data.code == 201){
+        if (data.data == 0){
+          that.setData({
+            collect: data.data,
+            sc_img: "../../imgs/icon/sms-sc.png"
+
+          })
+        }else{
+          that.setData({
+            collect: data.data,
+            sc_img: "../../imgs/icon/sms-sc-0.png"
+          })
+        }
+        
+      }
+    })
+
+  },
   _loadData:function(){
     var that = this;
     var push_id = that.data.info.id;
+
 
     //记录浏览量
     details.showAgree(push_id,(data) => {
       var info = JSON.parse(data); 
       console.log(info)
-
+      
     })
 
   },
@@ -103,19 +165,21 @@ Page({
       if (result.code == 201){
         //报名成功
         var img = { 'avatar_url': result.data };
-
         image_list.push(img)
-
+        var enroll_number  =that.data.info.enroll_number+1
         that.setData({
           is_enroll: 1,
-          items: image_list
+          items: image_list,
+          enroll_number: enroll_number,
+          agree:'已申请'
         })
       } else if (result.code == 200){
           wx.showToast({
-            title: '您已经报名',
+            title: '您已经申请',
             icon: 'none',
             duration: 1000,
             mask: true,
+       
           })
       }else{
 
@@ -176,3 +240,19 @@ Page({
 
 
 })
+
+function throttle(fn, gapTime) {
+  if (gapTime == null || gapTime == undefined) {
+    gapTime = 1500
+  }
+
+  let _lastTime = null
+  // 返回新的函数
+  return function () {
+    let _nowTime = + new Date()
+    if (_nowTime - _lastTime > gapTime || !_lastTime) {
+      fn.apply(this, arguments)   //将this和参数传给原函数
+      _lastTime = _nowTime
+    }
+  }
+}

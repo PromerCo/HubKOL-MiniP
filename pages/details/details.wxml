@@ -38,7 +38,7 @@
     <view class='apply_kol'>
         <view class='apply_kol_header'>
          <p>已经申请KOL</p>
-         <p><span>500查看 / 10申请</span></p>
+         <p><span>{{info.bystander_number}}查看 / {{enroll_number}}申请</span></p>
         </view>
      <view class="icon_wrap">
       <view class="icon" wx:for='{{items}}' wx:for-index='index' wx:for-item="item">
@@ -50,24 +50,32 @@
 
   <!-- 固定定位 -->
   <view class="share">
-     <view class="share_ewm" >
- 
+
+   <view  class="share_ewm">
+   
+   <view catchtap='navHome'>
+       <image src="../../imgs/toolbar/sms@-hub.png"></image>
+      <span  class="share_word share_sq_color" > Hub </span>
+   </view>
+
+   
+   </view>
+
+
+     <button open-type='share' class="share_ewm" >
          <image src="../../imgs/icon/fx.png"></image>
-    
          <span class="share_word share_fx_color"> 分享 </span>
-     </view>
-
-
-    <view class="share_ewm" >
-        <image src="../../imgs/icon/sms-sc.png"></image>
-        <span class="share_word share_sc_color"> 收藏 </span>
-    </view>
-
+     </button>
+     
     <view class="share_ewm">
+<image src="{{sc_img}}"></image>
+<span  bindtap='collect'  data-type="1"  class="share_word share_sc_color"  wx:if="{{collect ==0 }}">收藏</span>
+<span  bindtap='collect'  data-type="0" class="share_word share_sc_color"  wx:else >已收藏</span>
+</view>
+    <view class="share_ewm"  catchtap='agree'>
       <image src="../../imgs/icon/notice.png"></image>
-      <span class="share_word share_sq_color">申请</span>
+      <span  class="share_word share_sq_color" >{{agree}}</span>
     </view>
-
   </view>
 </view>
 

@@ -54,7 +54,7 @@
     <view class='apply_kol'>
         <view class='apply_kol_header'>
          <p>已邀请KOL</p>
-         <p><span>500关注 / 20申请</span></p>
+         <p><span>0关注 / 0邀请</span></p>
         </view>
      <view class="icon_wrap">
       <view class="icon" wx:for='{{items}}' wx:for-index='index' wx:for-item="item">
@@ -67,23 +67,34 @@
 
   <!-- 固定定位 -->
   <view class="share">
-     <view class="share_ewm" >
- 
+     <!-- <view class="share_ewm" >
          <image src="../../imgs/icon/fx.png"></image>
-    
          <span class="share_word share_fx_color"> 分享 </span>
-     </view>
+     </view> -->
+
+      <button open-type='share' class="share_ewm" >
+         <image src="../../imgs/icon/fx.png"></image>
+         <span class="share_word share_fx_color"> 分享 </span>
+     </button>
 
 
-    <view class="share_ewm" >
+    <view  class="share_ewm">
+      <view catchtap='navCategory'>
+          <image src="../../imgs/toolbar/sms@-kol.png"></image>
+          <span  class="share_word share_sq_color" > KOL </span>
+      </view>
+    </view>
+
+
+    <!-- <view class="share_ewm" >
         <image src="../../imgs/icon/sms-sc.png"></image>
-        <span class="share_word share_sc_color"> 关注 </span>
+        <span class="share_word share_sc_color" bindtap='follow' > 关注 </span>
     </view>
 
     <view class="share_ewm">
       <image src="../../imgs/icon/notice.png"></image>
       <span class="share_word share_sq_color">邀请</span>
-    </view>
+    </view> -->
 
   </view>
 

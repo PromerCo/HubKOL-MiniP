@@ -1,11 +1,12 @@
 {
   "navigationBarTitleText": "Hub KOL",
-  
+   "enablePullDownRefresh": true,
     "usingComponents": {
       "wux-card": "../../components/dist/card/index",
       "wux-wing-blank": "../../components/dist/wing-blank/index",
       "wux-row": "../../components/dist/row/index",
       "wux-col": "../../components/dist/col/index",
+      "wux-refresher": "../../components/dist/refresher/index",
       "wux-image": "../../components/dist/image/index"
     }
 

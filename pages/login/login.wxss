@@ -52,18 +52,22 @@
     line-height: 80rpx;
     color: white;
     border-radius: 50rpx;
+    font-size: 32rpx;
 }
 .info_top p {
-    width: 100%;
-    margin-top: 3%;
-    text-align: center;
-    display: block;
-    font-size: 35rpx;
-    color: gray;
+
+  width:100%;
+  margin-top:3%;
+  text-align:center;
+  display:block;
+  font-size:24rpx;
+  color:gray;
+
 }
 .info_top_p {
-    margin-top: 15%;
+    margin-top: 5%;
     display: block;
+    font-size:24rpx;
 }
 .info_top title {
     margin-top: -42rpx;

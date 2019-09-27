@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "Hub KOL",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "pickerr": "/picker/picker",
     "wux-card": "../../components/dist/card/index",

@@ -11,7 +11,6 @@ Page({
     list:[
          { "id": 1 }, { "id": 2 }, { "id": 3 }, { "id": 4 }, { "id": 5 }, { "id": 6 }, { "id": 7 }
     ],
-    sa: [{ "name": "小姐姐", "logo": "" }, { "name": "小哥哥", "logo": "" }, { "name": "明星", "logo": "" }, { "name": "萌娃", "logo": "" }, { "name": "时尚", "logo": "" }, { "name": "美妆", "logo": "" }, { "name": "科技", "logo": "" }, { "name": "情感", "logo": "" }, { "name": "创意", "logo": "" }],
     loadingHidden:false,
     column:[],
     column_list: [],
@@ -20,6 +19,8 @@ Page({
     hiddenName: true,
     url: app.globalData.url,
     index:0,
+    start_page: 0,
+    end_page: 5,
     hidden:false
 
   },
@@ -37,12 +38,10 @@ Page({
         });
       }
     });
-    that._loadData();
-
+    var start_page = that.data.start_page
+  
+    that._loadData(start_page);
   },
-
-
-
 
   // 点击切换
   onTabsChange:function(e) {
@@ -90,27 +89,48 @@ Page({
    console.log(e)
   },
 
-  _loadData: function (callback) {
+  _loadData: function (start_page,status=0) {
+
     var that = this;
+    var columns = wx.getStorageSync('record').ploform
+
+    if (!columns) {
+      app.onLaunch();//初始化页面数据
+    } 
+
     //页面数据
     var msg = [];
-    msg.type = 0;
+    msg.start_page = start_page;
+    
+    console.log(msg)
+ 
     category.getList(msg, (data) => {
+      var list = data.data
+
+      console.log(list)
+
+   
       if (data.code == 201) {
-        console.log(data.data)
+        var home_list = that.data.avtivity_list;
+        if (status == 0) {
+          for (var i = 0; i < list.length; i++) {
+            home_list.push(list[i])
+          }
+        } else {
+            home_list = list
+         
+        }
+        console.log(home_list)
+
         that.setData({
-          avtivity_list: data.data,
+          avtivity_list: home_list,
+          column: columns,
+          column_list: columns[0]['retion'],
+          start_page: start_page,
           loadingHidden:true
         })
-      }
-    });
-    //栏目数据
-    category.column((data) => {
 
-      that.setData({
-              column:data.data,
-              column_list: data.data[0]['retion']
-      })
+      }
     });
 
   },
@@ -154,13 +174,11 @@ Page({
     var that = this;
     var tag_id = e.currentTarget.dataset.tag
     var platform_id = that.data.platform_id
- 
     var msg = [];
     msg.tages_id = tag_id
     msg.platform_id = platform_id
     msg.type = 1
     category.getList(msg, (data) => {
-   
       if (data.code == 201){
          console.log(data.data)  
          that.setData({
@@ -168,8 +186,22 @@ Page({
          })
       }
     })
-    
+  },
 
+  /*下拉刷新页面*/
+  onPullDownRefresh: function () {
+ 
+    var that = this
+    var start_page = 0
+    this._loadData(start_page, 1);
+  },
+  /*上拉加载更多*/
+  onReachBottom: function () {
+  
+    var that = this;
+    var start_page = that.data.start_page
+    var start_page = start_page + 5
+    that._loadData(start_page);
   },
 
 

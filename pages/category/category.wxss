@@ -27,21 +27,20 @@ border-bottom:1rpx solid #F0F0F0;
   font-size: 32rpx;
 }
 
-/* pages/tab-scroller/index.wxss */
+.head_content{
+  font-size:32rpx;
+  margin:0 auto;
+  padding-left:30rpx;
+}
 
 .container {
 
-margin-top:-60rpx;
-}
+  padding: 0 !important;
+  margin-top:150rpx !important; 
 
-.head_content{
-  font-size:32rpx;
-  width:100%;
-  margin:0 auto;
-  padding-left:30rpx;
+} 
 
 
-}
 .head_content_make{
 color:20rpx;
 font-size:24rpx;

@@ -8,7 +8,7 @@ page {
 }
 .head {
 width:96%;
-height:300rpx;
+height:340rpx;
 margin:0px auto;
 /* border-radius:30rpx; */
 margin-top:10rpx;
@@ -125,8 +125,8 @@ width:90%;
   margin-top: -15rpx;
   margin-right: 30rpx;
 }
-.publish{
 
+.publish{
 position:fixed;
 bottom:50rpx;
 right:50rpx;
@@ -170,13 +170,13 @@ margin-top:6rpx;
 border-radius:50%;
 }
 .head_content{
-margin-top:-320rpx;
+margin-top: -47.3%;
 font-size:32rpx;
 margin-left:100rpx;
 }
 .head_content_make{
 color:20rpx;
-font-size:24rpx;
+font-size:26rpx;
 margin-top:25rpx;
 margin-left:-8rpx;
 }
@@ -189,12 +189,11 @@ white-space:nowrap;
 width:55%;
 }
 .head_content_title{
-margin-top:24rpx;
 font-size:32rpx;
 }
 .head_content_title p{
 color:block;
-margin-left:-8rpx;
+margin-left:-3rpx;
 }
 .head_content_make image{
 width:26rpx;
@@ -250,5 +249,5 @@ margin-right:30rpx;
 
 }
 .head_content_make view{
-  margin-top: 20rpx
+  margin-top: 30rpx
 }

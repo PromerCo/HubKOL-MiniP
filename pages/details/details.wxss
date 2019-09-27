@@ -28,7 +28,7 @@ border-radius:50%;
 }
 .head_text {
 float:left;
-margin-top:8rpx;
+margin-top:-3rpx;
 margin-left:30rpx;
 font-weight:700;
 font-size:28rpx;
@@ -253,26 +253,30 @@ margin-top:20rpx;
 font-size:28rpx;
 background:white;
 float:left;
-
 }
+
 button::after{ border: none; }
+
 .share_ewm{
 height:120rpx;
 line-height:145rpx;
-width:30%;
-margin-left:50rpx;
+width:50%;
+background:#f0f0f4;
+text-align:center;
+
 
 }
 .share_ewm image{
 width:56rpx;
 height:56rpx;
-
+margin-left:-56rpx;
 }
 .share_word{
-font-size:30rpx;
-margin-left:10rpx;
+font-size:24rpx;
 position:absolute;
-margin-top:-1.7%;
+margin-top:-2%;
+
+
 }
 .more{
 width:120rpx;
@@ -459,6 +463,8 @@ color:gray;
 }
 
 .share_fx_color{
+margin-top:-5%;
+color:black;
 
 }
 .share_sc_color{

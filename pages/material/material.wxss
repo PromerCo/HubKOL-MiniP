@@ -1,0 +1,416 @@
+ .header{
+  margin-top:-120rpx;
+}
+.login{
+font-size:30rpx;
+border:none !important;
+background:white;
+height:75rpx;
+line-height:75rpx;
+width:280rpx;
+}
+
+.tag_sp{
+  margin-left:60rpx;
+}
+
+
+/* 信息 */
+.header_img{
+  width:160rpx;
+  height:160rpx;
+  border-radius:50%;
+  margin:0 auto;
+
+}
+.nick_name{
+text-align:center;
+margin-top:24rpx;
+}
+.header_img image{
+width:100%;
+height:100%;
+border-radius:50%;
+}
+
+::-webkit-scrollbar-x{
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+
+/* 名字 */
+.information {
+  width: 100%;
+  height: 320rpx;
+  background-color: white;
+}
+
+.Consignee {
+  width: 90%;
+  height: 280rpx;
+  margin: 0 auto;
+  padding-top:20rpx;
+}
+
+.Consignee_left {
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+  line-height: 200rpx;
+}
+
+.Consignee_left image {
+  width:180rpx;
+  height:180rpx;
+  display: inline-block;
+  border-radius: 25rpx;
+  margin-top: 30rpx;
+}
+
+.Consignee_right {
+width:420rpx;
+height:200rpx;
+float:left;
+margin-top:20rpx;
+margin-left:30rpx;
+}
+
+/* 分类 */
+
+.name {
+  width: 400rpx;
+
+}
+
+.wx_name {
+  width: 400rpx;
+  padding-top: 35rpx;
+}
+
+.name p:nth-of-type(1) {
+  padding-left: 0rpx;
+}
+
+.name p {
+  padding-left: 60rpx;
+}
+
+.com {
+height:60rpx;
+margin-top:10rpx;
+
+}
+.home p{
+width:150rpx;
+float:left;
+font-size:28rpx;
+}
+.input_common{
+  height:100rpx;
+  line-height:100rpx;
+  font-size: 24rpx;
+  padding-left:12rpx;
+
+}
+.com p {
+  width: 120rpx;
+  float: left;
+  font-size: 28rpx;
+  line-height:50rpx;
+
+}
+
+/* 分类 */
+
+/* 广告组 */
+
+.sort {
+width:100%;
+height:100rpx;
+line-height:100rpx;
+margin-top:40rpx;
+font-size:34rpx;
+border-bottom:1rpx solid rgb(247, 247, 247);
+
+}
+.tag{
+  margin-left:30rpx;
+}
+.star{
+  padding-left:10rpx;
+  color: red;
+}
+.position p{
+  margin-left:20rpx;
+}
+/* 网红 */
+.Internet{
+  width: 100%;
+  height: auto;
+
+
+}
+.whole_sup{
+width: 100%;
+font-size: 28rpx;
+}
+.hole{
+
+height:100rpx;
+line-height:100rpx;
+margin:0px auto;
+font-size:28rpx;
+/* border-bottom:1rpx solid rgb(247, 247, 247); */
+padding-left:40rpx;
+/* border-top:1rpx solid rgb(247, 247, 247); */
+
+}
+
+.kol_compony{
+  /* border-top:1rpx solid rgb(247, 247, 247); */
+
+}
+
+/* .city:nth-of-type(3){
+   border-bottom: 1px solid transparent;
+}
+.fans:nth-of-type(4){
+  border-bottom: 1px solid transparent;
+} */
+.fans{
+  padding-right:100rpx;
+}
+.follow_picker{
+  margin-left:60rpx;
+
+}
+.follow_fs{
+margin-left:-38rpx;
+}
+.hole p{
+margin-left:60rpx;
+
+}
+
+.whole_sub{
+
+ background-color: white;
+}
+/*广告*/
+.Advertisement{
+  width: 100%;
+  height: auto;
+}
+.ment_sup{
+width: 100%;
+ background-color: white;
+}
+.home{
+height:100rpx;
+line-height:100rpx;
+margin:0px auto;
+font-size:28rpx;
+padding-left:40rpx;
+}
+.media{
+  font-size:36rpx;
+  margin-left:80rpx;
+}
+.phcolor{
+  font-size: 24rpx;
+}
+.phone_button{
+height:50rpx;
+width:160rpx;
+font-size:24rpx;
+line-height:50rpx;
+float:left;
+}
+.picker{
+  font-size: 28rpx;
+}
+
+.picker span{
+  margin-left:60rpx;
+
+}
+.input-text{
+  font-size: 28rpx;
+}
+
+/*
+领域
+*/
+.territory{
+border-bottom:0.5px solid rgb(247, 247, 247);
+text-align:center;
+padding-left:30rpx;
+color:gray;
+font-size:21rpx;
+display:flex;
+flex-wrap:wrap;
+padding-right:30rpx;
+border-top:1rpx solid rgb(247, 247, 247);
+}
+.territory p{
+margin:10rpx;
+width:21%;
+border:1rpx solid lightgray;
+color:gray;
+height:50rpx;
+line-height:50rpx;
+border-radius: 10rpx;
+
+
+}
+.tag{
+  font-size:26rpx;
+  margin-left:45rpx;
+}
+.check{
+  border:1rpx solid #FF3300 !important;
+  color: #FF3300 !important;
+  border-radius:10rpx;
+
+}
+
+.footer{
+position:fixed;
+width:100%;
+bottom:0;
+
+z-index: 1000
+
+}
+.save_button{
+
+background:#FF3300 !important;
+color:white;
+border-top-left-radius:20rpx !important;
+border-top-right-radius:20rpx !important;
+border-bottom:0rpx;
+border-bottom-left-radius:0rpx;
+border-bottom-right-radius:0rpx;
+
+
+}
+  /*
+     品牌
+  */
+.moc{
+    /* border-top: 1rpx solid rgb(247, 247, 247);
+    border-bottom: 1rpx solid rgb(247, 247, 247); */
+}
+/*
+城市
+*/
+.city{
+/* border-bottom: 1rpx solid rgb(247, 247, 247); */
+}
+
+
+
+
+.wrap {
+  width: 100%;
+}
+
+/* 第一部分 产品要求 */
+
+.content {
+  width: 95%;
+  height: auto;
+  margin: 20rpx auto;
+}
+
+/* 第一部分详情 */
+
+.head_content_make {
+  width: 100%;
+  height: 400rpx;
+
+}
+
+.top {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.center {
+  width: 100%;
+  height: 250rpx;
+  position: relative;
+}
+
+.pic {
+  width: 150rpx;
+  height: 150rpx;
+  position: absolute;
+  left: 39%;
+  top: 0rpx;
+  border-radius:50%;
+
+}
+
+.city {
+  left: 68rpx !important;
+  top: 60rpx !important;
+}
+
+.fans {
+  left: 100rpx !important;
+  top: 150rpx !important;
+}
+
+.music {
+  left: 510rpx !important;
+  top: 60rpx !important;
+}
+
+.tag {
+  left: 400rpx !important;
+  top: 150rpx !important;
+}
+
+.name {
+  left: 280rpx !important;
+  top: 266rpx !important;
+}
+
+.top image {
+width:50rpx;
+height:50rpx;
+float:right;
+border-radius:50%;
+
+}
+
+.address {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.icon {
+  width: 30%;
+  display: flex;
+  position: absolute;
+  left: 120rpx;
+  top: 100rpx;
+}
+
+.icon p {
+  font-size: 24rpx;
+  margin-left: 10rpx;
+  margin-top: 5rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+
+.text {
+  font-size: 28rpx !important;
+}

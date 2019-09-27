@@ -1,14 +1,19 @@
-const common = require('../../utils/common.js')
+
+const repeatclick = require('../../utils/repeatclick.js')
 
 import { Home } from 'home-model.js';
-
+var app = getApp();
 var home = new Home(); //实例化 首页 对象
 Page({
   data: {
     loadingHidden: false,
     buttonClicked: false,
+    roleHidden:false,
     actEndTimeList:[],
     list:[],
+    start_page:0,
+    end_page: 5,
+    url: app.globalData.url,
     image_list:[
       { 'id': '100001', 'logo': '../../imgs/icon/platform-100001-0.png' },
       { 'id': '100002', 'logo': '../../imgs/icon/platform-100002-0.png' },
@@ -19,129 +24,124 @@ Page({
       { 'id': '100007', 'logo': '../../imgs/icon/platform-100007-0.png' },
     ]
   },
+
   onLoad: function () {
-    //页面初始化时候
-    this._loadData();
+
+  
   },
   details: throttle(function (e) {
-   var info = e.currentTarget.dataset.info
-   console.log(info)
-   var info_str = JSON.stringify(info)
+   var id = e.currentTarget.dataset.id
    wx.navigateTo({
-     url: '../../pages/details/details?info=' + info_str,
+     url: '../../pages/details/details?push_id=' + id,
    })
-
   }, 1000),
   publish: throttle(function (e) {
     var that = this
     wx.navigateTo({
       url: '../../pages/release/release',
     })
-    return false;
-    home.roleStatus((data) => {
-    var data = JSON.parse(data); 
-      if (data.data == 0) {
-        //跳转到授权页面
-        wx.navigateTo({
-          url: '../../pages/my/my',
-        })
-      } else if (data.data == 1) {
-        //跳转发布页面
-        wx.navigateTo({
-          url: '../../pages/release/release',
-        })
-      } else {
-        //提示没有KOL权限
-        wx.showToast({
-          title: '没有HUB权限！',
-          icon: 'none',
-          duration: 800,
-          mask: true,
-        })
-      }
-    })
+
   }, 1000),
 
 
   /*加载所有数据*/
-  _loadData: function (callback) {
-    var that = this;
+  _loadData: function (start_page,status=0) {
+    var  that = this;
+    var  msg = [];
+    var  end_page = that.data.end_page
+    msg['start_page'] = start_page
+    
     //获取列表信息(data 回调)
-    home.getlist((data) => {   
+    home.getlist(msg,(data) => {   
          var list = data.data; 
-         console.log(list) 
+         var home_list = that.data.list;
+
+         console.log(home_list)
+         if (status ==0){
+           for (var i = 0; i < list.length; i++) {
+             home_list.push(list[i])
+           }
+        }else{
+             home_list = list
+        }
+      console.log(home_list)
+
+         wx.stopPullDownRefresh() 
          that.setData({
-           loadingHidden:true,
-           list: list
+           list: home_list,
+           loadingHidden: true,
+           start_page: start_page,
+           end_page: end_page
          })
     })
-
+    wx.hideLoading();
   },
 
   /*下拉刷新页面*/
   onPullDownRefresh: function () {
-    this._loadData(() => {
-      wx.stopPullDownRefresh()
-    });
-  },
-
-  /*
-     倒计时函数
-  */
-
-  timeFormat:function(param) { //小于10的格式化函数
-    return param < 10 ? '0' + param : param;
-  },
-
-  countDown:function(){
     var that = this
-    //获取当前时间，同时得到活动结束时间数组
-    let newTime = new Date().getTime();
-    let endTimeList = that.data.list;
-    let countDownArr = [];
-    //对结束时间进行处理渲染到页面
-    endTimeList.forEach(function (o, index, arrSelf) {
-      let arr = o['expire_time'].split(/[- :]/);
-      let nndate = new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5]);
-      nndate = Date.parse(nndate)
-      let endTime = nndate;
-      let obj = null;
-      // 如果活动未结束，对时间进行处理
-      if (endTime - newTime > 0) {
-        let time = (endTime - newTime) / 1000;
-        // 获取天、时、分、秒
-        let day = parseInt(time / (60 * 60 * 24));
-        let hou = parseInt(time % (60 * 60 * 24) / 3600);
-        let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
-        let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
-
-        o['countdown'] = day + ' 天 ' + hou + ' 小时 ' + min + ' 分 ' + sec + '秒'
- 
-      } else { //活动已结束，全部设置为'00'
-        o['countdown'] = "活动已经截至"
-      }
-      countDownArr.push(o);
-    })
-
-
-    this.setData({
-      list: countDownArr
-    })
-    setTimeout(this.countDown, 1000);
-
+    var start_page = 0
+    this._loadData(start_page,1);
   },
-  
+  /*上拉加载更多*/
+  onReachBottom: function () {
+    var that = this;
+    var start_page = that.data.start_page
+    var start_page = start_page+5 
+    that._loadData(start_page);
+  },
 
   onShow:function(){
+    var that = this;
+
+    var start_page = this.data.start_page
+
+    var ploform = wx.getStorageSync('record').ploform;
+   
+    if (!ploform) {
+      app.onLaunch();//初始化页面数据
+    } else {
+      ploform.splice(0, 1)
+    }
+
+    console.log(wx.getStorageSync('token'))
+
+    var img = this.data.image_list
+    this.setData({
+      image_list: ploform
+    })
 
 
-  }
+    this._loadData(start_page);
+    /*
+    获取角色状态
+    */
+    if (wx.getStorageSync('token')){
+    home.roleStatus((data) => {
+    var data = JSON.parse(data);
+    var status = data.data
+    if (status == 1) {
+          that.setData({
+            roleHidden: true,
+          })
+        } else {
+          that.setData({
+            roleHidden: false,
+
+          })
+        }
+      })
+    }
+
+    
+  },
 
 })
 
+
 function throttle(fn, gapTime) {
   if (gapTime == null || gapTime == undefined) {
-     gapTime = 1500
+    gapTime = 1500
   }
 
   let _lastTime = null
@@ -154,4 +154,3 @@ function throttle(fn, gapTime) {
     }
   }
 }
-

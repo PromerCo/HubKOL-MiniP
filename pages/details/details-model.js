@@ -38,6 +38,47 @@ class Detalis extends Base {
 
 };
 
+/*
+  收藏
+*/
+  collect(param,callback) {
+
+    var param = {
+      url: 'partake/collect',
+      type: 'POST',
+      data:{
+        'collect': param.collect,
+        'push_id': param.push_id,
+      },
+      sCallback: function (data) {
+        callback && callback(data);
+      }
+
+    }
+    this.request(param);
+  };
+
+  /*
+    详情内容
+  */
+
+  list_details(push_id, callback) {
+
+    var param = {
+      url: 'home/details',
+      type: 'POST',
+      data: {
+        'push_id': push_id,
+      },
+      sCallback: function (data) {
+        callback && callback(data);
+      }
+
+    }
+    this.request(param);
+  };
+
+
 };
 
   
