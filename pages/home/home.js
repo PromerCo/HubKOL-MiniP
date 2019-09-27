@@ -27,6 +27,20 @@ Page({
 
   onLoad: function () {
 
+    var that = this;
+
+    var ploform = wx.getStorageSync('record').ploform;
+    if (!ploform) {
+      app.onLaunch();//初始化页面数据
+    } else {
+      ploform.splice(0, 1)
+    }
+    var start_page = this.data.start_page
+    var img = this.data.image_list
+    this.setData({
+      image_list: ploform
+    })
+    this._loadData(start_page);
   
   },
   details: throttle(function (e) {
@@ -55,8 +69,6 @@ Page({
     home.getlist(msg,(data) => {   
          var list = data.data; 
          var home_list = that.data.list;
-
-         console.log(home_list)
          if (status ==0){
            for (var i = 0; i < list.length; i++) {
              home_list.push(list[i])
@@ -64,8 +76,7 @@ Page({
         }else{
              home_list = list
         }
-      console.log(home_list)
-
+  
          wx.stopPullDownRefresh() 
          that.setData({
            list: home_list,
@@ -80,6 +91,7 @@ Page({
   /*下拉刷新页面*/
   onPullDownRefresh: function () {
     var that = this
+    console.log(123)
     var start_page = 0
     this._loadData(start_page,1);
   },
@@ -92,33 +104,14 @@ Page({
   },
 
   onShow:function(){
-    var that = this;
 
-    var start_page = this.data.start_page
+    var that = this
+    that.onPullDownRefresh()
 
-    var ploform = wx.getStorageSync('record').ploform;
-   
-    if (!ploform) {
-      app.onLaunch();//初始化页面数据
-    } else {
-      ploform.splice(0, 1)
-    }
-
-    console.log(wx.getStorageSync('token'))
-
-    var img = this.data.image_list
-    this.setData({
-      image_list: ploform
-    })
-
-
-    this._loadData(start_page);
     /*
     获取角色状态
     */
-    if (wx.getStorageSync('token')){
     home.roleStatus((data) => {
-    var data = JSON.parse(data);
     var status = data.data
     if (status == 1) {
           that.setData({
@@ -131,9 +124,6 @@ Page({
           })
         }
       })
-    }
-
-    
   },
 
 })
