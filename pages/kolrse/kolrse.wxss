@@ -462,7 +462,7 @@ color:gray;
 */
 
 .head_content_make_pt{
-float:right;
+float:left;
 margin-right:20rpx;
 
 }

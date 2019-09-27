@@ -47,6 +47,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
     var that = this;
     wx.getSetting({
       success(res) {
@@ -119,8 +121,10 @@ Page({
     })
 
     my.blockedOut(type, (data) => {
+
       var data = JSON.parse(data); 
-      console.log(data)
+
+      
       if (data.code == 201){
         if (data.data.type == 1) {
           var counter_mark = 'Hub'
@@ -128,13 +132,17 @@ Page({
           var follow_title = '关注的KOL'
           var type = 2
           var counter_img = "../../imgs/toolbar/sms@-hub.png";
+          var status = data.data.status
         } else {
           var counter_mark = 'KOL'
           var column_title = '参与的Hub'
           var follow_title = '关注的Hub'
           var type = 1;
           var counter_img = "../../imgs/toolbar/sms@-kol.png";
+          var status = data.data.status
         }
+        
+        console.log(data.data)
         that.setData({
           counter_mark: counter_mark,
           counter_img: counter_img,
@@ -142,12 +150,12 @@ Page({
           follow_title: follow_title,
           message: data.data,
           loadingHidden:true,
-          type: type
+          type: type,
+          status: status
         })
       }else{
         that.setData({
           message: '',
-          type:data.data.type
         })
     
       }
@@ -200,16 +208,11 @@ Page({
     // if (message == '' || message == null || message == undefined){
       my.roleStatus((data) => {
 
-console.error(data)
-console.log(123)
-
-      if (data != undefined || data!=null){
         var data = JSON.parse(data);
-      }else{
-        var data = [];
-        data.code = 201
-      }
- 
+
+        console.log(data)
+
+
 
 
      
@@ -233,7 +236,6 @@ console.log(123)
 
           data.data['wx_name'] = data.data['wechat']
 
-          console.log(data)
           //已填写资料
           that.setData({
             type: type,
@@ -290,15 +292,13 @@ console.log(123)
       var  message = [];
       message.type = type;
     }
-    console.log(message)
+
 
     if (!message['wx_name']){
-
-    }else{
       message['wx_name'] = message['wechat']
     }
 
-
+    console.log(message)
 
     var message = JSON.stringify(message)
  
@@ -324,8 +324,12 @@ console.log(123)
    * 生命周期函数--监听页面显示
    */
    onShow: function () {
+     
     var that = this
 
+     that.setData({
+       message: that.data.message
+     })
   
   },
 

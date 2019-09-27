@@ -61,6 +61,8 @@ width:70%;
   float:right;
   width:15%;
   text-align:center;
+  margin-right:40rpx;
+
 }
 .introduction{
 height:100rpx;

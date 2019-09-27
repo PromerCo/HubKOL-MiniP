@@ -18,6 +18,7 @@ Page({
     index:1,
     pindex:0,
     number:['1','5','10','20','50','100','200','500'],
+    expenses: ['100', '300', '500', '1000', '3000', '5000', '10000', '50000','100000'],
     logo:"/img/platform-100001.png",
     tag: [], //标签
     fans: [], //粉丝
@@ -35,7 +36,8 @@ Page({
     value1: [],
     displayValue1: '请选择',
     isHidePlaceholder: false,
-    tid_s:[]
+    tid_s:[],
+    mg_index:0,
   },
 
   onLoad:function(){
@@ -114,6 +116,13 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
+    })
+  },
+  //费用预算
+  bindPickerfg: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      mg_index: e.detail.value
     })
   },
   sureCallBack_02(e) {
@@ -240,6 +249,8 @@ Page({
 
     release.kolSave(info, (data) => {
     var data = JSON.parse(data);
+      console.log(data)
+      
      if (data.code == 201){
        info.id = data.data.push_id    //ID
        info.nick_name = data.data.nick_name

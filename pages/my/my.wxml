@@ -11,15 +11,17 @@
                <image bindtap="sureCallBack_01" src="{{counter_img}}"  data-type='{{type}}'></image>
       </view>
 
+
   <!-- KOL -->
-      <view class="center" wx:if="{{type == 1}}">
+      <view class="center" wx:if="{{message.type == 2}}">
               <image src="{{userInfo.avatarUrl}}" class="pic" catchtap='material' data-type='2'></image>
         <view class=" name">
               <p class="text">{{userInfo.nickName}}</p>
       </view>
 
 
-            <view wx:if="{{status != 0 }}">
+            <view wx:if="{{message.status != 0 }}">
+
         <view class="icon city">
           <image src="../../imgs/icon/sys-address.png" class="address"></image>
           <p>{{message.city}}</p>
@@ -52,8 +54,9 @@
       </view>
 
 
-  
-      <view wx:if="{{status != 0}}">
+
+      <view wx:if="{{message.status != 0}}">
+
         <view class="icon city">
           <image src="../../imgs/icon/sys-address.png" class="address"></image>
           <p>{{message.city}}</p>

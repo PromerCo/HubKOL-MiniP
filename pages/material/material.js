@@ -14,7 +14,7 @@ Page({
    */
   data: {
     userInfo: [],
-    findex: 1,
+    findex: 5,
     pindex:1,
     index: 0,
     temp: [],
@@ -52,7 +52,6 @@ Page({
     picker_09_data: ['北京'],
     isShow_02: false,
     ploform: [],
-    findex: 1,
     isShow_03: false,
     tid_s: [],
     fans: [],
@@ -77,9 +76,14 @@ Page({
 
     var ploform = wx.getStorageSync('record').ploform  //领域
 
+    if (ploform){
+      ploform.splice(0,1)
+    }
+    
+
     var fans = wx.getStorageSync('record').fans  //粉丝
 
-    var check_tags = message.tags
+    var check_tags = message.tags  //后台传的
 
     var tid_s = that.data.tid_s
 
@@ -90,6 +94,7 @@ Page({
     if (check_tags ==null || undefined){
         check_tags = [];
     }
+
 
 
     if (message.type == 2){
@@ -104,6 +109,8 @@ Page({
         }
       }
     }
+
+
 
     that.setData({
       message: message,
@@ -160,9 +167,12 @@ Page({
     // }
 
     if (type == 1) {
+      
       msg.type = 1;
       material.saveData(msg, (data) => {
+        console.log(data)
         var data = JSON.parse(data);
+   
         if (data.code == 200) {
           //保存成功
           var that = this;
@@ -179,7 +189,7 @@ Page({
           msg.industry = msg.position
           //无信号
           msg.wx_name = wx_name
-          
+          msg.status = 1
           
           console.log(msg)
 
@@ -222,6 +232,7 @@ Page({
 
       msg.kol_territory = kol_territory
       msg.type = 2
+      msg.status = 1
       msg.mcn_organization = msg.kol_mcn //机构
       msg.mcn_company = msg.kol_compony  //公司
       msg.fs_title = msg.kol_fsname  //粉丝
@@ -238,13 +249,12 @@ Page({
 
       material.saveData(msg, (data) => {
       var data = JSON.parse(data);
-
+  
   
       if (data.code == 200) {
         let pages = getCurrentPages(); //页面栈
         let currPage = pages[pages.length - 2]; //当前页面
 
-        
         //保存成功
         currPage.setData({
           showList: true,
@@ -252,8 +262,7 @@ Page({
           column_title: '我报名的栏目',
           follow_title: '关注的栏目',
           message: msg,
-          tag_list: tag_list,
-          type:1
+          tag_list: tag_list
         })
         wx.navigateBack({
           delta: 1  // 返回上一级页面。
@@ -467,6 +476,8 @@ Page({
     var tid_s = that.data.tid_s;
     var chek = tags[index];
     var tag_list = that.data.tag_list;
+
+    var tag_all = that.data.tag_all;
     if (chek['check'] == 'check') {
       chek['check'] = 'none'
       for (var i = 0; i < tid_s.length; i++) {
@@ -483,19 +494,21 @@ Page({
       chek['check'] = 'check'
       tag_list.push(chek.title);
       tid_s.push(t_id)
+      tag_all.push(chek);
+
       that.setData({
         tid_s: tid_s,
-        tag_list: tag_list
+        tag_list: tag_list,
+        tag_all: tag_all
+     
       })
     }
 
-    console.log(tags)
-    console.log(tid_s)
-    console.log(tag_list)
 
     that.setData({
       tag: tags,
-      tid_s: tid_s
+      tid_s: tid_s,
+    
     })
   },
 
@@ -556,7 +569,7 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               var userInfo = res.userInfo
-              console.log(userInfo)
+    
               that.setData({
                 userInfo: userInfo,
                 isHide: false,

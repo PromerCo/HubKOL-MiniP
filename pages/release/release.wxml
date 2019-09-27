@@ -38,25 +38,38 @@
   <view class="participants name">
     <p>招募人数:</p>
     <!-- <input   placeholder="必填" placeholder-class="phcolor" type="number"  class="input_common" name="convene"></input> -->
-
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{number}}">
          <view class="picker_num">
         {{number[index]}}
          </view>
       </picker>
       <input hidden name="convene" value='{{number[index]}}'></input>
-
   </view>
     <!-- 预计消费 -->
-  <view class="participants name">
+
+
+  <!-- <view class="participants name">
     <p>费用预算:</p>
     <input placeholder="\*" placeholder-class="phcolor" type="number" class="input_common" name="budget"></input>
+  </view> -->
+
+
+  <!-- 参与人数 -->
+  <view class="participants name">
+    <p>费用预算:</p>
+    <!-- <input   placeholder="必填" placeholder-class="phcolor" type="number"  class="input_common" name="convene"></input> -->
+      <picker bindchange="bindPickerfg" value="{{mg_index}}" range="{{expenses}}">
+         <view class="picker_num">
+        ￥{{expenses[mg_index]}}元
+         </view>
+      </picker>
+      <input hidden name="budget" value='{{expenses[mg_index]}}'></input>
   </view>
+    <!-- 预计消费 -->
+
 
       <!-- 预计消费 -->
   <view class="participants name">
-  
-    
       <picker bindchange="bindCheckfollow" value="{{fans[findex].title}}" range="{{fans}}" range-key="title"  >
     <view class="picker">
         粉丝级别：<span class="follow_picker"> {{fans[findex].title}} </span>

@@ -68,7 +68,7 @@ value='{{message.mcn_organization}}'></input>
             <input name="kol_province_code" value='{{picker_09_data[2].code}}' hidden></input>
               </p>
             <p wx:else>
-            {{message.province}} {{message.city}} 
+            {{message.province }} {{message.city}} 
             <input name="kol_city" value='{{message.city}}' hidden></input>
             <input name="kol_city_code" value='{{message.city_code}}' hidden></input>
             <input name="kol_province" value='{{message.province}}' hidden></input>
@@ -164,7 +164,7 @@ value='{{message.mcn_organization}}'></input>
               </p>
             <p wx:else>
        
-            {{message.province || '北京'}} {{message.city || '朝阳'}} 
+            {{message.province}} {{message.city }} 
             <input name="city" value='{{message.city}}' hidden></input>
             <input name="city_code" value='{{message.city_code}}' hidden></input>
             <input name="province" value='{{message.province}}' hidden></input>
