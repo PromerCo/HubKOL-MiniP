@@ -27,7 +27,7 @@
      <view class='head_content_title'>
            <!-- 八个字到16个字 -->
            <p>{{itemName.push_title}}</p> 
-            <p class="head_content_time">{{itemName.create_time}}</p>
+            <p class="head_content_time">{{itemName.create_time}}前</p>
      </view>
      <view class='head_content_make'> 
          <view >

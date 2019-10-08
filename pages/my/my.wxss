@@ -24,43 +24,43 @@
 
 }
 
-.center {
-  width: 100%;
-  height: 250rpx;
-  position: relative;
-}
+
 
 .pic {
-width:150rpx;
-height:150rpx ;
+width:180rpx;
+height:180rpx;
 border-radius:50%;
 margin:0 auto;
 display:block;
 
 }
 .city {
-  left: 68rpx !important;
-  top: 60rpx !important;
+left:68rpx !important;
+top:138rpx !important;
+
 }
 
 .fans {
-  left: 100rpx !important;
-  top: 150rpx !important;
+
+top:240rpx !important;
+
 }
 
 .music {
-  left: 510rpx !important;
-  top: 60rpx !important;
+left:510rpx !important;
+top:138rpx !important;
+
 }
 
 .tag {
-  left: 400rpx !important;
-  top: 150rpx !important;
+  left: 450rpx !important;
+ top:240rpx !important;
+
 }
 
 .name {
 text-align:center;
-margin-top:100rpx;
+margin-top:60rpx;
 }
 
 .top image {
@@ -126,10 +126,15 @@ margin:0 auto;
 
 .auth{
 margin-top:100rpx;
-
 }
 
-.page__bd{
-  margin-top:80rpx;
 
+.top span{
+font-size:24rpx;
+position:absolute;
+margin-top:-5rpx;
+
+}
+.wux-cell{
+  border: none !important
 }

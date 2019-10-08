@@ -49,7 +49,7 @@ class Material extends Base {
     var param = {
       url: 'means/material',
       data: {
-        phone: '18511587569',     //手机号
+        phone: object.phone,     //手机号
         wechat: object.wx_name,   //微信名称
         city: object.city,  //城市 
         city_code: object.city_code,  //城市 code 码

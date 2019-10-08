@@ -1,11 +1,9 @@
 // pages/material/material.js
-
 import { citys } from '../../utils/city.js';
 
 import { Material } from 'material-model.js';
 
 var material = new Material();
-
 
 Page({
 
@@ -95,8 +93,6 @@ Page({
         check_tags = [];
     }
 
-
-
     if (message.type == 2){
       for (var i = 0; i < tag.length; i++) {
         for (var j = 0; j < check_tags.length; j++) {
@@ -109,7 +105,6 @@ Page({
         }
       }
     }
-
 
 
     that.setData({
@@ -134,7 +129,6 @@ Page({
 
     var phone =   msg['phone']
     var wx_name = msg['wx_name']
-    // var email =   msg['email']
 
 
     // if (phone == undefined || phone == '') {
@@ -170,9 +164,10 @@ Page({
       
       msg.type = 1;
       material.saveData(msg, (data) => {
-        console.log(data)
+
         var data = JSON.parse(data);
-   
+        console.log(data)
+
         if (data.code == 200) {
           //保存成功
           var that = this;
@@ -190,8 +185,6 @@ Page({
           //无信号
           msg.wx_name = wx_name
           msg.status = 1
-          
-          console.log(msg)
 
           currPage.setData({
               showList: true,
@@ -201,14 +194,12 @@ Page({
               follow_title: '关注的达人',
   
           })
-
           wx.navigateBack({
             delta: 1  // 返回上一级页面。
           })
 
-   
-    
         } else {
+          console.log(data.data)
           wx.showToast({
             title: '请完善资料！',
             icon: 'none',
@@ -228,8 +219,6 @@ Page({
       var tid_s = this.data.tid_s
       var kol_territory = tid_s.join(',');
 
-
-
       msg.kol_territory = kol_territory
       msg.type = 2
       msg.status = 1
@@ -245,12 +234,9 @@ Page({
   
       msg.tag_list = tag_list  
 
- 
-
       material.saveData(msg, (data) => {
       var data = JSON.parse(data);
-  
-  
+
       if (data.code == 200) {
         let pages = getCurrentPages(); //页面栈
         let currPage = pages[pages.length - 2]; //当前页面
@@ -268,8 +254,8 @@ Page({
           delta: 1  // 返回上一级页面。
         })
      
-  
         } else {
+
           wx.showToast({
             title: '请完善资料！',
             icon: 'none',
@@ -428,46 +414,7 @@ Page({
     })
   },
 
-    /*
-    领域
-    */
-  // check: function (e) {
-  //   var that = this
-  //   var t_id = e.currentTarget.dataset.id
-  //   var tags = this.data.tag
-  //   var index = e.currentTarget.dataset.index
-  //   var tid_s = that.data.tid_s;
-  //   var tag_list = that.data.tag_list;
-  //   var chek = tags[index];
-  //   if (chek['check'] == 'check') {
-  //       chek['check'] = 'none'
-  //       for (var i = 0; i < tid_s.length; i++) {
-  //       if (tid_s[i] == t_id) {
-  //         tid_s.splice(i, 1);
-  //         tag_list.splice(i, 1);
-  //       }
-  //     }
-  //     that.setData({
-  //       tid_s: tid_s,
-  //       tag_list: tag_list
-  //     })
-  //   } else {
-  //     chek['check'] = 'check'
-  //     tid_s.push(t_id)
-  //     tag_list.push(chek.title);
-  //     that.setData({
-  //       tid_s: tid_s,
-  //       tag_list: tag_list
-  //     })
-
-  //   that.setData({
-  //     tag: tags,
-  //     tag_list: tag_list,
-  //     tid_s: tid_s
-  //   })
-  // }
-  // },
-
+ 
   check: function (e) {
     var that = this
     var t_id = e.currentTarget.dataset.id
@@ -476,40 +423,53 @@ Page({
     var tid_s = that.data.tid_s;
     var chek = tags[index];
     var tag_list = that.data.tag_list;
-
     var tag_all = that.data.tag_all;
+
     if (chek['check'] == 'check') {
       chek['check'] = 'none'
       for (var i = 0; i < tid_s.length; i++) {
+
         if (tid_s[i] == t_id) {
           tid_s.splice(i, 1);
           tag_list.splice(i, 1);
         }
+
       }
       that.setData({
         tid_s: tid_s,
         tag_list: tag_list
       })
     } else {
+
+      if (tid_s.length >= 3) {
+        wx.showToast({
+          title: "最多选择三个标签哦",
+          icon: 'none',
+          duration: 800,
+          mask: true
+        });
+        return false;
+      }
+
       chek['check'] = 'check'
       tag_list.push(chek.title);
       tid_s.push(t_id)
       tag_all.push(chek);
-
       that.setData({
         tid_s: tid_s,
         tag_list: tag_list,
         tag_all: tag_all
-     
+    
       })
     }
 
+      that.setData({
+        tag: tags,
+        tid_s: tid_s,
+      })
 
-    that.setData({
-      tag: tags,
-      tid_s: tid_s,
-    
-    })
+
+
   },
 
   /*

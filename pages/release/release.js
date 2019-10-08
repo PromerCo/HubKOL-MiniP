@@ -3,6 +3,8 @@ var app = getApp();
 import { Release } from 'release-model.js';
 
 var util = require('../../utils/util.js')
+
+require('../../utils/editor.js')
 var release = new Release(); //实例化 首页 对象
 
 Page({
@@ -15,7 +17,7 @@ Page({
     isShow_02: false,
     isShow_03:false,
     findex:0,
-    index:1,
+    index:2,
     pindex:0,
     number:['1','5','10','20','50','100','200','500'],
     expenses: ['100', '300', '500', '1000', '3000', '5000', '10000', '50000','100000'],
@@ -34,15 +36,46 @@ Page({
     picker_09_data: [],
     date: util.formatTime(new Date()),
     value1: [],
-    displayValue1: '请选择',
+    displayValue1: '请先选择',
     isHidePlaceholder: false,
     tid_s:[],
-    mg_index:0,
+    mg_index:3,
+    //editor组件
+    formats: {},
+    readOnly: false,
+    placeholder: '活动介绍...',
+    editorHeight: 300,
+    keyboardHeight: 0,
+    details:'',
+    url: app.globalData.url,
+    isIOS: false
   },
 
   onLoad:function(){
-    var that = this
-    //标签
+
+
+    const platform = wx.getSystemInfoSync().platform
+    const isIOS = platform === 'ios'
+    this.setData({ isIOS })
+    const that = this
+    this.updatePosition(0)
+    let keyboardHeight = 0
+    wx.onKeyboardHeightChange(res => {
+      if (res.height === keyboardHeight) return
+      const duration = res.height > 0 ? res.duration * 1000 : 0
+      keyboardHeight = res.height
+      // setTimeout(() => {
+      //   wx.pageScrollTo({
+      //     scrollTop: 0,
+      //     success() {
+      //       that.updatePosition(keyboardHeight)
+      //       that.editorCtx.scrollIntoView()
+      //     }
+      //   })
+      // }, duration)
+
+    })
+
     var tags = wx.getStorageSync('record').tages
     //粉丝
     var fans = wx.getStorageSync('record').fans
@@ -54,33 +87,31 @@ Page({
       fans: fans,
       ploform: ploform
     })
-  },
+    
 
+  },
 
 /*
 切换平台
 */
   bindCheckplatform(e) {
     var that = this
-
     that.setData({
       pindex: e.detail.value
     })
   },
-
+/*
+截至时间
+*/
   onConfirm:function(e){
+    console.log(e.detail.label)
     var that = this
     that.setData({
       displayValue1: e.detail.displayValue[0] + e.detail.displayValue[1] + e.detail.displayValue[2],
       expire_time: e.detail.label
     })
   },
-  //日期
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value
-    })
-  },
+
   getTextareaInput: function (e) {
     var that = this;
     if (e.detail.cursor > 0) {
@@ -125,20 +156,7 @@ Page({
       mg_index: e.detail.value
     })
   },
-  sureCallBack_02(e) {
-    var that = this
-    let data = e.detail
-    var listPt = this.data.listPt
-    var z_index = e.detail.choosedIndexArr[0]
-    var tte = this.data.listData_03
-    that.setData({
-      isShow_02: false,
-      picker_02_data: e.detail.choosedData,
-      picker_02_index: JSON.stringify(e.detail.choosedIndexArr),
-      platfrom_code: that.data.listData_pt[z_index],
-      logo: listPt[z_index]['logo'],
-    })
-  },
+
   check:function(e){
     var that  = this
     var t_id  = e.currentTarget.dataset.id
@@ -153,11 +171,20 @@ Page({
               tid_s.splice(i, 1);
           }
     }
-
     that.setData({
       tid_s: tid_s
     })
     }else{
+      if (tid_s.length >= 3) {
+        wx.showToast({
+          title: "最多选择三个标签哦",
+          icon: 'none',
+          duration: 800,
+          mask: true
+        });
+        return false;
+      }
+
         chek['check']  = 'check' 
         tid_s.push(t_id)
         that.setData({
@@ -165,24 +192,18 @@ Page({
         })
     }
 
-    console.log(tags)
-    console.log(tid_s)
-
-
     that.setData({
       tag: tags,
       tid_s: tid_s
     })
   },
 
-  // 监听取消事件
-  cancleCallBack_02(e) {
-    this.setData({
-      isShow_02: false,
-    })
-  },
 
   formSubmit: throttle(function (e) {
+
+    var that = this;
+
+    var describe = that.data.details;
 
     var tid_s = this.data.tid_s
     var tid = tid_s.join(',');
@@ -219,7 +240,7 @@ Page({
         mask: true,
       })
       return false
-    } else if (info.describe == null || info.describe == undefined || info.describe == '') {
+    } else if (describe == null || describe == undefined || describe == '') {
       wx.showToast({
         title: '简介不能为空',
         icon: 'none',
@@ -247,9 +268,13 @@ Page({
 
     info.tags = tid
 
+    info.describe = describe
+
+
     release.kolSave(info, (data) => {
     var data = JSON.parse(data);
       console.log(data)
+
       
      if (data.code == 201){
        info.id = data.data.push_id    //ID
@@ -265,17 +290,158 @@ Page({
   
      } else if (data.code == 412){
 
-
        wx.showToast({
          title: '请先完善资料',
          icon: 'none',
          duration: 1000,
          mask: true,
        })
+     } else if (data.code == 415) {
+
+       //跳转HUB
+       var message=[];
+       message.type = 1
+       wx.navigateTo({
+         url: '../../pages/material/material?message=' + JSON.stringify(message),
+       })
+
+
      }
+
 
     })
   }, 1000),
+
+
+/*
+文本组件
+*/
+  updatePosition(keyboardHeight) {
+    const toolbarHeight = 100
+    const { windowHeight, platform } = wx.getSystemInfoSync()
+    let editorHeight = keyboardHeight > 0 ? (windowHeight - keyboardHeight - toolbarHeight) : windowHeight
+    this.setData({ editorHeight, keyboardHeight })
+  },
+  calNavigationBarAndStatusBar() {
+    const systemInfo = wx.getSystemInfoSync()
+    const { statusBarHeight, platform } = systemInfo
+    const isIOS = platform === 'ios'
+    const navigationBarHeight = isIOS ? 44 : 48
+    return statusBarHeight + navigationBarHeight
+  },
+
+  onEditorReady() {
+    const that = this
+    wx.createSelectorQuery().select('#editor').context(function (res) {
+      that.editorCtx = res.context
+
+    }).exec()
+  },
+
+
+  bindinput: function (e) {
+
+    var that = this
+    var info = e.detail.html
+    console.log(info)
+    
+    that.setData({
+      details: info
+    })
+  },
+
+
+
+
+
+  blur() {
+    this.editorCtx.blur()
+  },
+  format(e) {
+    console.log(e)
+    let { name, value } = e.target.dataset
+    if (!name) return
+
+
+    this.editorCtx.format(name, value)
+
+  },
+  onStatusChange(e) {
+    const formats = e.detail
+    console.log(formats)
+
+    this.setData({ formats })
+  },
+  insertDivider() {
+    this.editorCtx.insertDivider({
+      success: function () {
+        console.log('insert divider success')
+      }
+    })
+  },
+  clear() {
+    this.editorCtx.clear({
+      success: function (res) {
+        console.log("clear success")
+      }
+    })
+  },
+  removeFormat() {
+    this.editorCtx.removeFormat()
+  },
+  insertDate() {
+    const date = new Date()
+    const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+    this.editorCtx.insertText({
+      text: formatDate
+    })
+  },
+
+  insertImage() {
+    const that = this
+    wx.chooseImage({
+      count: 9,
+      success: function (res) {
+      var image = res.tempFilePaths[0]; 
+      var url = that.data.url
+   
+      wx.uploadFile({
+        url: url+"/v1/alioss/index",
+        filePath: image,
+        name: 'file',
+        header: {
+          "Content-Type": "multipart/form-data",
+          'accept': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+
+          that.editorCtx.insertImage({
+            src: res.data,
+            data: {
+              id: 'abcd',
+              role: 'god'
+            },
+            width: '100%',
+            success: function (e) {
+              console.log(e)
+
+            }
+          })
+
+        }
+
+        })
+
+
+
+
+
+      }
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -301,7 +467,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var that = this;
+    let pages = getCurrentPages(); //页面栈
+    let prevPage = pages[pages.length - 2]; //上一页页面
+    prevPage.setData({
+      swatch: 1
+    });
   },
 
   /**

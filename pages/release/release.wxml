@@ -1,10 +1,22 @@
+
+
 <view class="wrap">
 
 <form bindsubmit="formSubmit" bindreset="formReset">
+
+<view class='send_active'>
+    <view class='footer'>
+        <button  form-type="submit"  class='save_button' type="primary" >发布</button>
+    </view>
+</view>
+
+
+
   <!-- 标题 -->
-  <view class="title name">
+  <view class="title name" >
+  
      <p>招募标题:</p>
-     <input  maxlength="20"  placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common"  name="title" ></input>
+     <input  maxlength="20"   placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common"  name="title" ></input>
   </view>
  
   <!-- 平台 -->
@@ -20,9 +32,7 @@
     </view>
   </picker>
 
-
   </view>
-
 
 <view>
 
@@ -37,27 +47,20 @@
   <!-- 参与人数 -->
   <view class="participants name">
     <p>招募人数:</p>
-    <!-- <input   placeholder="必填" placeholder-class="phcolor" type="number"  class="input_common" name="convene"></input> -->
+
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{number}}">
          <view class="picker_num">
         {{number[index]}}
          </view>
       </picker>
-      <input hidden name="convene" value='{{number[index]}}'></input>
-  </view>
+      <input hidden name="convene" value='{{number[index]}}'></input> 
+</view>
     <!-- 预计消费 -->
 
-
-  <!-- <view class="participants name">
-    <p>费用预算:</p>
-    <input placeholder="\*" placeholder-class="phcolor" type="number" class="input_common" name="budget"></input>
-  </view> -->
-
-
   <!-- 参与人数 -->
-  <view class="participants name">
+ <view class="participants name">
     <p>费用预算:</p>
-    <!-- <input   placeholder="必填" placeholder-class="phcolor" type="number"  class="input_common" name="convene"></input> -->
+
       <picker bindchange="bindPickerfg" value="{{mg_index}}" range="{{expenses}}">
          <view class="picker_num">
         ￥{{expenses[mg_index]}}元
@@ -65,10 +68,7 @@
       </picker>
       <input hidden name="budget" value='{{expenses[mg_index]}}'></input>
   </view>
-    <!-- 预计消费 -->
 
-
-      <!-- 预计消费 -->
   <view class="participants name">
       <picker bindchange="bindCheckfollow" value="{{fans[findex].title}}" range="{{fans}}" range-key="title"  >
     <view class="picker">
@@ -79,37 +79,55 @@
   
   </picker>
 
-  </view>
+  </view> 
 
   <!-- 过期时间 -->
-  <view class="time name">
-    <p>截至时间:</p>
+ <view class="time name">
 
-            <wux-date-picker   minDate="{{date}}" mode="datetime" value="{{ value1 }}" lang="{{ lang }}" data-index="1" data-mode="datetime" bind:confirm="onConfirm">
-               <view>
-               <wux-cell is-link extra="{{ displayValue1 }}"></wux-cell>
-               <input hidden name="expire_time" value='{{expire_time}}'></input>   
-               </view> 
-            </wux-date-picker>
-  </view>
-  <!-- 简介 -->
-  <view class="introduction ">
-  <p>详细简介：</p>
-  </view>
+   <wux-date-picker  mode="date" minDate="{{date}}" value="{{ value1 }}" lang="{{ lang }}" data-index="4" data-mode="month" bind:confirm="onConfirm">
+  <input hidden name="expire_time" value='{{expire_time}}'></input>   
+  <wux-cell title="截至时间" is-link extra="{{ displayValue1 }}">
+  </wux-cell>
+   </wux-date-picker>
 
+  </view> 
+  
+<!-- hidden="{{keyboardHeight > 0 ? false : true}}"  -->
 
-  <view class='detail-view'>
-  <text class='detail-placeholder' hidden='{{isHidePlaceholder}}'>更详细的介绍可以提升报名率（不超过300字）</text>
-  <textarea name="describe" class='detail-textarea' auto-height='true' maxlength='300' bindinput='getTextareaInput'/>
+<view class="container_s" >
+
+<editor
+  id="editor"
+  class="ql-container"
+  placeholder="{{placeholder}}"
+  showImgSize
+  showImgToolbar
+  showImgResize
+  bindstatuschange="onStatusChange"
+  bindinput="bindinput"	
+  read-only="{{readOnly}}"
+
+  bindready="onEditorReady">
+</editor>   
+
 </view>
 
-<view style='height:120rpx;'></view>
-  <view class='footer'>
-       <button  form-type="submit"  class='save_button' type="primary" >发布</button>
-  </view>
+<view class="toolbar" catchtouchend="format" style="bottom: {{isIOS ? keyboardHeight : 0}}rpx">
+  <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+  <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+  <i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i>
+  <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+  <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+  <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+  <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+  <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+  <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+</view>
+
+<view style="height:100rpx"></view>
+
 
   </form>
-
 </view> 
 
 

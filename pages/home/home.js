@@ -9,6 +9,7 @@ Page({
     loadingHidden: false,
     buttonClicked: false,
     roleHidden:false,
+    swatch:0,
     actEndTimeList:[],
     list:[],
     start_page:0,
@@ -28,8 +29,8 @@ Page({
   onLoad: function () {
 
     var that = this;
-
     var ploform = wx.getStorageSync('record').ploform;
+
     if (!ploform) {
       app.onLaunch();//初始化页面数据
     } else {
@@ -40,8 +41,7 @@ Page({
     this.setData({
       image_list: ploform
     })
-    this._loadData(start_page);
-  
+    this._loadData(start_page,1);
   },
   details: throttle(function (e) {
    var id = e.currentTarget.dataset.id
@@ -69,6 +69,7 @@ Page({
     home.getlist(msg,(data) => {   
          var list = data.data; 
          var home_list = that.data.list;
+
          if (status ==0){
            for (var i = 0; i < list.length; i++) {
              home_list.push(list[i])
@@ -76,7 +77,8 @@ Page({
         }else{
              home_list = list
         }
-  
+      console.log(home_list)
+ 
          wx.stopPullDownRefresh() 
          that.setData({
            list: home_list,
@@ -91,7 +93,6 @@ Page({
   /*下拉刷新页面*/
   onPullDownRefresh: function () {
     var that = this
-    console.log(123)
     var start_page = 0
     this._loadData(start_page,1);
   },
@@ -104,16 +105,31 @@ Page({
   },
 
   onShow:function(){
-
+    
     var that = this
-    that.onPullDownRefresh()
+
+    var swatch = that.data.swatch
+
+
+    if (swatch == 0){
+      that.onPullDownRefresh()
+    }
+
 
     /*
     获取角色状态
     */
     home.roleStatus((data) => {
-    var status = data.data
-    if (status == 1) {
+
+      if (data.code == 419){
+        that.setData({
+          roleHidden: false,
+
+        })
+      }else{
+        var result = JSON.parse(data);
+        var status = result.data
+        if (status == 1) {
           that.setData({
             roleHidden: true,
           })
@@ -123,8 +139,16 @@ Page({
 
           })
         }
-      })
+      }
+
+
+    })
   },
+  onReady: function () {
+    console.log(12)
+  }, 
+
+
 
 })
 

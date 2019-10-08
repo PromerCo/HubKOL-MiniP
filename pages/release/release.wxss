@@ -1,12 +1,204 @@
-page {
-  background-color: #fff;
+
+@import "../../components/editor/iconfont.wxss";
+@import "../../components/lib/weui.wxss";
+
+.container_s {
+  top: 0; 
+  left: 0; 
+ padding:20px;
+
 }
+.container_s p{
+font-size:28rpx;
+margin-left:16rpx;
+}
+
+
+.ql-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 10px 10px 20px 10px;
+
+}
+
+.ql-active {
+  color: #22C704;
+}
+
+.iconfont {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.toolbar {
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ECECEC;
+  border-left: none;
+  border-right: none;
+  background:white;
+  z-index: 10000;
+}
+
+.send_msg{
+  position: fixed;
+  bottom: 0;
+}
+.submit{
+  margin-top: 100rpx;
+
+}
+
+
+/* .ql-container {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-user-select: text;
+  user-select: text;
+  outline: none;
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+  min-height: 200px;
+} */
+
+.ql-container[hidden] {
+  display: none;
+}
+.ql-container .ql-editor {
+  position: relative;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  min-height: inherit;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-overflow-scrolling: touch;
+}
+.ql-container .ql-editor::-webkit-scrollbar {
+  width: 0 !important;
+}
+.ql-container .ql-editor.scroll-disabled {
+  overflow: hidden;
+}
+.ql-container .ql-image-overlay {
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px dashed #ccc;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.ql-container .ql-image-overlay .ql-image-size {
+  position: absolute;
+  padding: 4px 8px;
+  text-align: center;
+  background-color: #fff;
+  color: #888;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  opacity: 0.8;
+  right: 4px;
+  top: 4px;
+  font-size: 12px;
+  display: inline-block;
+  width: auto;
+}
+.ql-container .ql-image-overlay .ql-image-toolbar {
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  background: #000;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0;
+  min-height: 24px;
+  z-index: 100;
+}
+.ql-container .ql-image-overlay .ql-image-toolbar span {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 12px;
+  border-right: 1px solid #fff;
+}
+.ql-container .ql-image-overlay .ql-image-toolbar span:last-child {
+  border-right: 0;
+}
+.ql-container .ql-image-overlay .ql-image-toolbar span.triangle-up {
+  padding: 0;
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 0;
+  height: 0;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+.ql-container .ql-image-overlay .ql-image-handle {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background: #fff;
+}
+.ql-container img {
+  display: inline-block;
+  max-width: 100%;
+}
+.ql-clipboard p {
+  margin: 0;
+  padding: 0;
+}
+.ql-editor {
+  box-sizing: border-box;
+  height: 100%;
+  outline: none;
+  overflow-y: auto;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+
+
 
 .wrap {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding-top:100rpx;
 }
 
 .name {
@@ -59,7 +251,6 @@ width:70%;
 }
 .picker_num{
   float:right;
-  width:15%;
   text-align:center;
   margin-right:40rpx;
 
@@ -84,17 +275,16 @@ padding-left:45rpx;
   -webkit-user-modify: read-write-plaintext-only;
 }
 .footer{
-color:#FF3300;
+
 position:fixed;
-width:100%;
-bottom:0;
+
 z-index:100000;
+right:12rpx;
+top:12rpx;
+
 
 }
-.footer button{
-  background-color:#FF3300 !important;
-  border-radius: 0 !important;
-}
+
 .wux-accordion__hd{
   padding:30rpx 45rpx !important;
 }
@@ -140,6 +330,10 @@ border-radius:10rpx;
   
 }
 
+button{
+  font-size: 28rpx ;
+}
+
 .name button::after{ border: none; }
 /* 实现textarea高度自适应 */
 .detail-view {
@@ -163,5 +357,22 @@ font-size:28rpx;
   width: 100%;
   font-size: 28rpx;
   padding-left:20rpx;
+
+}
+
+.send_active{
+  width:100%;
+  height:100rpx;
+  position:fixed;
+  background:white;
+  top:0;
+  border-bottom:1rpx solid #F0F0F0;
+  z-index:10000;
+
+}
+
+.wux-cell__text{
+
+  margin-left:-28rpx !important; 
 
 }

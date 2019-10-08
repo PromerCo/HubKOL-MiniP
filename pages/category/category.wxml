@@ -7,13 +7,15 @@ bindchange="onTabsChange" data-platform='{{itemName}}'></s-tab-scoller>
   data-platform='{{itemName}}'> 
 
   <view class='head_content' wx:for="{{avtivity_list}}" bindtap='kol_details' data-info='{{item}}'>
-  <view class='head_content_img'>
+    <view class="content">
+      <view class='head_content_img'>
    <image src='{{url}}{{item.logo}}'></image>
-  </view>
+     </view>
      <view class='head_content_title'>
            <!-- 八个字到16个字 -->
            <p>{{item.nick_name}}</p> 
      </view>
+    </view>
      <view class='head_content_make'> 
          <view >
            MCN:<span class="head_content_make_one">{{item.mcn_organization}}</span>

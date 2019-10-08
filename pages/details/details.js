@@ -20,7 +20,16 @@ Page({
     agree:'申请',
     enroll_number:0,
     url: app.globalData.url,
-    sc_img:"../../imgs/icon/sms-sc.png"
+    sc_img:"../../imgs/icon/sms-sc.png",
+    //编辑
+    formats: {},
+    readOnly: true,
+    placeholder: '',
+    editorHeight: 300,
+    keyboardHeight: 0,
+    details: '',
+    push_id:'',
+    isIOS: false
 
   },
   /**
@@ -28,42 +37,40 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-      //发请求
-    var push_id = options.push_id
-    //  列表
-    details.list_details(push_id, (data) => {
-      var info = data.data 
-      console.log(info.is_collect)
-      if (info.is_collect == 1){
-        that.setData({
-          sc_img: "../../imgs/icon/sms-sc-0.png"
+    const platform = wx.getSystemInfoSync().platform
+    const isIOS = platform === 'ios'
+    this.setData({ isIOS })
+    this.updatePosition(0)
+    let keyboardHeight = 0
+
+    wx.onKeyboardHeightChange(res => {
+      if (res.height === keyboardHeight) return
+      const duration = res.height > 0 ? res.duration * 1000 : 0
+      keyboardHeight = res.height
+
+      setTimeout(() => {
+        wx.pageScrollTo({
+          scrollTop: keyboardHeight,
+          success() {
+            that.updatePosition(keyboardHeight)
+            that.editorCtx.scrollIntoView()
+          }
         })
-      }else{
-       that.setData({
-         sc_img: "../../imgs/icon/sms-sc.png"
-       })
-      }
-
-      var enroll = JSON.parse(info['enroll']);
-      if (enroll != null || enroll != undefined) {
-        var items = JSON.parse(enroll)
-      } else {
-        var items = [];
-      }
-      that.setData({
-        info: info,
-        items: items,
-        collect: info['is_collect'],
-        is_enroll: info['is_enroll'],
-        enroll_number: info['enroll_number'],
-        loadingHidden:true
-      })
-      that._loadData();
+      }, duration)
     })
+
+
+    //发请求
+    var push_id = options.push_id
+
+    that.setData({
+      push_id: push_id
+    })
+
     
-
-
   },
+
+
 
 
   navHome: throttle(function (e) {
@@ -83,7 +90,7 @@ Page({
     //收藏
     details.collect(msg,(data) => {
 
-      console.log(data.data)
+      console.log(data)
       if(data.code == 201){
         if (data.data == 0){
           that.setData({
@@ -102,6 +109,8 @@ Page({
     })
 
   },
+
+
   _loadData:function(){
     var that = this;
     var push_id = that.data.info.id;
@@ -127,6 +136,43 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+    var that = this
+
+    var push_id = that.data.push_id
+    //  列表
+    details.list_details(push_id, (data) => {
+      var info = data.data
+      console.log(info)
+
+      if (info.is_collect == 1) {
+        that.setData({
+          sc_img: "../../imgs/icon/sms-sc-0.png"
+        })
+      } else {
+        that.setData({
+          sc_img: "../../imgs/icon/sms-sc.png"
+        })
+      }
+      var enroll = JSON.parse(info['enroll']);
+      if (enroll != null || enroll != undefined) {
+        var items = JSON.parse(enroll)
+      } else {
+        var items = [];
+      }
+
+
+      that.setData({
+        info: info,
+        items: items,
+        collect: info['is_collect'],
+        is_enroll: info['is_enroll'],
+        enroll_number: info['enroll_number'],
+        loadingHidden: true
+      })
+      that._loadData();
+    })
+
 
   },
 
@@ -161,12 +207,13 @@ Page({
 
     details.agree(push_id,(data) => {
       var result  = JSON.parse(data); 
+      console.log(result)
 
       if (result.code == 201){
         //报名成功
         var img = { 'avatar_url': result.data };
         image_list.push(img)
-        var enroll_number  =that.data.info.enroll_number+1
+        var enroll_number = parseInt(that.data.info.enroll_number)+1
         that.setData({
           is_enroll: 1,
           items: image_list,
@@ -198,6 +245,134 @@ Page({
 
   },
 
+  /*
+   编辑器
+  */
+  updatePosition(keyboardHeight) {
+    const toolbarHeight = 100
+    const { windowHeight, platform } = wx.getSystemInfoSync()
+    let editorHeight = keyboardHeight > 0 ? (windowHeight - keyboardHeight - toolbarHeight) : windowHeight
+    this.setData({ editorHeight, keyboardHeight })
+  },
+  calNavigationBarAndStatusBar() {
+    const systemInfo = wx.getSystemInfoSync()
+    const { statusBarHeight, platform } = systemInfo
+    const isIOS = platform === 'ios'
+    const navigationBarHeight = isIOS ? 44 : 48
+    return statusBarHeight + navigationBarHeight
+  },
+  
+  onEditorReady() {
+    console.log(123)
+    const that = this
+    wx.createSelectorQuery().select('#editor').context(function (res) {
+      that.editorCtx = res.context
+      var describe = that.data.info.describe
+
+      console.log(describe)
+
+      that.editorCtx.setContents({
+        html: describe,
+        success: (res) => {
+          console.log(res)
+        },
+        fail: (res) => {
+          console.log(res)
+        }
+      })
+
+    }).exec()
+  },
+
+
+  bindinput: function (e) {
+    var that = this
+    var info = e.detail.html
+    that.setData({
+      details: info
+    })
+
+  },
+
+  bindfocus: function (e) {
+    var that = this
+    var info = e.detail.html
+    that.setData({
+      details: info
+    })
+  },
+
+
+  blur() {
+    this.editorCtx.blur()
+  },
+  format(e) {
+    console.log(e)
+    let { name, value } = e.target.dataset
+    if (!name) return
+    console.log('format', name, value)
+
+    this.editorCtx.format(name, value)
+
+  },
+  onStatusChange(e) {
+    const formats = e.detail
+    console.log(formats)
+
+    this.setData({ formats })
+  },
+  insertDivider() {
+    this.editorCtx.insertDivider({
+      success: function () {
+        console.log('insert divider success')
+      }
+    })
+  },
+  clear() {
+    this.editorCtx.clear({
+      success: function (res) {
+        console.log("clear success")
+      }
+    })
+  },
+  removeFormat() {
+    this.editorCtx.removeFormat()
+  },
+  insertDate() {
+    const date = new Date()
+    const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+    this.editorCtx.insertText({
+      text: formatDate
+    })
+  },
+  insertImage() {
+    const that = this
+    wx.chooseImage({
+      count: 1,
+      success: function (res) {
+
+        that.editorCtx.insertImage({
+          src: res.tempFilePaths[0],
+          data: {
+            id: 'abcd',
+            role: 'god'
+          },
+          width: '100%',
+          success: function (e) {
+            console.log(e)
+
+          }
+        })
+
+
+      }
+    })
+  },
+
+
+
+
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -209,6 +384,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    var that = this;
+    let pages = getCurrentPages(); //页面栈
+    let prevPage = pages[pages.length - 2]; //上一页页面
+    prevPage.setData({
+       swatch:1
+    });
 
   },
 

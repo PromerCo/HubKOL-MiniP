@@ -11,13 +11,16 @@
                <image bindtap="sureCallBack_01" src="{{counter_img}}"  data-type='{{type}}'></image>
       </view>
 
-
-  <!-- KOL -->
-      <view class="center" wx:if="{{message.type == 2}}">
-              <image src="{{userInfo.avatarUrl}}" class="pic" catchtap='material' data-type='2'></image>
-        <view class=" name">
+<!-- 用户头像 -->
+ <image src="{{userInfo.avatarUrl}}" class="pic" catchtap='material' data-type='{{message.type}}'></image>
+     <view class=" name">
               <p class="text">{{userInfo.nickName}}</p>
       </view>
+<!-- 用户姓名 -->
+
+
+  <!-- KOL -->
+      <view  wx:if="{{message.type == 2}}">
 
 
             <view wx:if="{{message.status != 0 }}">
@@ -27,15 +30,15 @@
           <p>{{message.city}}</p>
         </view>
         <view class="icon fans">
-          <image src="../../imgs/icon/kol-fs.png" class="address"></image>
+          <image src="../../imgs/icon/icon_follow.png" class="address"></image>
                    <p>{{message.fs_title}}</p>
         </view>
         <view class="icon music">
-          <image src="../../imgs/icon/kol-bj.png" class="address"></image>
+          <image src="../../imgs/icon/ant_design.png" class="address"></image>
            <p>{{message.mcn_organization}}</p>
         </view>
         <view class="icon tag">
-          <image src="../../imgs/icon/zhanghao.png" class="address"></image>
+          <image src="../../imgs/icon/tags.png" class="address"></image>
                <view wx:if="{{message.tag_list}}">
                 <p> <span>{{message.tag_list}}</span></p>
                </view>
@@ -46,14 +49,7 @@
         </view>
       </view>
 
-      <view class="center" wx:else>
-
-              <image src="{{userInfo.avatarUrl}}" class="pic" catchtap='material' data-type='2'></image>
-        <view class="name">
-              <p class="text">{{userInfo.nickName}}</p>
-      </view>
-
-
+      <view wx:else>
 
       <view wx:if="{{message.status != 0}}">
 
@@ -66,11 +62,11 @@
             <p>{{message.brand}}</p>
         </view>
         <view class="icon music">
-          <image src="../../imgs/icon/kol-bj.png" class="address"></image>
+          <image src="../../imgs/icon/hangye.png" class="address"></image>
         <p>{{message.position_code}}</p>
         </view>
         <view class="icon tag">
-          <image src="../../imgs/icon/zhanghao.png" class="address"></image>
+          <image src="../../imgs/icon/zhiwei.png" class="address"></image>
           <p>{{message.industry}}</p>
         </view>
       </view>
@@ -81,12 +77,14 @@
 <view class='list_Date' hidden="{{!loadingHidden}}">
   <view class="page">
     <view class="page__bd">
-  <wux-cell-group >
+ 
 
-      <!-- <wux-cell  bindtap="edit_data"  thumb="/imgs/icon/ziliao.png" title="清除Token" is-link ></wux-cell> -->
-    <!-- <wux-cell  bindtap="follow" thumb="/imgs/icon/zhanghao.png"  title="{{follow_title}}" is-link></wux-cell> -->
-    <wux-cell bindtap="sign"  thumb="/imgs/icon/baoming.png" title="{{column_title}}" is-link url="/pages/index/index" open-type="switchTab"></wux-cell>
-    </wux-cell-group>
+<wux-cell  catchtap="material" data-type='{{message.type}}'  thumb="/imgs/icon/profin.png" title="我的主页" is-link ></wux-cell>
+
+<wux-cell bindtap="sign"  thumb="{{hub_icon}}" title="{{column_title}}" is-link url="/pages/index/index"  open-type="switchTab"></wux-cell>
+
+ <wux-cell  data-type='{{type}}'  bindtap="sureCallBack_01" thumb="/imgs/icon/switch_user.png"  title="切换身份" is-link></wux-cell>
+
     </view>
   </view>
   

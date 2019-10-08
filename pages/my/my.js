@@ -15,10 +15,10 @@ Page({
     userInfo:[],
     multiIndex: [0, 0],
     label:true,
-    column_title: '参与的Hub',
+    column_title: '参与的通告',
     follow_title:'关注的KOL',
     listData_01: [
-      ['HUB', 'KOL']
+      ['通告', 'KOL']
     ],
     isShow_03: false,
     multiArray: [
@@ -38,7 +38,8 @@ Page({
     type:1,
     status:0,
     counter_img:'../../imgs/toolbar/sms@-kol.png',
-    counter_mark:'HUB',
+    counter_mark:'通告',
+    hub_icon:'/imgs/icon/edit.png'
 
   },
 
@@ -47,13 +48,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-
     var that = this;
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userInfo']) {
-     
           that.setData({
             authHidding:true,
             loadingHidden:true
@@ -68,22 +66,30 @@ Page({
   bindGetUserInfo: function (e) {
     var that = this
     var userInfo = e.detail.rawData
+    
+    that.setData({
+      loadingHidden:false
+    })    
 
     wx.setStorageSync('userInfo', e.detail.userInfo)
 
-
     my.getUserAhth(userInfo, (data) => {
       var data = JSON.parse(data);
-
       if (data.code == 201) {
         that._loadData();
         that.setData({
           userInfo: JSON.parse(userInfo),
           authHidding: false,
+          loadingHidden: true,
           status: 0
         })
-
       } else {
+        that.setData({
+          userInfo: JSON.parse(userInfo),
+          authHidding: false,
+          loadingHidden: true,
+          status: 0
+        })
         wx.showToast({
           title: '授权失败',//提示文字
           duration: 500,//显示时长
@@ -129,6 +135,7 @@ Page({
         if (data.data.type == 1) {
           var counter_mark = 'Hub'
           var column_title = '发布的Hub'
+          var hub_icon = "/imgs/icon/edit.png"
           var follow_title = '关注的KOL'
           var type = 2
           var counter_img = "../../imgs/toolbar/sms@-hub.png";
@@ -138,6 +145,7 @@ Page({
           var column_title = '参与的Hub'
           var follow_title = '关注的Hub'
           var type = 1;
+          var hub_icon = "/imgs/icon/send.png"
           var counter_img = "../../imgs/toolbar/sms@-kol.png";
           var status = data.data.status
         }
@@ -151,6 +159,7 @@ Page({
           message: data.data,
           loadingHidden:true,
           type: type,
+          hub_icon: hub_icon,
           status: status
         })
       }else{
@@ -224,7 +233,7 @@ Page({
             var counter_mark = 'HUB'
             var column_title = '发布的Hub'
             var counter_img = '../../imgs/toolbar/sms@-hub.png'
-            
+            var hub_icon = "/imgs/icon/send.png"
           } else {
             
             //KOL
@@ -232,6 +241,7 @@ Page({
             var counter_mark = 'KOL'
             var column_title = '参与的Hub'
             var counter_img = '../../imgs/toolbar/sms@-kol.png'
+            var hub_icon = "/imgs/icon/edit.png"
           }
 
           data.data['wx_name'] = data.data['wechat']
@@ -247,6 +257,7 @@ Page({
             picker_02_data: data.data.platform,
             userInfo: userInfo,
             loadingHidden:true,
+            hub_icon: hub_icon,
             column_title: column_title
           })
         }

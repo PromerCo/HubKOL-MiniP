@@ -1,127 +1,117 @@
-   <view hidden="{{!loadingHidden}}">
-
-         <form bindsubmit="formSubmit" bindreset="formReset">
+<view hidden="{{!loadingHidden}}">
+  <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="information">
-
-
-
       <view class="Consignee">
-          <view class="Consignee_left">
-            <image src="{{userInfo.avatarUrl}}"></image>
+        <view class="Consignee_left">
+          <image src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="Consignee_right">
+          <view class=" com phone ">
+            <p>电话:</p>
+            <view wx:if='{{message.phone}}' class="phonenumber com phone">
+              <input placeholder="\*" placeholder-class="phcolor" bindblur="validate" maxlength="11" class="input-text" value='{{message.phone}}' name="phone"></input>
+            </view>
+            <view wx:else class="phonenumber">
+              <view wx:if="{{phoneNumber}}">
+                <input placeholder="\*" placeholder-class="phcolor" bindblur="validate" maxlength="11" class="input-text" value='{{phoneNumber}}' name="phone"></input>
+              </view>
+              <view wx:else>
+                <button class='phone_button' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">一键绑定</button>
+              </view>
+
+            </view>
           </view>
-          <view class="Consignee_right">
-            <view class=" com phone ">
-              <p>电话:</p>
-              <view wx:if='{{message.phone}}' class="phonenumber com phone">
-                <input placeholder="\*" placeholder-class="phcolor"  bindblur="validate" maxlength="11" class="input-text" value='{{message.phone}}' name="phone"></input>
-              </view>
-              <view wx:else class="phonenumber">
-                   <view wx:if="{{phoneNumber}}">
-                                   <input placeholder="\*" placeholder-class="phcolor"  bindblur="validate" maxlength="11" class="input-text" value='{{phoneNumber}}' name="phone"></input>
-                   </view>
-                   <view wx:else> <button class='phone_button' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">一键绑定</button>  </view>
+          <view class=" com name ">
+            <p>微信:</p>
+            <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input-text" name="wx_name" value='{{message.wx_name}}'></input>
+          </view>
 
-              </view>
-            </view>
-            <view class=" com name ">
-              <p>微信:</p>
-              <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input-text" name="wx_name" value='{{message.wx_name}}'></input>
-            </view>
-
-            <!-- <view class="com email">
+          <!-- <view class="com email">
               <p>邮箱:</p>
               <input placeholder="必填" placeholder-class="phcolor" type=" text" class="input-text" name="email" value='{{message.email}}'></input>
             </view> -->
 
-          </view>
         </view>
-
-
-<!-- 身份切换 -->
-
-
-        <view wx:if="{{type==2}}" class="Internet">
-
-
-
+    </view>
+      <!-- 身份切换 -->
+    <view wx:if="{{type==2}}" class="Internet">
         <input name='type' hidden value='1'></input>
         <view class="whole_sup">
           <view class=" home ">
             <p>M C N:</p>
-            <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common" name="kol_mcn"
-value='{{message.mcn_organization}}'></input>
+            <input placeholder="选填" placeholder-class="phcolor" type=" text" class="input_common" name="kol_mcn" value='{{message.mcn_organization}}'></input>
           </view>
-          <view class="home kol_compony"> 
+          <view class="home kol_compony">
             <p>公 司:</p>
-            <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common" name="kol_compony"
-            value='{{message.mcn_company}}'
-            ></input>
+            <input placeholder="选填" placeholder-class="phcolor" type=" text" class="input_common" name="kol_compony" value='{{message.mcn_company}}'></input>
           </view>
           <view class="city hole" bindtap="showPicker_09">
             城 市：
             <p wx:if="{{picker_09_data[0].name || picker_09_data[2].name }}">
 
-             {{picker_09_data[0].name}} {{picker_09_data[2].name}}
-            <input name="kol_city" value='{{picker_09_data[0].name}}' hidden></input>
-            <input name="kol_city_code" value='{{picker_09_data[0].code}}' hidden></input>
-            <input name="kol_province" value='{{picker_09_data[2].name}}' hidden></input>
-            <input name="kol_province_code" value='{{picker_09_data[2].code}}' hidden></input>
-              </p>
+              {{picker_09_data[0].name}} {{picker_09_data[2].name}}
+              <input name="kol_city" value='{{picker_09_data[0].name}}' hidden></input>
+              <input name="kol_city_code" value='{{picker_09_data[0].code}}' hidden></input>
+              <input name="kol_province" value='{{picker_09_data[2].name}}' hidden></input>
+              <input name="kol_province_code" value='{{picker_09_data[2].code}}' hidden></input>
+            </p>
             <p wx:else>
-            {{message.province }} {{message.city}} 
-            <input name="kol_city" value='{{message.city}}' hidden></input>
-            <input name="kol_city_code" value='{{message.city_code}}' hidden></input>
-            <input name="kol_province" value='{{message.province}}' hidden></input>
-            <input name="kol_province_code" value='{{message.province_code}}' hidden></input>               
+              {{message.province }} {{message.city}}
+              <input name="kol_city" value='{{message.city}}' hidden></input>
+              <input name="kol_city_code" value='{{message.city_code}}' hidden></input>
+              <input name="kol_province" value='{{message.province}}' hidden></input>
+              <input name="kol_province_code" value='{{message.province_code}}' hidden></input>
             </p>
           </view>
           <pickerr isShowPicker="{{isShow_09}}" keyWordsOfShow="name" defaultPickData="{{defaultPickData_09}}" bindsure="sureCallBack_09" bindcancle="cancleCallBack_09" scrollType="link" listData="{{listData_09}}"></pickerr>
         </view>
         <view class="whole_sub">
 
-   <picker bindchange="bindCheckplatform" value="{{ploform[pindex].title}}" range="{{ploform}}" range-key="title"  >
-    <view class="hole">
-       平 台:  <span style="margin-left:90rpx;"> {{ploform[pindex].title}} </span>
-        <input name="kol_terrace"  hidden  value='{{ploform[pindex].id}}'></input>
-    </view>
-  </picker>
-  
-    <view class=" home ">
+          <picker bindchange="bindCheckplatform" value="{{ploform[pindex].title}}" range="{{ploform}}" range-key="title">
+            <view class="hole">
+              平 台:
+              <span style="margin-left:90rpx;"> {{ploform[pindex].title}} </span>
+              <input name="kol_terrace" hidden value='{{ploform[pindex].id}}'></input>
+            </view>
+          </picker>
+
+          <view class=" home ">
             <p>账 号:</p>
- <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common" name="kol_account" value='{{message.account}}'></input>
+            <input placeholder="\*" placeholder-class="phcolor" type=" text" class="input_common" name="kol_account" value='{{message.account}}'></input>
           </view>
 
           <view class="fans hole">
             <view class="hole" bindtap="showPicker_03">
-                 <picker bindchange="bindCheckfollow" value="{{fans[findex].title}}" range="{{fans}}" range-key="title"  >
-    <view >
-        <span class="follow_fs">粉 丝：</span> <span class="follow_picker"> {{fans[findex].title}} </span>
-        <input name="kol_fans"  hidden  value='{{fans[findex].id}}'></input>
-           <input name="kol_fsname"  hidden  value='{{fans[findex].title}}'></input>
-    </view>
-  </picker>
+              <picker bindchange="bindCheckfollow" value="{{fans[findex].title}}" range="{{fans}}" range-key="title">
+                <view>
+                  <span class="follow_fs">粉 丝：</span>
+                  <span class="follow_picker"> {{fans[findex].title}} </span>
+                  <input name="kol_fans" hidden value='{{fans[findex].id}}'></input>
+                  <input name="kol_fsname" hidden value='{{fans[findex].title}}'></input>
+                </view>
+              </picker>
 
             </view>
           </view>
 
 
-       <view class="fans hole">
-            <view class="hole" >
-            <span class="follow_fs">标 签</span> 
+          <view class="fans hole">
+            <view class="hole">
+              <span class="follow_fs">标 签</span>
             </view>
           </view>
 
 
-  <view class='territory'>
-    <p  class="{{item.check}}" wx:for="{{tag}}" data-index='{{index}}'   catchtap="check" data-id="{{item.id}}">
-    {{item.title}}
-    </p>
- </view>
+          <view class='territory'>
+            <p class="{{item.check}}" wx:for="{{tag}}" data-index='{{index}}' catchtap="check" data-id="{{item.id}}">
+              {{item.title}}
+            </p>
+          </view>
 
-<view style='height:150rpx;'></view>
-      
+          <view style='height:150rpx;'></view>
+
         </view>
-          
+
       </view>
       <!-- 广告 -->
       <view wx:else class="Advertisement">
@@ -146,9 +136,9 @@ value='{{message.mcn_organization}}'></input>
                 <span wx:else>
                   {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
                 </span>
-                
-                <input hidden  value='{{multiArray[0][multiIndex[0]]}}'  name="hangye"  ></input>
-                <input hidden  value='{{multiArray[1][multiIndex[1]]}}'  name="position"></input>
+
+                <input hidden value='{{multiArray[0][multiIndex[0]]}}' name="hangye"></input>
+                <input hidden value='{{multiArray[1][multiIndex[1]]}}' name="position"></input>
               </view>
             </picker>
           </view>
@@ -156,37 +146,34 @@ value='{{message.mcn_organization}}'></input>
             城 市：
             <p wx:if="{{picker_08_data[0].name || picker_08_data[2].name }}">
 
-             {{picker_08_data[0].name}} {{picker_08_data[2].name}}
-            <input name="city" value='{{picker_08_data[0].name}}' hidden></input>
-            <input name="city_code" value='{{picker_08_data[0].code}}' hidden></input>
-            <input name="province" value='{{picker_08_data[2].name}}' hidden></input>
-            <input name="province_code" value='{{picker_08_data[2].code}}' hidden></input>
-              </p>
+              {{picker_08_data[0].name}} {{picker_08_data[2].name}}
+              <input name="city" value='{{picker_08_data[0].name}}' hidden></input>
+              <input name="city_code" value='{{picker_08_data[0].code}}' hidden></input>
+              <input name="province" value='{{picker_08_data[2].name}}' hidden></input>
+              <input name="province_code" value='{{picker_08_data[2].code}}' hidden></input>
+            </p>
             <p wx:else>
-       
-            {{message.province}} {{message.city }} 
-            <input name="city" value='{{message.city}}' hidden></input>
-            <input name="city_code" value='{{message.city_code}}' hidden></input>
-            <input name="province" value='{{message.province}}' hidden></input>
-            <input name="province_code" value='{{message.province_code}}' hidden></input>               
+
+              {{message.province}} {{message.city }}
+              <input name="city" value='{{message.city}}' hidden></input>
+              <input name="city_code" value='{{message.city_code}}' hidden></input>
+              <input name="province" value='{{message.province}}' hidden></input>
+              <input name="province_code" value='{{message.province_code}}' hidden></input>
             </p>
           </view>
 
-             <pickerr isShowPicker="{{isShow_08}}" keyWordsOfShow="name"  bindsure="sureCallBack_08" bindcancle="cancleCallBack_08" scrollType="link" listData="{{listData_08}}"></pickerr>
-                   
+          <pickerr isShowPicker="{{isShow_08}}" keyWordsOfShow="name" bindsure="sureCallBack_08" bindcancle="cancleCallBack_08" scrollType="link" listData="{{listData_08}}"></pickerr>
+
         </view>
 
       </view>
-  
     </view>
-<view style='height:50rpx;margin-top:1300rpx'></view>
+    <view style='height:50rpx;margin-top:1300rpx'></view>
     <view class='footer'>
-    
-    <button form-type="submit" class='save_button' >保存</button>
+      <button form-type="submit" class='save_button'>保存</button>
     </view>
-
- </form>
-      </view>
+  </form>
+</view>
 
 <loading hidden="{{loadingHidden}}">
   {{presentation}}
