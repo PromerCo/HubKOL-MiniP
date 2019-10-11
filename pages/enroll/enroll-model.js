@@ -4,23 +4,28 @@
 
 import { Base } from '../../utils/base.js';
 
-class Sign extends Base {
+class Enroll extends Base {
   constructor() {
     super();
   }
 
-  getlist(callback) {
+  partake(param, callback) {
+    var push_id = param;
     var param = {
-      url: 'kol/lame',
+      url: 'means/enroll',
       type: 'POST',
+      data: {
+        'push_id': push_id,
+      },
       sCallback: function (data) {
         callback && callback(data);
       }
     };
     this.request(param);
-  }
+  };
 
 
 };
 
-export { Sign };
+
+export { Enroll };

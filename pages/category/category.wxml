@@ -6,7 +6,7 @@ bindchange="onTabsChange" data-platform='{{itemName}}'></s-tab-scoller>
 <view class='container'  current="{{index}}"   duration="300"   wx:for-item="itemName"  
   data-platform='{{itemName}}'> 
 
-  <view class='head_content' wx:for="{{avtivity_list}}" bindtap='kol_details' data-info='{{item}}'>
+  <view class='head_content' wx:for="{{avtivity_list}}" bindtap='kol_details' data-id='{{item.id}}'>
     <view class="content">
       <view class='head_content_img'>
    <image src='{{url}}{{item.logo}}'></image>

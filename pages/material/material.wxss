@@ -1,6 +1,81 @@
+
+@import "../../components/editor/iconfont.wxss";
+@import "../../components/lib/weui.wxss";
+
+.container_s {
+  top: 0; 
+  left: 0; 
+ padding:20px;
+
+}
+.container_s p{
+font-size:28rpx;
+margin-left:16rpx;
+}
+
+
+.container_s p{
+font-size:28rpx;
+margin-left:16rpx;
+}
+
+
+.ql-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 10px 10px 20px 10px;
+
+}
+
+.ql-active {
+  color: #22C704;
+}
+
+.iconfont {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.toolbar {
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ECECEC;
+  border-left: none;
+  border-right: none;
+  background:white;
+  z-index: 10000;
+}
+
+.send_msg{
+  position: fixed;
+  bottom: 0;
+}
+.submit{
+  margin-top: 100rpx;
+
+}
+
+
+
 /* 名字 */
 .information {
-  width: 100%;
+
   height: 320rpx;
   background-color: white;
 }
@@ -158,12 +233,12 @@
 /* 网红 */
 
 .Internet {
-  width: 100%;
+
   height: auto;
 }
 
 .whole_sup {
-  width: 100%;
+
   font-size: 28rpx;
 }
 
@@ -275,18 +350,17 @@ top:240rpx !important;
 .footer {
   position: fixed;
   width: 100%;
-  bottom: 0;
   z-index: 1000;
 }
 
 .save_button {
   background: #f30 !important;
   color: white;
-  border-top-left-radius: 20rpx !important;
-  border-top-right-radius: 20rpx !important;
-  border-bottom: 0rpx;
-  border-bottom-left-radius: 0rpx;
-  border-bottom-right-radius: 0rpx;
+  width: 20%;
+  float: right;
+  top: 10rpx;
+  right: 10rpx;
+  font-size: 24rpx;
 }
 
 
@@ -375,4 +449,15 @@ top:138rpx !important;
 
 .text {
   font-size: 28rpx !important;
+}
+
+.jianjie{
+font-size: 26rpx;
+margin-top: 30rpx;
+border-bottom: 1rpx solid lightgray;
+
+padding-left: 38rpx;
+height: 60rpx;
+
+
 }

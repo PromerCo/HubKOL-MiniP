@@ -56,7 +56,7 @@ class Material extends Base {
         province: object.province,  //省份
         province_code: object.province_code,  //省份 code 码
         // email: object.email, //邮箱
-        profile: '简介',
+        profile: object.details,
         //HOL
         company: object.compony, //公司
         brand: object.moc,  //品牌

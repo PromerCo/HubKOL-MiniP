@@ -80,10 +80,15 @@
  
 
 <wux-cell  catchtap="material" data-type='{{message.type}}'  thumb="/imgs/icon/profin.png" title="我的主页" is-link ></wux-cell>
+ <wux-cell    bindtap="follow" thumb="/imgs/icon/icon_follow.png"  title="关注列表" is-link></wux-cell>
+
 
 <wux-cell bindtap="sign"  thumb="{{hub_icon}}" title="{{column_title}}" is-link url="/pages/index/index"  open-type="switchTab"></wux-cell>
 
  <wux-cell  data-type='{{type}}'  bindtap="sureCallBack_01" thumb="/imgs/icon/switch_user.png"  title="切换身份" is-link></wux-cell>
+
+
+
 
     </view>
   </view>

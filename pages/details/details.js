@@ -200,14 +200,23 @@ Page({
 
   agree:function(e){
 
+
     var that = this
     var image_list = that.data.items
 
+    var formId = e.detail.formId
+
     var push_id = that.data.info.id
 
-    details.agree(push_id,(data) => {
+    var parmer = [];
+
+    parmer['formId'] = formId
+
+    parmer['push_id'] = push_id
+
+
+    details.agree(parmer,(data) => {
       var result  = JSON.parse(data); 
-      console.log(result)
 
       if (result.code == 201){
         //报名成功
@@ -228,9 +237,29 @@ Page({
             mask: true,
        
           })
-      }else{
+      } else if (result.code = 417){
+        wx.showModal({
+          title: result.msg,
+          content: '确定跳转到身份切换页面吗？',
+          showCancel: true,//是否显示取消按钮
+          success: function (res) {
+            if (res.cancel) {
+              
+             console.log('取消')
+            } else {
 
-        //错误信息 
+              wx.switchTab({
+                url: '/pages/my/my'
+              })
+
+            }
+          },
+          fail: function (res) { },//接口调用失败的回调函数
+          complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+        })
+      }
+    
+      else{
           wx.showToast({
             title: result.msg,
             icon: 'none',

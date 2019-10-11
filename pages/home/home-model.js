@@ -12,7 +12,6 @@ class Home extends Base {
 
   roleStatus(callback) {
     var param = {
-      
       url: 'user/role',
       type: 'POST',
       sCallback: function (data) {

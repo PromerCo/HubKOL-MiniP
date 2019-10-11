@@ -39,7 +39,9 @@ Page({
     status:0,
     counter_img:'../../imgs/toolbar/sms@-kol.png',
     counter_mark:'通告',
-    hub_icon:'/imgs/icon/edit.png'
+    hub_icon:'/imgs/icon/edit.png',
+
+
 
   },
 
@@ -192,7 +194,11 @@ Page({
 
   //关注的达人
   follow: function (e) {
-    console.log('关注达人')
+
+    wx.navigateTo({
+      url: '../../pages/follow/follow',
+    })
+
   },
   //商务通讯录
   service: function (e) {
@@ -218,11 +224,6 @@ Page({
       my.roleStatus((data) => {
 
         var data = JSON.parse(data);
-
-        console.log(data)
-
-
-
 
      
       if (data.code == 201) {
@@ -263,34 +264,6 @@ Page({
         }
       })
 
-
-    // }else{
-
-    //   if (message.type == 1){
-    //       var type = 2
-    //       var counter_mark = 'HUB'
-    //       var column_title = '发布的Hub'
-    //   }else{
-    //       var type = 1
-    //       var counter_mark = 'KOL'
-    //       var column_title = '参与的Hub'
-    //   }
-
-
-
-    //   that.setData({
-    //     showList: true,
-    //     label: false,
-    //     message: message,
-    //     counter_mark: counter_mark,
-    //     picker_02_data: message.platform,
-    //     position: true,//职位
-    //     column_title: column_title,
-    //     loadingHidden: true,
-    //     type: type
-  
-    //   })
-    // }
   },
 
   material:function(e){
@@ -309,19 +282,18 @@ Page({
       message['wx_name'] = message['wechat']
     }
 
-    console.log(message)
-
+  
     var message = JSON.stringify(message)
+
+
+ 
  
     //跳转
     wx.navigateTo({
-      url: '../../pages/material/material?message=' + message,
+      url: '../../pages/material/material?message=' + encodeURIComponent(message),
     })
 
   },
-
-
-
 
 
   /**

@@ -21,17 +21,28 @@
 
      </view>
 
+
+
+
+
     <view class='genre_content'>
 
         <image src="{{info.avatar_url}}" class="girl"></image>
         <span class="nickname_left">{{info.nick_name}}—品牌推广</span>
         <p class="nickname_right">{{info.expire_time}}</p>
+        
+        
 
     </view>
 
 
 
+
+
+
+
           <p>详细描述</p>
+
  
        <view class="container_s" style="height:auto;">
 <editor
@@ -49,6 +60,7 @@
 </editor>
 
 
+
 <view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}"  style="bottom: {{isIOS ? keyboardHeight : 0}}rpx">
   <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
   <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
@@ -60,7 +72,6 @@
   <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
   <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
 </view>
-
 
 
     </view>
@@ -101,10 +112,24 @@
 <span  bindtap='collect'  data-type="1"  class="share_word share_sc_color"  wx:if="{{collect ==0 }}">收藏</span>
 <span  bindtap='collect'  data-type="0" class="share_word share_sc_color"  wx:else >已收藏</span>
 </view>
-    <view class="share_ewm"  catchtap='agree'>
-      <image src="../../imgs/icon/notice.png"></image>
-      <span  class="share_word share_sq_color" >{{agree}}</span>
-    </view>
+
+
+    <form class="share_ewm"  bindsubmit="agree"  report-submit='true'>
+      <!-- <image src="../../imgs/icon/notice.png"></image> -->
+<!-- 
+      <button  class="share_word share_sq_color"  formType="submit">{{agree}}</button>
+ -->
+      
+     <button formType="submit" class="share_ewm" >
+        <image src="../../imgs/icon/notice.png"></image>
+
+         <span class="share_word share_fx_color"> {{agree}} </span>
+     </button>
+
+    </form>
+
+
+
   </view>
 </view>
 

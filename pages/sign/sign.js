@@ -11,17 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [
-      {
-        image: "../../imgs/icon/timg.jpg",
-        text: "意大利led化妆镜ins风",
-        data: "活动进行中"
-      }, {
-        image: "../../imgs/icon/timg.jpg",
-        text: "意大利led化妆镜ins风",
-        data: "活动已截至"
-      }
-    ],
+    list: [],
     presentation:'正在加载',
     loadingHidden:false,
     type:1,
@@ -39,6 +29,7 @@ Page({
   onLoad: function (options) {
 
     var type = options.type
+
     this.setData({
       type:type
     })
@@ -63,6 +54,7 @@ Page({
     //栏目列表
     sign.getlist((data) =>{
       var data = JSON.parse(data); 
+      console.log(data)
     
       if (data.code == 201){
       that.setData({
@@ -75,6 +67,17 @@ Page({
     })
 
   },
+  attend:function(e){
+
+    var push_id = e.currentTarget.dataset.push_id
+
+    console.log(push_id)
+
+    wx.navigateTo({
+      url: '../../pages/enroll/enroll?push_id=' + push_id,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

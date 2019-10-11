@@ -64,15 +64,6 @@ Page({
       if (res.height === keyboardHeight) return
       const duration = res.height > 0 ? res.duration * 1000 : 0
       keyboardHeight = res.height
-      // setTimeout(() => {
-      //   wx.pageScrollTo({
-      //     scrollTop: 0,
-      //     success() {
-      //       that.updatePosition(keyboardHeight)
-      //       that.editorCtx.scrollIntoView()
-      //     }
-      //   })
-      // }, duration)
 
     })
 
@@ -285,7 +276,7 @@ Page({
        跳转 ME 页面
        */
        wx.redirectTo({
-         url: '../../pages/sign/sign',
+         url: '../../pages/sign/sign?type=2',
        })
   
      } else if (data.code == 412){
@@ -304,7 +295,6 @@ Page({
        wx.navigateTo({
          url: '../../pages/material/material?message=' + JSON.stringify(message),
        })
-
 
      }
 
@@ -338,7 +328,6 @@ Page({
     }).exec()
   },
 
-
   bindinput: function (e) {
 
     var that = this
@@ -349,10 +338,6 @@ Page({
       details: info
     })
   },
-
-
-
-
 
   blur() {
     this.editorCtx.blur()

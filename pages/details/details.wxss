@@ -313,7 +313,7 @@ button::after{ border: none; }
 .share_ewm{
 height:120rpx;
 line-height:145rpx;
-width:50%;
+width:100%;
 background:#f0f0f4;
 text-align:center;
 
@@ -328,6 +328,7 @@ margin-left:-56rpx;
 font-size:24rpx;
 position:absolute;
 margin-top:-2%;
+display: inline-block
 
 
 }
@@ -520,9 +521,13 @@ margin-top:-5%;
 color:black;
 
 }
-.share_sc_color{
+.contact{
+border: 1rpx solid red;
+height: 120rpx;
+padding: 20rpx 20rpx;
 
 }
-.share_sq_color{
-  
+
+.contact p{
+  width: 50%;
 }

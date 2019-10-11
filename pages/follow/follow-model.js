@@ -1,17 +1,16 @@
-/**
- * Created by jimmy on 17/2/26.
- */
 
 import { Base } from '../../utils/base.js';
 
-class Sign extends Base {
+class Follow extends Base {
   constructor() {
     super();
   }
 
-  getlist(callback) {
+  follower(parmes, callback) {
+
     var param = {
-      url: 'kol/lame',
+      url: 'kol/foluser',
+      data: { type: parmes },
       type: 'POST',
       sCallback: function (data) {
         callback && callback(data);
@@ -19,8 +18,6 @@ class Sign extends Base {
     };
     this.request(param);
   }
-
-
 };
 
-export { Sign };
+export { Follow };

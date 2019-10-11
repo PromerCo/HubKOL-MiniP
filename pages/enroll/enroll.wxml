@@ -1,0 +1,13 @@
+<view class="wrap">
+
+  <view class="head">
+
+     <view class="first" wx:for="{{arr}}" wx:for-index="idx" wx:for-item="itemName">
+      <image src="{{itemName.avatar_url}}"></image>
+      <view class="name" bindtap="copy" data-info="{{itemName.wechat}}">
+     
+         <span> {{itemName.wechat}} </span>
+      </view>
+    </view>
+  </view>
+</view>

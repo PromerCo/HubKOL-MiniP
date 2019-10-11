@@ -28,6 +28,7 @@ Page({
 
   onLoad: function () {
 
+
     var that = this;
     var ploform = wx.getStorageSync('record').ploform;
 

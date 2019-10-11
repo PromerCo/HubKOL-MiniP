@@ -11,11 +11,21 @@ class Detalis extends Base {
 
 
   agree(param, callback) {
-    var push_id = param
+    var push_id = param['push_id']
+
+    var formId = param['formId']
+
+    console.log(push_id)
+
+    console.log(formId)
+
     var param = {
       url: 'partake/enroll',
-      type: 'POST',
-      data: {'push_id': push_id},
+      type: 'POST', 
+      data: {
+        'push_id': push_id,
+        'formId': formId
+        },
       sCallback: function (data) {
         callback && callback(data);
       }
