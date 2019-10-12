@@ -22,6 +22,7 @@ class Release extends Base {
     var tags = info.tags  //领域（标签）
     var platform = info.platform_code  //平台
     var title = info.title  //标题
+    var budget = info.budget
     var param = {
       url: 'publish/push',
       type: 'POST',
@@ -32,6 +33,7 @@ class Release extends Base {
         'follow_level': follow_level,
         'tags': tags,
         'platform': platform,
+        'budget': budget,
         'title':title
         },
       sCallback: function (data) {
@@ -40,6 +42,9 @@ class Release extends Base {
     };
     this.request(param);
   };
+
+
+
 };
 
 export { Release };

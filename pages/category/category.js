@@ -14,7 +14,7 @@ Page({
     loadingHidden:false,
     column:[],
     column_list: [],
-    platform_id:100001,
+    platform_id: 100000,
     avtivity_list:[],
     hiddenName: true,
     url: app.globalData.url,
@@ -51,6 +51,7 @@ Page({
     const platform_id = item.id
     var msg = [];
     msg.platform_id = platform_id
+
     console.log(msg.platform_id)
 
     if (msg.platform_id == 100000){
@@ -59,7 +60,8 @@ Page({
       msg.type = 1
     }
     this.setData({
-      loadingHidden:false
+      loadingHidden:false,
+      platform_id: platform_id
     })
 
     category.getList(msg, (data) => {
@@ -75,11 +77,15 @@ Page({
   */
   kol_details:function(e){
     var that = this
+<<<<<<< HEAD
     var info = e.currentTarget.dataset.info
     var info_str = encodeURIComponent(JSON.stringify(info))
 
+=======
+    var pro_id = e.currentTarget.dataset.id
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     wx.navigateTo({
-      url: '../../pages/kolrse/kolrse?info=' + info_str,
+      url: '../../pages/kolrse/kolrse?pro_id=' + pro_id,
     })
   },
 
@@ -87,7 +93,7 @@ Page({
    console.log(e)
   },
 
-  _loadData: function (start_page,status=0) {
+  _loadData: function (start_page, status = 0, platform_id = 100000) {
 
     var that = this;
     var columns = wx.getStorageSync('record').ploform
@@ -99,8 +105,17 @@ Page({
 
     //页面数据
     var msg = [];
+<<<<<<< HEAD
     msg.start_page = start_page; 
     console.log(msg)
+=======
+    msg.start_page = start_page;
+
+    msg.platform_id = platform_id
+    
+
+ 
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     category.getList(msg, (data) => {
       var list = data.data
 
@@ -179,7 +194,8 @@ Page({
       if (data.code == 201){
          console.log(data.data)  
          that.setData({
-           avtivity_list: data.data
+           avtivity_list: data.data,
+           platform_id: platform_id
          })
       }
     })
@@ -189,8 +205,10 @@ Page({
   onPullDownRefresh: function () {
  
     var that = this
+    var platform_id = that.data.platform_id
+
     var start_page = 0
-    this._loadData(start_page, 1);
+    this._loadData(start_page, 1, platform_id);
   },
   /*上拉加载更多*/
   onReachBottom: function () {

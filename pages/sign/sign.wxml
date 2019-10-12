@@ -1,16 +1,30 @@
 <view class="project" hidden="{{!loadingHidden}}">
 <view wx:if="{{list.length !=0}}">
+<<<<<<< HEAD
  <view class="content" wx:for="{{list}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
+=======
+
+ <view  bindtap="see" data-push_id='{{itemName.id}}' class="content" wx:for="{{list}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
+
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     <view class="x_head">
       <image class="timg" src="{{url}}{{itemName.logo}}"></image>
       <p class="head_text">{{itemName.title}}</p>
     </view>
     <view class="data">
       <view class="reset_data">状态:
-        <p>活动进行中</p>
+        <p>{{itemName.activity_status}}</p>
       </view>
-      <view class="see" bindtap="see" data-push_id='{{itemName.id}}'>查看详情</view>
     </view>
+
+<view wx:if="{{type==2}}">
+<view class="attend_user" catchtap="attend" data-push_id='{{itemName.id}}' >申请的KOL</view>
+</view>
+
+</view>
+
+<view style="height:50rpx;">
+
 </view>
 </view>
 <view wx:else class='is_excer'>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "wux-swipe-action-group": "../../components/dist/swipe-action-group/index",
+    "wux-swipe-action": "../../components/dist/swipe-action/index",
+    "wux-cell-group": "../../components/dist/cell-group/index",
+    "wux-cell": "../../components/dist/cell/index",
+    "wux-icon": "../../components/dist/icon/index"
+  }
+}

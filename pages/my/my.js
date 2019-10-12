@@ -15,10 +15,10 @@ Page({
     userInfo:[],
     multiIndex: [0, 0],
     label:true,
-    column_title: '参与的Hub',
+    column_title: '参与的通告',
     follow_title:'关注的KOL',
     listData_01: [
-      ['HUB', 'KOL']
+      ['通告', 'KOL']
     ],
     isShow_03: false,
     multiArray: [
@@ -38,7 +38,10 @@ Page({
     type:1,
     status:0,
     counter_img:'../../imgs/toolbar/sms@-kol.png',
-    counter_mark:'HUB',
+    counter_mark:'通告',
+    hub_icon:'/imgs/icon/edit.png',
+
+
 
   },
 
@@ -65,20 +68,35 @@ Page({
   bindGetUserInfo: function (e) {
     var that = this
     var userInfo = e.detail.rawData
+<<<<<<< HEAD
     console.log(userInfo)
     wx.setStorageSync('userInfo', e.detail.userInfo)
+=======
+    
+    that.setData({
+      loadingHidden:false
+    })    
+
+    wx.setStorageSync('userInfo', e.detail.userInfo)
+
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     my.getUserAhth(userInfo, (data) => {
       var data = JSON.parse(data);
-
       if (data.code == 201) {
         that._loadData();
         that.setData({
           userInfo: JSON.parse(userInfo),
           authHidding: false,
+          loadingHidden: true,
           status: 0
         })
-
       } else {
+        that.setData({
+          userInfo: JSON.parse(userInfo),
+          authHidding: false,
+          loadingHidden: true,
+          status: 0
+        })
         wx.showToast({
           title: '授权失败',//提示文字
           duration: 500,//显示时长
@@ -124,6 +142,7 @@ Page({
         if (data.data.type == 1) {
           var counter_mark = 'Hub'
           var column_title = '发布的Hub'
+          var hub_icon = "/imgs/icon/edit.png"
           var follow_title = '关注的KOL'
           var type = 2
           var counter_img = "../../imgs/toolbar/sms@-hub.png";
@@ -133,6 +152,7 @@ Page({
           var column_title = '参与的Hub'
           var follow_title = '关注的Hub'
           var type = 1;
+          var hub_icon = "/imgs/icon/send.png"
           var counter_img = "../../imgs/toolbar/sms@-kol.png";
           var status = data.data.status
         }
@@ -146,6 +166,7 @@ Page({
           message: data.data,
           loadingHidden:true,
           type: type,
+          hub_icon: hub_icon,
           status: status
         })
       }else{
@@ -178,7 +199,11 @@ Page({
 
   //关注的达人
   follow: function (e) {
-    console.log('关注达人')
+
+    wx.navigateTo({
+      url: '../../pages/follow/follow',
+    })
+
   },
   //商务通讯录
   service: function (e) {
@@ -205,11 +230,6 @@ Page({
 
         var data = JSON.parse(data);
 
-        console.log(data)
-
-
-
-
      
       if (data.code == 201) {
           // wx.setStorageSync('HubKol', data.data);
@@ -219,7 +239,7 @@ Page({
             var counter_mark = 'HUB'
             var column_title = '发布的Hub'
             var counter_img = '../../imgs/toolbar/sms@-hub.png'
-            
+            var hub_icon = "/imgs/icon/send.png"
           } else {
             
             //KOL
@@ -227,6 +247,7 @@ Page({
             var counter_mark = 'KOL'
             var column_title = '参与的Hub'
             var counter_img = '../../imgs/toolbar/sms@-kol.png'
+            var hub_icon = "/imgs/icon/edit.png"
           }
 
           data.data['wx_name'] = data.data['wechat']
@@ -242,39 +263,12 @@ Page({
             picker_02_data: data.data.platform,
             userInfo: userInfo,
             loadingHidden:true,
+            hub_icon: hub_icon,
             column_title: column_title
           })
         }
       })
 
-
-    // }else{
-
-    //   if (message.type == 1){
-    //       var type = 2
-    //       var counter_mark = 'HUB'
-    //       var column_title = '发布的Hub'
-    //   }else{
-    //       var type = 1
-    //       var counter_mark = 'KOL'
-    //       var column_title = '参与的Hub'
-    //   }
-
-
-
-    //   that.setData({
-    //     showList: true,
-    //     label: false,
-    //     message: message,
-    //     counter_mark: counter_mark,
-    //     picker_02_data: message.platform,
-    //     position: true,//职位
-    //     column_title: column_title,
-    //     loadingHidden: true,
-    //     type: type
-  
-    //   })
-    // }
   },
 
   material:function(e){
@@ -293,19 +287,18 @@ Page({
       message['wx_name'] = message['wechat']
     }
 
-    console.log(message)
-
+  
     var message = JSON.stringify(message)
+
+
+ 
  
     //跳转
     wx.navigateTo({
-      url: '../../pages/material/material?message=' + message,
+      url: '../../pages/material/material?message=' + encodeURIComponent(message),
     })
 
   },
-
-
-
 
 
   /**

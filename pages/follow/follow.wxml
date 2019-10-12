@@ -1,0 +1,47 @@
+<view class="wrap">
+  <view class="swiper-tab">
+    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">关注</view>
+    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">粉丝</view>
+  </view>
+
+      <wux-swipe-action-group>
+
+    <view wx:if="{{currentTab==0}}">
+
+<view wx:for="{{list}}"  catchtap="nvadatil" data-id="{{item.pro_id}}">
+      <wux-swipe-action autoClose="true"  right="{{ right }}" bind:click="onclick" >
+        <view class="content demo-item">
+          <view class="content_left">
+            <image src="{{item.avatar_url}}"></image>
+          </view>
+          <view class="content_right">
+            <view class="name">{{item.nick_name}}</view>
+            <view class="follow">
+              <span>{{item.capacity}}</span>
+            </view>
+          </view>
+       </view>
+      </wux-swipe-action>
+</view>
+    </view>
+    <view wx:else>
+    <view wx:for="{{list}}" >
+      <wux-swipe-action autoClose="true"  right="{{ right }}" bind:click="onclick">
+        <view class="content demo-item">
+          <view class="content_left">
+            <image src="{{item.avatar_url}}"></image>
+          </view>
+          <view class="content_right">
+            <view class="name">{{item.nick_name}}</view>
+            <view class="follow">
+              <span>{{item.capacity}}</span>
+            </view>
+          </view>
+       </view>
+      </wux-swipe-action>
+</view>
+
+    </view>
+     </wux-swipe-action-group>
+
+</view>

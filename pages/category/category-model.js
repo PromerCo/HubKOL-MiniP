@@ -18,6 +18,7 @@ class Category extends Base {
         type: 'POST',
         data: {
           start_page: msg.start_page,
+          platform_id: msg.platform_id
    
         },
         sCallback: function (data) {

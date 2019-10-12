@@ -4,7 +4,7 @@
     <view class="x_head">
       <image class="timg" src="{{url}}/{{info.logo}}"></image>
       <p class="head_text">{{info.push_title}}</p>
-      <p class="head_create_time">30分钟前</p>
+      <p class="head_create_time">{{info.create_time}}前</p>
     </view>
     <view class='head_content_make'>
       <view>品牌：
@@ -27,6 +27,7 @@
         <span>{{info.city}}</span>
       </view>
 
+<<<<<<< HEAD
     </view>
     <view class='genre_content'>
       <image src="{{info.avatar_url}}" class="girl"></image>
@@ -38,6 +39,61 @@
       <view class='detailed_content'>
         <view class='skill'>{{info.describe}}</view>
       </view>
+=======
+
+
+
+
+    <view class='genre_content'>
+
+        <image src="{{info.avatar_url}}" class="girl"></image>
+        <span class="nickname_left">{{info.nick_name}}—品牌推广</span>
+        <p class="nickname_right">{{info.expire_time}}</p>
+        
+        
+
+    </view>
+
+
+
+
+
+
+
+          <p>详细描述</p>
+
+ 
+       <view class="container_s" style="height:auto;">
+<editor
+  id="editor"
+  class="ql-container"
+  placeholder="{{placeholder}}"
+  showImgSize
+  showImgToolbar
+  showImgResize
+  bindstatuschange="onStatusChange"
+  read-only="{{readOnly}}"
+  bindfocus="bindfocus"
+  bindinput="bindinput"
+  bindready="onEditorReady"  selectable="true" >
+</editor>
+
+
+
+<view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}"  style="bottom: {{isIOS ? keyboardHeight : 0}}rpx">
+  <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+  <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+  <i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i>
+  <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+  <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+  <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+  <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+  <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+  <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+</view>
+
+
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     </view>
     <view class='apply_kol'>
       <view class='apply_kol_header'>
@@ -56,6 +112,7 @@
   <!-- 固定定位 -->
   <view class="share">
     <view class="share_ewm">
+<<<<<<< HEAD
       <view catchtap='navHome'>
         <image src="../../imgs/toolbar/sms@-hub.png"></image>
         <span class="share_word share_sq_color"> Hub </span>
@@ -74,6 +131,30 @@
       <image src="../../imgs/icon/notice.png"></image>
       <span class="share_word share_sq_color">{{agree}}</span>
     </view>
+=======
+<image src="{{sc_img}}"></image>
+<span  bindtap='collect'  data-type="1"  class="share_word share_sc_color"  wx:if="{{collect ==0 }}">收藏</span>
+<span  bindtap='collect'  data-type="0" class="share_word share_sc_color"  wx:else >已收藏</span>
+</view>
+
+
+    <form class="share_ewm"  bindsubmit="agree"  report-submit='true'>
+      <!-- <image src="../../imgs/icon/notice.png"></image> -->
+<!-- 
+      <button  class="share_word share_sq_color"  formType="submit">{{agree}}</button>
+ -->
+      
+     <button formType="submit" class="share_ewm" >
+        <image src="../../imgs/icon/notice.png"></image>
+
+         <span class="share_word share_fx_color"> {{agree}} </span>
+     </button>
+
+    </form>
+
+
+
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
   </view>
 </view>
 <loading hidden="{{loadingHidden}}">

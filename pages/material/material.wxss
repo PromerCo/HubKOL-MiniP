@@ -1,6 +1,180 @@
+<<<<<<< HEAD
 /* 名字 */
 .information {
   width: 100%;
+  height: 320rpx;
+  background-color: white;
+}
+
+.Consignee_left {
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+  line-height: 200rpx;
+}
+
+.Consignee_left image {
+  width: 180rpx;
+  height: 180rpx;
+  display: inline-block;
+  border-radius: 25rpx;
+  margin-top: 30rpx;
+=======
+
+@import "../../components/editor/iconfont.wxss";
+@import "../../components/lib/weui.wxss";
+
+.container_s {
+  top: 0; 
+  left: 0; 
+ padding:20px;
+
+}
+.container_s p{
+font-size:28rpx;
+margin-left:16rpx;
+}
+
+
+.container_s p{
+font-size:28rpx;
+margin-left:16rpx;
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
+}
+
+.Consignee_right {
+  width: 420rpx;
+  height: 200rpx;
+  float: left;
+  margin-top: 50rpx;
+  margin-left: 30rpx;
+}
+
+<<<<<<< HEAD
+.com {
+  height: 60rpx;
+  margin-top: 10rpx;
+}
+=======
+.ql-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 10px 10px 20px 10px;
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
+
+.input-text {
+  font-size: 28rpx;
+}
+
+<<<<<<< HEAD
+.phone_button {
+  height: 50rpx;
+  width: 160rpx;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  float: left;
+}
+
+.header {
+  margin-top: -120rpx;
+}
+
+.login {
+  font-size: 30rpx;
+  border: none !important;
+  background: white;
+  height: 75rpx;
+  line-height: 75rpx;
+  width: 280rpx;
+=======
+.ql-active {
+  color: #22C704;
+}
+
+.iconfont {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.toolbar {
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ECECEC;
+  border-left: none;
+  border-right: none;
+  background:white;
+  z-index: 10000;
+}
+
+.send_msg{
+  position: fixed;
+  bottom: 0;
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
+}
+.submit{
+  margin-top: 100rpx;
+
+}
+
+
+
+<<<<<<< HEAD
+.tag_sp {
+  margin-left: 60rpx;
+}
+
+/* 信息 */
+
+.header_img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.nick_name {
+  text-align: center;
+  margin-top: 24rpx;
+}
+
+.header_img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-x {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+
+.Consignee {
+  width: 90%;
+  height: 280rpx;
+  margin: 0 auto;
+  padding-top: 20rpx;
+=======
+/* 名字 */
+.information {
+
   height: 320rpx;
   background-color: white;
 }
@@ -31,12 +205,17 @@
 .com {
   height: 60rpx;
   margin-top: 10rpx;
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 }
 
 .input-text {
   font-size: 28rpx;
 }
 
+<<<<<<< HEAD
+.name {
+  width: 400rpx;
+=======
 .phone_button {
   height: 50rpx;
   width: 160rpx;
@@ -80,6 +259,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 }
 
 ::-webkit-scrollbar-x {
@@ -98,9 +278,6 @@
 
 /* 分类 */
 
-.name {
-  width: 400rpx;
-}
 
 .wx_name {
   width: 400rpx;
@@ -145,12 +322,19 @@
   margin-top: 40rpx;
   font-size: 34rpx;
   border-bottom: 1rpx solid rgb(247, 247, 247);
+<<<<<<< HEAD
 }
 
 .tag {
   margin-left: 30rpx;
 }
 
+=======
+}
+
+
+
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 .star {
   padding-left: 10rpx;
   color: red;
@@ -163,12 +347,21 @@
 /* 网红 */
 
 .Internet {
+<<<<<<< HEAD
   width: 100%;
   height: auto;
 }
 
 .whole_sup {
   width: 100%;
+=======
+
+  height: auto;
+}
+
+.whole_sup {
+
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
   font-size: 28rpx;
 }
 
@@ -181,12 +374,24 @@
 }
 
 .fans {
+<<<<<<< HEAD
   padding-right: 100rpx;
 }
+=======
+  left:100rpx !important;
+top:240rpx !important;
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 
 .follow_picker {
   margin-left: 65rpx;
 }
+<<<<<<< HEAD
+=======
+
+.follow_picker {
+  margin-left: 65rpx;
+}
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 
 .follow_fs {
   margin-left: -38rpx;
@@ -263,8 +468,15 @@
 }
 
 .tag {
+<<<<<<< HEAD
   font-size: 26rpx;
   margin-left: 45rpx;
+=======
+
+left:450rpx !important;
+top:240rpx !important;
+
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 }
 
 .check {
@@ -276,18 +488,29 @@
 .footer {
   position: fixed;
   width: 100%;
+<<<<<<< HEAD
   bottom: 0;
+=======
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
   z-index: 1000;
 }
 
 .save_button {
   background: #f30 !important;
   color: white;
+<<<<<<< HEAD
   border-top-left-radius: 20rpx !important;
   border-top-right-radius: 20rpx !important;
   border-bottom: 0rpx;
   border-bottom-left-radius: 0rpx;
   border-bottom-right-radius: 0rpx;
+=======
+  width: 20%;
+  float: right;
+  top: 10rpx;
+  right: 10rpx;
+  font-size: 24rpx;
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 }
 
 
@@ -332,30 +555,26 @@
 }
 
 .city {
-  left: 68rpx !important;
-  top: 60rpx !important;
+left:68rpx !important;
+top:138rpx !important;
 }
 
+<<<<<<< HEAD
 .fans {
   left: 100rpx !important;
   top: 150rpx !important;
   border: none !important;
 }
+=======
+
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 
 .music {
-  left: 510rpx !important;
-  top: 60rpx !important;
+left:550rpx !important;
+top:138rpx !important;
+
 }
 
-.tag {
-  left: 400rpx !important;
-  top: 150rpx !important;
-}
-
-.name {
-  left: 280rpx !important;
-  top: 266rpx !important;
-}
 
 .top image {
   width: 50rpx;
@@ -380,7 +599,7 @@
 .icon p {
   font-size: 24rpx;
   margin-left: 10rpx;
-  margin-top: 5rpx;
+  margin-top:50rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -389,3 +608,17 @@
 .text {
   font-size: 28rpx !important;
 }
+<<<<<<< HEAD
+=======
+
+.jianjie{
+font-size: 26rpx;
+margin-top: 30rpx;
+border-bottom: 1rpx solid lightgray;
+
+padding-left: 38rpx;
+height: 60rpx;
+
+
+}
+>>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
