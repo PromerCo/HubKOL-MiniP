@@ -17,7 +17,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    var info = options.info
+    var info = decodeURIComponent(options.info)
     var info_obj = JSON.parse(info)
     console.log(info_obj)
     that.setData({

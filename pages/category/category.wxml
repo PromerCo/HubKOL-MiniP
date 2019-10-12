@@ -1,45 +1,42 @@
 <page>
-<s-tab-scoller tabs="{{column}}"   current="{{index}}" wx:for-item="itemName"  
+  <s-tab-scoller tabs="{{column}}" current="{{index}}" wx:for-item="itemName" bindchange="onTabsChange" data-platform='{{itemName}}'></s-tab-scoller>
+  <view class='container' current="{{index}}" duration="300" wx:for-item="itemName" data-platform='{{itemName}}'>
 
-bindchange="onTabsChange" data-platform='{{itemName}}'></s-tab-scoller>
-
-<view class='container'  current="{{index}}"   duration="300"   wx:for-item="itemName"  
-  data-platform='{{itemName}}'> 
-
-  <view class='head_content' wx:for="{{avtivity_list}}" bindtap='kol_details' data-info='{{item}}'>
-  <view class='head_content_img'>
-   <image src='{{url}}{{item.logo}}'></image>
+  
+    <view class='head_content' wx:for="{{avtivity_list}}" bindtap='kol_details' data-info='{{item}}'>
+      <view class="content">
+        <view class='head_content_img'>
+          <image src='{{url}}{{item.logo}}'></image>
+        </view>
+        <view class='head_content_title'>
+          <!-- 八个字到16个字 -->
+          <p>{{item.nick_name}}</p>
+        </view>
+      </view>
+      <view class='head_content_make'>
+        <view>
+          MCN:
+          <span class="head_content_make_one">{{item.mcn_organization}}</span>
+        </view>
+        <view>
+          粉丝：
+          <span>{{item.title}}</span>
+        </view>
+        <view>
+          标签：
+          <span wx:for="{{item.tages}}">#{{item.title}}</span>
+        </view>
+        <view>
+          地区：
+          <span>{{item.city}}</span>
+        </view>
+      </view>
+      <view class='head_content_right'>
+        <image src="{{item.avatar_url}}"></image>
+      </view>
+    </view>
   </view>
-     <view class='head_content_title'>
-           <!-- 八个字到16个字 -->
-           <p>{{item.nick_name}}</p> 
-     </view>
-     <view class='head_content_make'> 
-         <view >
-           MCN:<span class="head_content_make_one">{{item.mcn_organization}}</span>
-         </view>
-           <view >
-           粉丝： <span>{{item.title}}</span>
-           </view>
-            <view >
-           标签： <span wx:for="{{item.tages}}">#{{item.title}}</span>
-           </view>
-            <view >
-           地区： <span>{{item.city}}</span>
-           </view>
-     </view>
-
-     <view class='head_content_right'>
-           <image src="{{item.avatar_url}}"></image>
-     </view>
-   </view>
-
-</view>
-
-
-<loading hidden="{{loadingHidden}}">
+  <loading hidden="{{loadingHidden}}">
     加载中...
-</loading>
-
+  </loading>
 </page>
-

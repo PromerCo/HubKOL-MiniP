@@ -1,14 +1,12 @@
 page {
   background-color: #fff;
 }
-
 .wrap {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-
 .name {
 height:100rpx;
 line-height:100rpx;
@@ -16,33 +14,17 @@ margin:0rpx auto;
 border-bottom:1px solid rgb(247, 247, 247);
 font-size:24rpx;
 padding-left:45rpx;
-
 }
-
 .name p {
-
   height:100rpx;
   font-size:26rpx;
   float:left;
 }
-
 .platform span {
 font-size:24rpx;
 float:right;
 padding-right:45rpx;
-
 }
-
-
-.field span{
-  margin-left: 10rpx;
-}
-
-.city span {
-  font-size: 24rpx;
-  margin-left: 20rpx;
-}
-
 .input_common {
 float:right;
 height:100rpx;
@@ -51,7 +33,6 @@ font-size:24rpx;
 text-align:right;
 padding-right:45rpx;
 width:70%;
-
 }
 .follow_picker{
   float:right;
@@ -70,18 +51,6 @@ line-height:100rpx;
 font-size:28rpx;
 margin:0rpx auto;
 padding-left:45rpx;
-}
-.in_intro{
-  width: 90%;
-  margin: 0rpx auto;
-  border:1px solid rgb(247, 247, 247);
-  min-height: 100rpx;
-  max-height: 150rpx;
-  outline: 0;
-  font-size: 24rpx;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-user-modify: read-write-plaintext-only;
 }
 .footer{
 color:#FF3300;
@@ -104,7 +73,6 @@ z-index:100000;
 .ux-accordion__arrow{
   padding-right:45rpx;
 }
-
 .territory{
 border-bottom:0.5px solid rgb(247, 247, 247);
 text-align:center;
@@ -115,7 +83,6 @@ display:flex;
 flex-wrap: wrap;
 padding-right:30rpx;
 padding-top:20rpx;
-
 }
 .territory p{
 margin:10rpx;
@@ -125,25 +92,17 @@ color:gray;
 height:50rpx;
 line-height:50rpx;
 border-radius:10rpx;
-
-
 }
 .tag{
   font-size:26rpx;
   margin-left:45rpx;
 }
-
 .check{
-  /* background:#FF3300 !important; */
   color:#FF3300 !important;
   border:1rpx solid #FF3300 !important;
-  
 }
-
 .name button::after{ border: none; }
-/* 实现textarea高度自适应 */
 .detail-view {
-
 position:relative;
 margin:0rpx 20rpx;
 min-height:200rpx;
@@ -163,5 +122,4 @@ font-size:28rpx;
   width: 100%;
   font-size: 28rpx;
   padding-left:20rpx;
-
 }

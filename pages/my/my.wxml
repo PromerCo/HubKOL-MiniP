@@ -2,116 +2,97 @@
   <!-- 当数据加载完以后显示 -->
   <view class="content">
     <view class='head_content_make'>
-
-
-<!-- 授权 -->
-<view hidden='{{authHidding}}'>
-
-      <view class="top" >
-               <image bindtap="sureCallBack_01" src="{{counter_img}}"  data-type='{{type}}'></image>
+      <!-- 授权 -->
+      <view hidden='{{authHidding}}'>
+        <view class="top">
+          <image bindtap="sureCallBack_01" src="{{counter_img}}" data-type='{{type}}'></image>
+        </view>
+        <!-- KOL -->
+        <view class="center" wx:if="{{message.type == 2}}">
+          <image src="{{userInfo.avatarUrl}}" class="pic" catchtap='material' data-type='2'></image>
+          <view class=" name">
+            <p class="text">{{userInfo.nickName}}</p>
+          </view>
+          <view wx:if="{{message.status != 0 }}">
+            <view class="icon city">
+              <image src="../../imgs/icon/sys-address.png" class="address"></image>
+              <p>{{message.city}}</p>
+            </view>
+            <view class="icon fans">
+              <image src="../../imgs/icon/kol-fs.png" class="address"></image>
+              <p>{{message.fs_title}}</p>
+            </view>
+            <view class="icon music">
+              <image src="../../imgs/icon/kol-bj.png" class="address"></image>
+              <p>{{message.mcn_organization}}</p>
+            </view>
+            <view class="icon tag">
+              <image src="../../imgs/icon/zhanghao.png" class="address"></image>
+              <view wx:if="{{message.tag_list}}">
+                <p>
+                  <span>{{message.tag_list}}</span>
+                </p>
+              </view>
+              <view wx:else>
+                <p>
+                  <span wx:for="{{message.tags}}">#{{item.title}}</span>
+                </p>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="center" wx:else>
+          <image src="{{userInfo.avatarUrl}}" class="pic" catchtap='material' data-type='2'></image>
+          <view class="name">
+            <p class="text">{{userInfo.nickName}}</p>
+          </view>
+          <view wx:if="{{message.status != 0}}">
+            <view class="icon city">
+              <image src="../../imgs/icon/sys-address.png" class="address"></image>
+              <p>{{message.city}}</p>
+            </view>
+            <view class="icon fans">
+              <image src="../../imgs/icon/kol-fs.png" class="address"></image>
+              <p>{{message.brand}}</p>
+            </view>
+            <view class="icon music">
+              <image src="../../imgs/icon/kol-bj.png" class="address"></image>
+              <p>{{message.position_code}}</p>
+            </view>
+            <view class="icon tag">
+              <image src="../../imgs/icon/zhanghao.png" class="address"></image>
+              <p>{{message.industry}}</p>
+            </view>
+          </view>
+        </view>
+        <!-- 我的账号及我报名的栏目 -->
+        <view class='list_Date' hidden="{{!loadingHidden}}">
+          <view class="page">
+            <view class="page__bd">
+              <wux-cell-group>
+                <wux-cell bindtap="sign" thumb="/imgs/icon/baoming.png" title="{{column_title}}" is-link url="/pages/index/index" open-type="switchTab"></wux-cell>
+              </wux-cell-group>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 未授权 -->
+      <view hidden='{{!authHidding}}'>
+        <view class='auth'>
+          <view class='auth_img'>
+            <image src='../../imgs/icon/logo.jpg'></image>
+          </view>
+          <button bindgetuserinfo="bindGetUserInfo" class="bottom  auth_button" lang="zh_CN" openType="getUserInfo" type="primary">
+            一键登陆
+          </button>
+        </view>
       </view>
 
-
-  <!-- KOL -->
-      <view class="center" wx:if="{{message.type == 2}}">
-              <image src="{{userInfo.avatarUrl}}" class="pic" catchtap='material' data-type='2'></image>
-        <view class=" name">
-              <p class="text">{{userInfo.nickName}}</p>
-      </view>
-
-
-            <view wx:if="{{message.status != 0 }}">
-
-        <view class="icon city">
-          <image src="../../imgs/icon/sys-address.png" class="address"></image>
-          <p>{{message.city}}</p>
-        </view>
-        <view class="icon fans">
-          <image src="../../imgs/icon/kol-fs.png" class="address"></image>
-                   <p>{{message.fs_title}}</p>
-        </view>
-        <view class="icon music">
-          <image src="../../imgs/icon/kol-bj.png" class="address"></image>
-           <p>{{message.mcn_organization}}</p>
-        </view>
-        <view class="icon tag">
-          <image src="../../imgs/icon/zhanghao.png" class="address"></image>
-               <view wx:if="{{message.tag_list}}">
-                <p> <span>{{message.tag_list}}</span></p>
-               </view>
-               <view wx:else>
-               <p><span   wx:for="{{message.tags}}">#{{item.title}}</span></p>
-               </view>
-        </view>
-        </view>
-      </view>
-
-      <view class="center" wx:else>
-
-              <image src="{{userInfo.avatarUrl}}" class="pic" catchtap='material' data-type='2'></image>
-        <view class="name">
-              <p class="text">{{userInfo.nickName}}</p>
-      </view>
-
-
-
-      <view wx:if="{{message.status != 0}}">
-
-        <view class="icon city">
-          <image src="../../imgs/icon/sys-address.png" class="address"></image>
-          <p>{{message.city}}</p>
-        </view>
-        <view class="icon fans">
-          <image src="../../imgs/icon/kol-fs.png" class="address"></image>
-            <p>{{message.brand}}</p>
-        </view>
-        <view class="icon music">
-          <image src="../../imgs/icon/kol-bj.png" class="address"></image>
-        <p>{{message.position_code}}</p>
-        </view>
-        <view class="icon tag">
-          <image src="../../imgs/icon/zhanghao.png" class="address"></image>
-          <p>{{message.industry}}</p>
-        </view>
-      </view>
-    
-      </view>
-      
-<!-- 我的账号及我报名的栏目 -->
-<view class='list_Date' hidden="{{!loadingHidden}}">
-  <view class="page">
-    <view class="page__bd">
-  <wux-cell-group >
-
-      <!-- <wux-cell  bindtap="edit_data"  thumb="/imgs/icon/ziliao.png" title="清除Token" is-link ></wux-cell> -->
-    <!-- <wux-cell  bindtap="follow" thumb="/imgs/icon/zhanghao.png"  title="{{follow_title}}" is-link></wux-cell> -->
-    <wux-cell bindtap="sign"  thumb="/imgs/icon/baoming.png" title="{{column_title}}" is-link url="/pages/index/index" open-type="switchTab"></wux-cell>
-    </wux-cell-group>
     </view>
+
+
+
   </view>
-  
-</view>
-
-</view>
-
-
-<!-- 未授权 -->
-<view hidden='{{!authHidding}}'>
-    <view class='auth'>
-         <view class='auth_img'>
-           <image src='../../imgs/icon/logo.jpg'></image>
-         </view>
-               <button bindgetuserinfo="bindGetUserInfo" class="bottom  auth_button" lang="zh_CN" openType="getUserInfo" type="primary"> 
-一键登陆
-           </button>
-    </view>
-</view>
-
-</view>
-
-
-
-</view>
 
 </view>
 

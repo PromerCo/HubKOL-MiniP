@@ -1,8 +1,4 @@
-/**
- * Created by jimmy on 17/2/26.
- */
 
-// var Base = require('../../utils/base.js').base;
 import { Base } from '../../utils/base.js';
 
 class Home extends Base {
@@ -11,6 +7,7 @@ class Home extends Base {
   } 
 
   roleStatus(callback) {
+    
     var param = {
       url: 'user/role',
       type: 'POST',
@@ -23,7 +20,6 @@ class Home extends Base {
 
   getlist(param, callback) {
     var info = param
-
     var param = {
       url: 'home/index',
       data:{

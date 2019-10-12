@@ -76,7 +76,6 @@ class My extends Base {
 
     var that = this
     var object = param
-
     var param = {
       url: 'means/blocked',
       data: {

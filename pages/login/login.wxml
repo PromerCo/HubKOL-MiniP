@@ -13,11 +13,9 @@
           <p>(昵称，头像等)</p>
         </view>
       </view>
-
         <button bindgetuserinfo="bindGetUserInfo" class="bottom info-bottom" lang="zh_CN" openType="getUserInfo" type="primary"> 
             授权登录
         </button>
-
     </view>
   </view>
 </view>

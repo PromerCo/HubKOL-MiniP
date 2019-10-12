@@ -1,6 +1,5 @@
 
 const repeatclick = require('../../utils/repeatclick.js')
-
 import { Home } from 'home-model.js';
 var app = getApp();
 var home = new Home(); //实例化 首页 对象
@@ -26,9 +25,7 @@ Page({
   },
 
   onLoad: function () {
-
     var that = this;
-
     var ploform = wx.getStorageSync('record').ploform;
     if (!ploform) {
       app.onLaunch();//初始化页面数据

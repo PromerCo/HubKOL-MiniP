@@ -1,65 +1,58 @@
-<view  hidden="{{!loadingHidden}}">
-
-<view wx:if="{{list.length == 0}}" class='empty'>
-   <image src='../../imgs/icon/wushuju.png'></image>
-</view>
-<view wx:else>
-
-<view class="wrap" wx:for="{{list}}"  wx:for-index="idx" wx:key="index" wx:for-item="itemName" >
-  <view class="head" bindtap="details" data-id='{{itemName.id}}'>
-
-  <view class='head_left_img' >
- 
-<view wx:for="{{image_list}}" >
-      
-       <view wx:if="{{item.id == itemName.platform_id}}">
+<view hidden="{{!loadingHidden}}">
+  <view wx:if="{{list.length == 0}}" class='empty'>
+    <image src='../../imgs/icon/wushuju.png'></image>
+  </view>
+  <view wx:else>
+    <view class="wrap" wx:for="{{list}}" wx:for-index="idx" wx:key="index" wx:for-item="itemName">
+      <view class="head" bindtap="details" data-id='{{itemName.id}}'>
+        <view class='head_left_img'>
+          <view wx:for="{{image_list}}">
+            <view wx:if="{{item.id == itemName.platform_id}}">
               <image src='{{url}}{{itemName.logo}}'></image>
-       </view>
-       <view wx:else>
-             <image src='{{url}}/img/platform-{{item.id}}-0.png'></image>
-       </view>
-    
-</view>
-
- 
-  </view>
-  <view class='head_content'>
-     <view class='head_content_title'>
-           <!-- 八个字到16个字 -->
-           <p>{{itemName.push_title}}</p> 
+            </view>
+            <view wx:else>
+              <image src='{{url}}/img/platform-{{item.id}}-0.png'></image>
+            </view>
+          </view>
+        </view>
+        <view class='head_content'>
+          <view class='head_content_title'>
+            <!-- 八个字到16个字 -->
+            <p>{{itemName.push_title}}</p>
             <p class="head_content_time">{{itemName.create_time}}</p>
-     </view>
-     <view class='head_content_make'> 
-         <view >
-           品牌：<span class="head_content_make_one"> {{itemName.brand}}</span>
-         </view>
-           <view >
-           标签： <span wx:for="{{itemName.tages}}">#{{item.title}} </span>
-           </view>
-            <view >
-           粉丝： <span> {{itemName.title}}</span>
-           </view>
-            <view >
-           招募： <span>{{itemName.convene}}人</span>
-           </view>
-     </view>
+          </view>
+          <view class='head_content_make'>
+            <view>
+              品牌：
+              <span class="head_content_make_one"> {{itemName.brand}}</span>
+            </view>
+            <view>
+              标签：
+              <span wx:for="{{itemName.tages}}">#{{item.title}} </span>
+            </view>
+            <view>
+              粉丝：
+              <span> {{itemName.title}}</span>
+            </view>
+            <view>
+              招募：
+              <span>{{itemName.convene}}人</span>
+            </view>
+          </view>
 
 
-     <view class='head_content_right'>
-        <image src="{{itemName.avatar_url}}"></image>
-     </view>
+          <view class='head_content_right'>
+            <image src="{{itemName.avatar_url}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
-
-  </view>
-</view>
-  </view>
-
+<!--点击发布 -->
   <view class='publish' catchtap='publish' hidden='{{!roleHidden}}'>
-    <image src='../../imgs/icon/WechatIMG291.png'></image> 
+    <image src='../../imgs/icon/WechatIMG291.png'></image>
   </view>
-
-
 </view>
 <loading hidden="{{loadingHidden}}">
-    加载中...
+  加载中...
 </loading>

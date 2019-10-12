@@ -1,11 +1,9 @@
 // pages/material/material.js
-
 import { citys } from '../../utils/city.js';
 
 import { Material } from 'material-model.js';
 
 var material = new Material();
-
 
 Page({
 

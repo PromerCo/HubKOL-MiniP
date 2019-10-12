@@ -47,13 +47,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-
     var that = this;
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userInfo']) {
-     
           that.setData({
             authHidding:true,
             loadingHidden:true
@@ -68,10 +65,8 @@ Page({
   bindGetUserInfo: function (e) {
     var that = this
     var userInfo = e.detail.rawData
-
+    console.log(userInfo)
     wx.setStorageSync('userInfo', e.detail.userInfo)
-
-
     my.getUserAhth(userInfo, (data) => {
       var data = JSON.parse(data);
 
