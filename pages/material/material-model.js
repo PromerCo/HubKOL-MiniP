@@ -46,6 +46,9 @@ class Material extends Base {
   saveData(param, callback) {
     var that = this
     var object = param
+    
+    console.log(object.details)
+
     var param = {
       url: 'means/material',
       data: {

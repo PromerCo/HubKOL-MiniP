@@ -68,13 +68,10 @@ Page({
   bindGetUserInfo: function (e) {
     var that = this
     var userInfo = e.detail.rawData
-    
     that.setData({
       loadingHidden:false
     })    
-
     wx.setStorageSync('userInfo', e.detail.userInfo)
-
     my.getUserAhth(userInfo, (data) => {
       var data = JSON.parse(data);
       if (data.code == 201) {
@@ -217,14 +214,11 @@ Page({
     var that = this
    var userInfo = wx.getStorageSync('userInfo'); 
 
-  
-
-    // let message = wx.getStorageSync('HubKol');
-    // if (message == '' || message == null || message == undefined){
+      //let message = wx.getStorageSync('HubKol');
+      //if (message == '' || message == null || message == undefined){
       my.roleStatus((data) => {
 
-        var data = JSON.parse(data);
-
+      var data = JSON.parse(data);
      
       if (data.code == 201) {
           // wx.setStorageSync('HubKol', data.data);

@@ -36,6 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     var that = this;
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
@@ -216,7 +217,7 @@ Page({
 
 
     details.agree(parmer,(data) => {
-      var result  = JSON.parse(data); 
+      var result  = JSON.parse(data);   
 
       if (result.code == 201){
         //报名成功

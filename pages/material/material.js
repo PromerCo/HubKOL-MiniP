@@ -292,6 +292,8 @@ Page({
      
         } else {
 
+          console.log(data)
+
           wx.showToast({
             title: '请完善资料！',
             icon: 'none',

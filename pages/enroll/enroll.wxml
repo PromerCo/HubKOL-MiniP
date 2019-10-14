@@ -1,13 +1,56 @@
-<view class="wrap">
-
+<!-- <view class="wrap">
   <view class="head">
-
      <view class="first" wx:for="{{arr}}" wx:for-index="idx" wx:for-item="itemName">
       <image src="{{itemName.avatar_url}}"></image>
       <view class="name" bindtap="copy" data-info="{{itemName.wechat}}">
-     
          <span> {{itemName.wechat}} </span>
       </view>
     </view>
+  </view>
+</view> -->
+
+
+<view class="wrap">
+
+  <view class="wrap-left" >
+   <view class="symbol" >
+
+   <view>头像</view>
+
+<span class="item_book_content" wx:for="{{arr}}">
+
+<image class="item_book_img" src="{{item.list['avatar_url']}}"></image>
+
+</span>
+   
+   </view>
+  </view>
+
+<view class="scroll_box"> 
+    <scroll-view class="scroll-view_x" scroll-x style="width: auto;overflow:hidden;">
+    
+      <view class="item_list"  >
+
+              <view class="item_list_title">                      
+                 <span wx:for="{{list}}" >{{item.id}}</span>
+              </view>
+
+      
+            <view wx:for="{{arr}}" > 
+
+<span class="item_book_content ">{{item.list['gender']}}</span>
+
+<span class="item_book_content ">18511587569</span>
+
+<span class="item_book_content ">{{item.list['platform_title']}}</span>
+
+<span class="item_book_content ">{{item.list['wechat']}}</span>
+
+<span class="item_book_content ">{{item.list['follow_title']}}</span>
+  
+           </view>
+
+      </view>
+    </scroll-view>
   </view>
 </view>

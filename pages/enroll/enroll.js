@@ -8,8 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    arr: []
+    arr: [],
+    list: [
+       { "id": '性别' }, { "id": '手机号' }, { "id": '平台' }, { "id": '微信号' }, { "id": '粉丝' }
+    ],
   },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -18,7 +22,9 @@ Page({
     var push_id = options.push_id
     enroll.partake(push_id, (data) => {
       var message = JSON.parse(data); 
+
       console.log(message)
+
       that.setData({
          arr: message.data
        })
@@ -36,6 +42,32 @@ Page({
    });
 
   },
+
+
+
+    downloadFile: function() {
+      wx.downloadFile({
+        url: "",
+        success: function (res) {
+      
+          var rr = res.tempFilePath;
+      
+          wx.saveImageToPhotosAlbum({
+            filePath: rr,
+            success(res) {
+              wx.showToast({
+                title: '保存成功',
+                icon: 'success',
+                duration: 2000
+              })
+            }
+          })
+        }
+      })
+    },
+
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
