@@ -1,4 +1,3 @@
-
 import { Follow } from 'follow-model.js';
 var app = getApp();
 var follow = new Follow(); //实例化 首页 对象
@@ -19,13 +18,28 @@ Page({
   },
   // 滑动
   onclick(e) {
-    console.log('onClick', e.detail)
-    if (e.detail.data) {
-      wx.showModal({
-        title: `The data is ${e.detail.data}`,
-        showCancel: !1,
-      })
-    }
+    var that = this
+    var pro_id = e.currentTarget.dataset.id;
+
+    console.log(pro_id)
+
+    var param = [];
+
+    param['status'] = 0
+
+    param['pro_id'] = pro_id
+
+    follow.cancelFoller(param, (data) => {
+
+      var data = JSON.parse(data); 
+      console.log(data)
+  
+      
+      if (data.code == 201){
+        that._loadData();
+      }
+
+    })
   },
   nvadatil:function(e){
 
@@ -46,7 +60,6 @@ Page({
     } else {
      
       let type = e.target.dataset.current
-      console.log(type)
 
       that._loadData(type)
       that.setData({

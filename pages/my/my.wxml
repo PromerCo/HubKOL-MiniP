@@ -39,11 +39,11 @@
         </view>
         <view class="icon tag">
           <image src="../../imgs/icon/tags.png" class="address"></image>
-               <view wx:if="{{message.tag_list}}">
-                <p> <span>{{message.tag_list}}</span></p>
-               </view>
+               <!-- <view> -->
+                <p  wx:if="{{message.tag_list}}"> <span>{{message.tag_list}}</span></p>
+               <!-- </view> -->
                <view wx:else>
-               <p><span   wx:for="{{message.tags}}">#{{item.title}}</span></p>
+               <p class="tage_name"><span   wx:for="{{message.tags}}">#{{item.title}}</span></p>
                </view>
         </view>
         </view>

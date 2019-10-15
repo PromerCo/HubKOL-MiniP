@@ -543,9 +543,12 @@ line-height: 200rpx;
 }
 
 .bottom_left {
-  display: flex;
-  padding-left: 60px;
-line-height: 200rpx;
+width: 150rpx;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+padding-left: 40px;
+
 
 }
 
@@ -585,8 +588,11 @@ margin-top:120rpx;
 }
 
 .bottom_right {
-  display: flex;
-  line-height: 200rpx;
+width: 200rpx;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+
 
 }
 
@@ -602,7 +608,6 @@ margin-top:120rpx;
   width: 50rpx;
   height: 50rpx;
   margin-top: 80rpx;
-  margin-left: -20rpx;
 
 }
 

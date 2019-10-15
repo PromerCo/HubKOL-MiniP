@@ -9,8 +9,9 @@ Page({
    */
   data: {
     arr: [],
+    tag_str:'',
     list: [
-       { "id": '性别' }, { "id": '手机号' }, { "id": '平台' }, { "id": '微信号' }, { "id": '粉丝' }
+      { "id": '性别' }, { "id": '手机号' }, { "id": '平台' }, { "id": '微信号' }, { "id": '粉丝'}
     ],
   },
   
@@ -20,18 +21,54 @@ Page({
   onLoad: function (options) {
     var that = this
     var push_id = options.push_id
+
+
     enroll.partake(push_id, (data) => {
       var message = JSON.parse(data); 
+      var tags = wx.getStorageSync('record').tages
+      var list_tags = message.data
 
-      console.log(message)
+      // 标签转换
+      // var tag_name = [];
+      // for (var i = 0; i < list_tags.length;i++){
+      //   var tags_s = list_tags[i]['list']['tags'];
+      //   var tags_id = tags_s.split(",");
+      //   for (var j = 0; j < tags_id.length; j++) {
+      //     for (var k= 0; k < tags.length; k++) {
+      //       if (tags[k]['id'] == tags_id[j]) {
+      //          tag_name.push(tags[k]['title']);
+      //       }
+      //     }
+      //   }
+      //   var tag_str = tag_name.join('#');
+      //   list_tags[i]['list']['tag_str'] = tag_str
+      // }
+
+      for (var i = 0; i < list_tags.length; i++){
+          if(!i%2){
+           list_tags[i]['check'] = 'check'
+          }
+      }
 
       that.setData({
-         arr: message.data
+        arr: list_tags
        })
 
     })
   
   },
+
+  nva_kol:function(e){
+
+    var kol_id = e.currentTarget.dataset.id
+
+    wx.navigateTo({
+      url: '../../pages/kolrse/kolrse?pro_id=' + kol_id,
+    })
+
+
+  },
+
   copy:function(e){
 
     wx.setClipboardData({

@@ -60,16 +60,21 @@ color: white;
 
 .wrap {
   display: flex;
+  width: 100%;
+
 }
 
 .wrap-left {
-
 width: 30%;
 display: fixed;
-border-right: 1rpx solid #F0F0F0;
+}
 
+.nva_img{
+  border-right: 1rpx solid #d0d0d0
 
 }
+
+
 .guding{
   width: 30%;
 display: fixed;
@@ -128,16 +133,14 @@ table.tab_css_1 tr.tr_css {
   height: 30px;
 }
 .scroll_box{
-width: 100%;
+/* width: 100%; */
 overflow: hidden;
-
 background: #fff;
 white-space: nowrap;
 }
 .item_list{
-width: 200rpx;
+width: 42%;
 height: auto;
-
 display: inline-block;
 }
 .symbol{
@@ -150,7 +153,7 @@ text-align: center;
 text-align: center;
 height: 80rpx;
 line-height: 80rpx;
-border-right: 1rpx solid #d0d0d0;
+/* border-right: 1rpx solid #d0d0d0; */
 }
 
 .item_book_content{
@@ -159,10 +162,15 @@ height: 80rpx;
 line-height: 40px;
 width: 100%;
 display: inline-block;
-background: #F0F0F0;
-border-right: 1rpx solid #d0d0d0;
+
+/* border-right: 1rpx solid #d0d0d0; */
 font-size: 26rpx;
 }
+
+.check{
+ background: rgb(250, 250, 250);
+}
+
 
 .item_book_img{
 width: 60rpx;
@@ -176,9 +184,18 @@ margin-top: 5px;
 width: 100%;
 display: inline-block;
 text-align: center;
-border-right: 1rpx solid #d0d0d0;
+/* border-right: 1rpx solid #d0d0d0; */
 height: 80rpx;
 line-height: 80rpx;
 
 
 }
+
+.item_book_ava{
+
+height: 80rpx;
+
+border-right: 1rpx solid #d0d0d0;
+
+}
+

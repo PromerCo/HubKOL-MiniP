@@ -11,6 +11,7 @@ class Material extends Base {
   /*
   获取角色状态
   */
+  
   roleStatus(callback) {
     var param = {
       url: 'means/miexhibit',

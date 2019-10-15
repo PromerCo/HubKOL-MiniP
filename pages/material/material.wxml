@@ -117,9 +117,7 @@
 
    <!-- 编辑 -->
           <view class="synopsis">
-
 <view class="jianjie"> 简介 </view>
-
 <view class="container_s" >
 <editor
   id="editor"
@@ -131,12 +129,9 @@
   bindstatuschange="onStatusChange"
   bindinput="bindinput"	
   read-only="{{readOnly}}"
-
   bindready="onEditorReady">
 </editor>   
-
 </view>
-
 <view class="toolbar" catchtouchend="format" style="bottom: {{isIOS ? keyboardHeight : 0}}rpx">
   <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
   <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
@@ -148,9 +143,7 @@
   <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
   <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
 </view>
-                     
-          </view>
-
+</view>
 <view style="height:100rpx;"></view> 
         
 

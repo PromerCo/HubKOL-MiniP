@@ -81,6 +81,11 @@ border-radius:50%;
   position: absolute;
   left: 120rpx;
   top: 100rpx;
+  white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+width: 200rpx;
+
 }
 
 .icon p {
@@ -90,6 +95,15 @@ white-space:nowrap;
 text-overflow:ellipsis;
 overflow:hidden;
 font-size:24rpx;
+}
+.tage_name{
+margin-left:10rpx;
+margin-top:5rpx;
+white-space:nowrap;
+text-overflow:ellipsis;
+overflow:hidden;
+font-size:24rpx;
+width: 100rpx;
 }
 
 .text {
