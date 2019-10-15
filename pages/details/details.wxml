@@ -1,4 +1,4 @@
-<view class="wrap" hidden="{{!loadingHidden}}">
+<view class="wrap"  hidden="{{!loadingHidden}}">
   <!-- 第一部分 产品要求-->
   <view class="content">
     <view class="x_head">
@@ -6,40 +6,21 @@
       <p class="head_text">{{info.push_title}}</p>
       <p class="head_create_time">{{info.create_time}}前</p>
     </view>
-    <view class='head_content_make'>
-      <view>品牌：
-        <span class="head_content_make_one"> {{info.brand}}</span>
-      </view>
 
-      <view>标签：
-        <span wx:for="{{info.tages}}">#{{item.title}} </span>
-      </view>
+     <view class='head_content_make'> 
 
-      <view>粉丝：
-        <span> {{info.title}}</span>
-      </view>
+         <view >品牌：<span class="head_content_make_one"> {{info.brand}}</span></view>
 
-      <view>招募：
-        <span>{{info.convene}}人</span>
-      </view>
+         <view >标签：<span wx:for="{{info.tages}}">#{{item.title}} </span></view>
 
-      <view>城市：
-        <span>{{info.city}}</span>
-      </view>
+         <view >粉丝：<span> {{info.title}}</span></view>
 
-<<<<<<< HEAD
-    </view>
-    <view class='genre_content'>
-      <image src="{{info.avatar_url}}" class="girl"></image>
-      <span class="nickname_left">{{info.nick_name}}—品牌推广</span>
-      <p class="nickname_right">5天后结束</p>
-    </view>
-    <view class='detailed'>
-      <p>详细描述</p>
-      <view class='detailed_content'>
-        <view class='skill'>{{info.describe}}</view>
-      </view>
-=======
+         <view >招募：<span>{{info.convene}}人</span></view>
+
+         <view >城市：<span>{{info.city}}</span></view>
+
+     </view>
+
 
 
 
@@ -93,45 +74,40 @@
 </view>
 
 
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     </view>
     <view class='apply_kol'>
-      <view class='apply_kol_header'>
-        <p>已经申请KOL</p>
-        <p>
-          <span>{{info.bystander_number}}查看 / {{enroll_number}}申请</span>
-        </p>
-      </view>
-      <view class="icon_wrap">
-        <view class="icon" wx:for='{{items}}' wx:for-index='index' wx:for-item="item">
-          <image src="{{item.avatar_url}}" class="image"></image>
+        <view class='apply_kol_header'>
+         <p>已经申请KOL</p>
+         <p><span>{{info.bystander_number}}查看 / {{enroll_number}}申请</span></p>
         </view>
-      </view>
+     <view class="icon_wrap">
+      <view class="icon" wx:for='{{items}}' wx:for-index='index' wx:for-item="item">
+      <image src="{{item.avatar_url}}" class="image"></image>
+    </view>
+    </view>
     </view>
   </view>
+
   <!-- 固定定位 -->
   <view class="share">
+
+   <view  class="share_ewm">
+   
+   <view catchtap='navHome'>
+       <image src="../../imgs/toolbar/sms@-hub.png"></image>
+      <span  class="share_word share_sq_color" > Hub </span>
+   </view>
+
+   
+   </view>
+
+
+     <button open-type='share' class="share_ewm" >
+         <image src="../../imgs/icon/fx.png"></image>
+         <span class="share_word share_fx_color"> 分享 </span>
+     </button>
+     
     <view class="share_ewm">
-<<<<<<< HEAD
-      <view catchtap='navHome'>
-        <image src="../../imgs/toolbar/sms@-hub.png"></image>
-        <span class="share_word share_sq_color"> Hub </span>
-      </view>
-    </view>
-    <button open-type='share' class="share_ewm">
-      <image src="../../imgs/icon/fx.png"></image>
-      <span class="share_word share_fx_color"> 分享 </span>
-    </button>
-    <view class="share_ewm">
-      <image src="{{sc_img}}"></image>
-      <span bindtap='collect' data-type="1" class="share_word share_sc_color" wx:if="{{collect ==0 }}">收藏</span>
-      <span bindtap='collect' data-type="0" class="share_word share_sc_color" wx:else>已收藏</span>
-    </view>
-    <view class="share_ewm" catchtap='agree'>
-      <image src="../../imgs/icon/notice.png"></image>
-      <span class="share_word share_sq_color">{{agree}}</span>
-    </view>
-=======
 <image src="{{sc_img}}"></image>
 <span  bindtap='collect'  data-type="1"  class="share_word share_sc_color"  wx:if="{{collect ==0 }}">收藏</span>
 <span  bindtap='collect'  data-type="0" class="share_word share_sc_color"  wx:else >已收藏</span>
@@ -154,9 +130,10 @@
 
 
 
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
   </view>
 </view>
+
+
 <loading hidden="{{loadingHidden}}">
-  加载中...
+    加载中...
 </loading>

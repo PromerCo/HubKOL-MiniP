@@ -5,11 +5,8 @@ import { Material } from 'material-model.js';
 
 var material = new Material();
 
-<<<<<<< HEAD
-=======
 var app = getApp();
 
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 Page({
 
   /**

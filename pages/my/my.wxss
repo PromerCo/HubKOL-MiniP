@@ -1,78 +1,88 @@
+
+
 /* 第一部分 产品要求 */
+
 .content {
   width: 95%;
   height: auto;
   margin: 0 auto;
 }
+
 /* 第一部分详情 */
+
 .head_content_make {
   width: 100%;
   height: 400rpx;
+
 }
+
 .top {
   width: 100%;
   height: 60rpx;
   line-height: 60rpx;
   margin-top:20rpx;
+
 }
-<<<<<<< HEAD
-.center {
-  width: 100%;
-  height: 250rpx;
-  position: relative;
-}
-=======
 
 
 
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 .pic {
 width:180rpx;
 height:180rpx;
 border-radius:50%;
 margin:0 auto;
 display:block;
+
 }
 .city {
 left:68rpx !important;
 top:138rpx !important;
 
 }
+
 .fans {
 
 top:240rpx !important;
 
 }
+
 .music {
 left:510rpx !important;
 top:138rpx !important;
 
 }
+
 .tag {
   left: 450rpx !important;
  top:240rpx !important;
 
 }
+
 .name {
 text-align:center;
 margin-top:60rpx;
 }
+
 .top image {
 width:50rpx;
 height:50rpx;
 float:left;
 border-radius:50%;
+
 }
+
 .address {
   width: 40rpx;
   height: 40rpx;
 }
+
 .icon {
   display: flex;
   position: absolute;
   left: 120rpx;
   top: 100rpx;
 }
+
 .icon p {
 margin-left:10rpx;
 margin-top:5rpx;
@@ -81,9 +91,11 @@ text-overflow:ellipsis;
 overflow:hidden;
 font-size:24rpx;
 }
+
 .text {
   font-size: 28rpx !important;
 }
+
 .auth_button {
 text-align:center;
 width:38%;
@@ -103,18 +115,18 @@ width:180rpx;
 height:180rpx;
 margin:0 auto;
 display:block;
+
 }
+
 .auth_img{
 width:90%;
 margin:0 auto;
+
 }
+
 .auth{
 margin-top:100rpx;
 }
-<<<<<<< HEAD
-.page__bd{
-  margin-top:80rpx;
-=======
 
 
 .top span{
@@ -125,5 +137,4 @@ margin-top:-5rpx;
 }
 .wux-cell{
   border: none !important
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 }

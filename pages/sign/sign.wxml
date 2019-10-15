@@ -1,12 +1,10 @@
+
 <view class="project" hidden="{{!loadingHidden}}">
+
 <view wx:if="{{list.length !=0}}">
-<<<<<<< HEAD
- <view class="content" wx:for="{{list}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
-=======
 
  <view  bindtap="see" data-push_id='{{itemName.id}}' class="content" wx:for="{{list}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
 
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     <view class="x_head">
       <image class="timg" src="{{url}}{{itemName.logo}}"></image>
       <p class="head_text">{{itemName.title}}</p>
@@ -26,14 +24,26 @@
 <view style="height:50rpx;">
 
 </view>
+
 </view>
+
 <view wx:else class='is_excer'>
 <image src='../../imgs/icon/wushuju.png'></image>
 </view>
+
+
+
+  <!-- <view class='publish' catchtap='publish' >
+    <image src='../../imgs/icon/WechatIMG291.png'></image> 
+  </view> -->
+
+
 <view class='footer'>
    <view bindtap='navhome'  wx:if="{{type == 1}}">查看更多的HUB</view>
    <view bindtap='publish' wx:else>立即发布</view>
 </view>
+
+
 </view>
 
 <loading hidden="{{loadingHidden}}">

@@ -4,11 +4,14 @@ page {
   justify-content: center;
   align-items: center;
 }
+
 .project {
   width: 100%;
   height: 100%;
 }
+
 /* 第一部分 产品要求 */
+
 .content {
 
   height: 200rpx;
@@ -25,6 +28,7 @@ page {
   margin-top: 20rpx;
   margin-left: 40rpx;
 }
+
 .head_text {
   float: left;
   margin-top: 30rpx;
@@ -32,6 +36,7 @@ page {
   font-weight: 700;
   font-size: 28rpx;
 }
+
 .data {
 margin-top:25rpx;
 margin-left:30rpx;
@@ -39,6 +44,7 @@ font-size:26rpx;
 width:100%;
 height:60rpx;
 }
+
 .reset_data {
 margin-top: 20rpx;
 margin-left: 20rpx;
@@ -46,10 +52,12 @@ float: left;
 width: 300rpx;
 
 }
+
 .data p {
 margin-left:10rpx;
 font-size:24rpx;
 }
+
 .see {
 float:right;
 margin-right:90rpx;
@@ -61,6 +69,7 @@ font-size:24rpx;
 line-height:42rpx;
 text-align:center;
 }
+
 .see:hover {
   color: #970a15;
   border: 1rpx solid #970a15;
@@ -70,18 +79,22 @@ position:fixed;
 bottom:50rpx;
 right:50rpx;
 }
+
 .publish image{
 width: 80rpx;
 height: 80rpx;
 }
+
 .is_excer{
 text-align:center;
 }
+
 .is_excer image{
   width:300rpx;
 height:200rpx;
 margin-top:380rpx;
 }
+
 .footer{
 position:fixed;
 bottom:0;

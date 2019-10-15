@@ -1,11 +1,4 @@
-.zan-dialog{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-}
+
 .zan-dialog__mask {
     position: fixed;
     top: 0;
@@ -16,6 +9,16 @@
     background: white;
     /* opacity: 0.3; */
 }
+
+.zan-dialog{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
 .zan-dialog__container {
     position: fixed;
     bottom: 600rpx;
@@ -28,6 +31,7 @@
     z-index: 12;
     border-radius: 20rpx;
 }
+
 .zan-dialog--show .zan-dialog__container {
     transform: translateY(0);
 }
@@ -51,12 +55,14 @@
     font-size: 32rpx;
 }
 .info_top p {
+
   width:100%;
   margin-top:3%;
   text-align:center;
   display:block;
   font-size:24rpx;
   color:gray;
+
 }
 .info_top_p {
     margin-top: 5%;
@@ -75,6 +81,7 @@
    width: 100%;
    text-align:center;
 }
+
 .logo image{
   width:240rpx;
   height:240rpx;

@@ -73,7 +73,6 @@ class My extends Base {
   }
 
   blockedOut(param, callback) {
-
     var that = this
     var object = param
     var param = {

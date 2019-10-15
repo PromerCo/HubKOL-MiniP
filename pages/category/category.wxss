@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /* 第一部分 */
 .tab-h {
 height:110rpx;
@@ -36,15 +34,32 @@ border-bottom:1rpx solid #F0F0F0;
   width: 90%;
 }
 
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
 .container {
+
   padding: 0 !important;
   margin-top:150rpx !important; 
+
 } 
-.head_content{
-  font-size:32rpx;
-  margin:0 auto;
-  width: 90%;
+
+
+.head_content_make{
+color:20rpx;
+font-size:24rpx;
+margin-top:10rpx;
+float:left;
+border-bottom:1rpx solid  rgb(243, 239, 239);
+width:100%;
+
+
+}
+.head_content_make span{
+
+margin-left:30rpx;
+margin-top:18rpx;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+width:55%;
 }
 .head_content_title{
 margin-top:30rpx;
@@ -55,8 +70,8 @@ width:80%;
 }
 .head_content_title p{
 color:block;
-}
 
+}
 .head_content_img{
   float:left;
   width: 50rpx;
@@ -68,31 +83,45 @@ color:block;
   height: 50rpx;
   border-radius: 50%;
 }
-.head_content_make{
-color:20rpx;
-font-size:24rpx;
-margin-top:10rpx;
-float:left;
-border-bottom:1rpx solid  rgb(243, 239, 239);
-width:100%;
-}
-.head_content_make span{
-margin-left:30rpx;
-margin-top:18rpx;
-overflow:hidden;
-text-overflow:ellipsis;
-white-space:nowrap;
-width:55%;
-}
 .head_content_make image{
 width:26rpx;
 height:26rpx;
 margin-top:20rpx;
 }
+
+.head_content_sculpture{
+width:30%;
+float:right;
+margin-top:-30rpx;
+color:gray;
+}
+.head_content_sculpture image{
+width:42rpx;
+height:42rpx;
+border-radius:50%;
+}
+.head_content_sculpture span{
+  font-size: 21rpx;
+  position:absolute;
+  margin:10rpx 10rpx;
+}
+.head_content_time{
+float:right;
+font-size:24rpx;
+margin-right:20rpx;
+color: gray;
+}
+.head_content_title image{
+  width:38rpx;
+  height:38rpx;
+  border-radius:50%;
+  margin-left: 10rpx;
+  position:absolute;
+}
 .head_content_make_one{
   margin-left:38rpx !important;
-}
 
+}
 .head_content_right{
  margin-top:-60rpx;
  float:right;
@@ -110,18 +139,118 @@ border-radius:50%;
 margin-top:-10rpx; 
 margin-right:30rpx;
 }
-.head_content_title image{
-  width:38rpx;
-  height:38rpx;
-  border-radius:50%;
-  margin-left: 10rpx;
-  position:absolute;
-}
 .head_content_make view{
   margin:25rpx 80rpx;
 }
+
+.tab-item.active:after {
+  content: "";
+  display: block;
+  height: 5rpx;
+  width: 65rpx;
+  background: #ccc;
+  position: absolute;
+  bottom: 0;
+  left: -8rpx;
+  border-radius: 16rpx;
+}
+
 /* 第二部分 */
+
 .scoll-h {
   height: 100%;
 }
+
+.icon {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon image {
+  width:40rpx;
+  height:40rpx;
+  margin-right:30rpx;
+  margin-top:10rpx;
+}
+.title_more {
+width:100%;
+height:auto;
+min-height:100rpx;
+border-bottom:1px solid #ccc;
+}
+
+.more {
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius:10rpx;
+  background: rgb(243, 239, 239);
+  float: left;
+  margin: 20rpx 20rpx;
+  font-size: 21rpx;
+  color: gray
+}
+
+.more:hover {
+  color: lightblue;
+}
+
+/* 第三部分 */
+
+.lower {
+  width: 100%;
+  height: 90rpx;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  margin-top: 15rpx;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.lower_sup {
+  width: 100%;
+  height: 100rpx;
+  display: table-row;
+  font-size: 28rpx;
+}
+.xigua {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 20rpx;
+  display: inline-block;
+  margin-left: 46rpx;
+  margin-right: 80rpx;
+}
+.meipai {
+  width: 40rpx;
+  height: 40rpx;
+}
+.name_mingzi {
+  width: 140rpx;
+  height: 30rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+.fans {
+  margin-left: 40rpx;
+}
+.fabulous {
+  margin-left: 90rpx;
+}
+.card_content p{
+   width: 100%;
+}
+.card_content{
+  margin-top: 10rpx;
+  height:60rpx;
+}
+
 

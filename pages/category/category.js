@@ -70,20 +70,15 @@ Page({
         loadingHidden: true
       })
     });
+
   },
-  
+
   /*
   跳转kol
   */
   kol_details:function(e){
     var that = this
-<<<<<<< HEAD
-    var info = e.currentTarget.dataset.info
-    var info_str = encodeURIComponent(JSON.stringify(info))
-
-=======
     var pro_id = e.currentTarget.dataset.id
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     wx.navigateTo({
       url: '../../pages/kolrse/kolrse?pro_id=' + pro_id,
     })
@@ -97,7 +92,6 @@ Page({
 
     var that = this;
     var columns = wx.getStorageSync('record').ploform
-    console.log(columns)
 
     if (!columns) {
       app.onLaunch();//初始化页面数据
@@ -105,17 +99,12 @@ Page({
 
     //页面数据
     var msg = [];
-<<<<<<< HEAD
-    msg.start_page = start_page; 
-    console.log(msg)
-=======
     msg.start_page = start_page;
 
     msg.platform_id = platform_id
     
 
  
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     category.getList(msg, (data) => {
       var list = data.data
 

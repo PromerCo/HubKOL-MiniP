@@ -31,11 +31,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-<<<<<<< HEAD
-    var info = decodeURIComponent(options.info)
-    var info_obj = JSON.parse(info)
-    console.log(info_obj)
-=======
 
     var pro_id = options.pro_id
 
@@ -67,7 +62,6 @@ Page({
        })
      }
 
->>>>>>> f883a50843b6ed822f274d63dbde90ab9dd37a87
     that.setData({
          list: message.data,
          follow_number: message.data.follow_number,
