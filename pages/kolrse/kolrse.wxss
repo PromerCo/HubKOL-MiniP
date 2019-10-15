@@ -543,10 +543,13 @@ line-height: 200rpx;
 }
 
 .bottom_left {
-  display: flex;
-  padding-left: 60px;
+display: flex;
+padding-left: 50px;
 line-height: 200rpx;
-
+width: 300rpx;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
 }
 
 .bottom_left p {
@@ -587,6 +590,9 @@ margin-top:120rpx;
 .bottom_right {
   display: flex;
   line-height: 200rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 350rpx;
 
 }
 

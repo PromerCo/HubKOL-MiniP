@@ -27,8 +27,6 @@ Page({
   },
 
   onLoad: function () {
-
-
     var that = this;
     var ploform = wx.getStorageSync('record').ploform;
 
@@ -45,11 +43,13 @@ Page({
     this._loadData(start_page,1);
   },
   details: throttle(function (e) {
+  
    var id = e.currentTarget.dataset.id
    wx.navigateTo({
      url: '../../pages/details/details?push_id=' + id,
    })
   }, 1000),
+
   publish: throttle(function (e) {
     var that = this
     wx.navigateTo({
@@ -57,7 +57,6 @@ Page({
     })
 
   }, 1000),
-
 
   /*加载所有数据*/
   _loadData: function (start_page,status=0) {
@@ -67,10 +66,11 @@ Page({
     msg['start_page'] = start_page
     
     //获取列表信息(data 回调)
-    home.getlist(msg,(data) => {   
+    home.getlist(msg,(data) => {
          var list = data.data; 
+      console.log(list)   
          var home_list = that.data.list;
-
+  
          if (status ==0){
            for (var i = 0; i < list.length; i++) {
              home_list.push(list[i])
@@ -106,11 +106,9 @@ Page({
   },
 
   onShow:function(){
-    
     var that = this
 
-    var swatch = that.data.swatch
-
+    var swatch = that.data.swatc
 
     if (swatch == 0){
       that.onPullDownRefresh()
@@ -125,7 +123,6 @@ Page({
       if (data.code == 419){
         that.setData({
           roleHidden: false,
-
         })
       }else{
         var result = JSON.parse(data);
@@ -137,7 +134,6 @@ Page({
         } else {
           that.setData({
             roleHidden: false,
-
           })
         }
       }
