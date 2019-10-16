@@ -569,15 +569,12 @@ button::after {
 }
 
 .bottom_left {
-
-  display: flex;
   padding-left: 50px;
-  line-height: 200rpx;
   width: 200rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-
+  margin-top: 80rpx;
 }
 
 .bottom_left p {
@@ -591,7 +588,7 @@ button::after {
 .bottom_left image {
   width: 50rpx;
   height: 50rpx;
-  margin-top: 80rpx;
+  float: left;
 }
 
 .top_right {
@@ -613,13 +610,11 @@ button::after {
 }
 
 .bottom_right {
-
-  display: flex;
-  line-height: 200rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 350rpx;
-
+  width: 250rpx;
+  overflow: hidden;
+  margin-top: 80rpx;
 }
 
 .bottom_right p {
@@ -632,8 +627,7 @@ button::after {
 .bottom_right image {
   width: 50rpx;
   height: 50rpx;
-  margin-top: 80rpx;
-  margin-left: -20rpx;
+  float: left;
 }
 
 .top_center {

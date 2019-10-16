@@ -34,12 +34,12 @@
               <image src="../../imgs/icon/tags.png" class="address"></image>
               <view wx:if="{{message.tag_list}}">
                 <p>
-                  <span>{{message.tag_list}}</span>
+                 {{message.tag_list}}
                 </p>
               </view>
               <view wx:else>
-                <p>
-                  <span wx:for="{{message.tags}}">#{{item.title}}</span>
+                <p wx:for="{{message.tags}}">
+                  #{{item.title}}
                 </p>
               </view>
             </view>
@@ -59,7 +59,7 @@
             </view>
             <view class="icon music">
               <image src="../../imgs/icon/hangye.png" class="address"></image>
-              <p>{{message.position_code}}</p>
+              <p style="width:120rpx">{{message.position_code}}</p>
             </view>
             <view class="icon tag">
               <image src="../../imgs/icon/zhiwei.png" class="address"></image>

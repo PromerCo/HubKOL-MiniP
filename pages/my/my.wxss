@@ -1,5 +1,3 @@
-
-
 /* 第一部分 产品要求 */
 
 .content {
@@ -13,62 +11,52 @@
 .head_content_make {
   width: 100%;
   height: 400rpx;
-
 }
 
 .top {
   width: 100%;
   height: 60rpx;
   line-height: 60rpx;
-  margin-top:20rpx;
-
+  margin-top: 20rpx;
 }
-
-
 
 .pic {
-width:180rpx;
-height:180rpx;
-border-radius:50%;
-margin:0 auto;
-display:block;
-
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
 }
-.city {
-left:68rpx !important;
-top:138rpx !important;
 
+.city {
+  left: 68rpx !important;
+  top: 138rpx !important;
 }
 
 .fans {
-
-top:240rpx !important;
-
+  top: 240rpx !important;
 }
 
 .music {
-left:510rpx !important;
-top:138rpx !important;
-
+  left: 510rpx !important;
+  top: 138rpx !important;
 }
 
 .tag {
   left: 450rpx !important;
- top:240rpx !important;
-
+  top: 240rpx !important;
 }
 
 .name {
-text-align:center;
-margin-top:60rpx;
+  text-align: center;
+  margin-top: 60rpx;
 }
 
 .top image {
-width:50rpx;
-height:50rpx;
-float:left;
-border-radius:50%;
-
+  width: 50rpx;
+  height: 50rpx;
+  float: left;
+  border-radius: 50%;
 }
 
 .address {
@@ -82,28 +70,25 @@ border-radius:50%;
   left: 120rpx;
   top: 100rpx;
   white-space: nowrap;
-text-overflow: ellipsis;
-overflow: hidden;
-width: 200rpx;
-
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 200rpx;
 }
 
 .icon p {
-margin-left:10rpx;
-margin-top:5rpx;
-white-space:nowrap;
-text-overflow:ellipsis;
-overflow:hidden;
-font-size:24rpx;
+  margin-left: 10rpx;
+  margin-top: 5rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 24rpx;
 }
-.tage_name{
 
-width: 200rpx;
-float: left;
-margin-left: 50rpx !important;
-margin-top: -38rpx !important;
-
-
+.tage_name {
+  width: 200rpx;
+  float: left;
+  margin-left: 50rpx !important;
+  margin-top: -38rpx !important;
 }
 
 .text {
@@ -111,44 +96,45 @@ margin-top: -38rpx !important;
 }
 
 .auth_button {
-text-align:center;
-width:38%;
-margin-top:auto;
-display:block;
-margin:80rpx auto;
-height:60rpx;
-line-height:60rpx;
-background:#FF3300 !important;
-color:white !important;
-font-size:28rpx;
-border-radius:10rpx;
-
-}
-.auth_img image{
-width:180rpx;
-height:180rpx;
-margin:0 auto;
-display:block;
-
+  text-align: center;
+  width: 38%;
+  margin-top: auto;
+  display: block;
+  margin: 80rpx auto;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #f30 !important;
+  color: white !important;
+  font-size: 28rpx;
+  border-radius: 10rpx;
 }
 
-.auth_img{
-width:90%;
-margin:0 auto;
-
+.auth_img image {
+  width: 180rpx;
+  height: 180rpx;
+  margin: 0 auto;
+  display: block;
 }
 
-.auth{
-margin-top:100rpx;
+.auth_img {
+  width: 90%;
+  margin: 0 auto;
 }
 
-
-.top span{
-font-size:24rpx;
-position:absolute;
-margin-top:-5rpx;
-
+.auth {
+  margin-top: 100rpx;
 }
-.wux-cell{
-  border: none !important
+
+.top span {
+  font-size: 24rpx;
+  position: absolute;
+  margin-top: -5rpx;
+}
+
+.wux-cell {
+  border: none !important;
+}
+
+.icon image {
+  float: left;
 }
