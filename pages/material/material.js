@@ -96,6 +96,8 @@ Page({
     if (ploform){
       ploform.splice(0,1)
     }
+
+    console.log(ploform)
     
 
     var fans = wx.getStorageSync('record').fans  //粉丝

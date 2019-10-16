@@ -38,10 +38,11 @@
            <p>{{message.mcn_organization}}</p>
         </view>
         <view class="icon tag">
+
           <image src="../../imgs/icon/tags.png" class="address"></image>
-               <!-- <view> -->
+
                 <p  wx:if="{{message.tag_list}}"> <span>{{message.tag_list}}</span></p>
-               <!-- </view> -->
+   
                <view wx:else>
                <p class="tage_name"><span   wx:for="{{message.tags}}">#{{item.title}}</span></p>
                </view>

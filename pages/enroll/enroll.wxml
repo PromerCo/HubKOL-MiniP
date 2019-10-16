@@ -30,7 +30,7 @@
  
 <span class="item_book_content {{item.check}}">{{item.list['gender']==1?"男":"女"}}</span> 
  
-<span class="item_book_content {{item.check}}">18511587569</span> 
+<span class="item_book_content {{item.check}}">13366212180</span> 
  
 <span class="item_book_content {{item.check}}">{{item.list['platform_title']}}</span> 
  
