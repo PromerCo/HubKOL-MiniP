@@ -8,13 +8,9 @@ class Category extends Base {
   constructor() {
     super();
   }
-
-
-
   getList(param,callback){
     var msg = param;
     console.log(msg.start_page)
-
     if (msg['type'] == 0){
       var param = {
         url: 'kol/spread',

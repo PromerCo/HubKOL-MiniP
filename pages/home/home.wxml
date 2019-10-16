@@ -4,7 +4,6 @@
    <image src='../../imgs/icon/wushuju.png'></image>
 </view>
 <view wx:else>
-
 <view class="wrap" wx:for="{{list}}"  wx:for-index="idx" wx:key="index" wx:for-item="itemName" >
   <view class="head" bindtap="details" data-id='{{itemName.id}}'>
 

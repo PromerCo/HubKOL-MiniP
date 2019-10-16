@@ -1,22 +1,24 @@
-import { My } from 'my-model.js';
+import {
+  My
+} from 'my-model.js';
 var my = new My();
-var app = getApp(); 
+var app = getApp();
 
 Page({
   data: {
     index: 0,
     temp: [],
-    showList:false,
-    picker_01_index:0,
+    showList: false,
+    picker_01_index: 0,
     isShow_01: false,
     hasUserInfo: false,
     showDialog: false,
-    phoneNumber:'',
-    userInfo:[],
+    phoneNumber: '',
+    userInfo: [],
     multiIndex: [0, 0],
-    label:true,
+    label: true,
     column_title: '参与的通告',
-    follow_title:'关注的KOL',
+    follow_title: '关注的KOL',
     listData_01: [
       ['通告', 'KOL']
     ],
@@ -33,15 +35,13 @@ Page({
     isShow_02: false,
     findex: 1,
     isShow_03: false,
-    message:[],
-    position:false,  //职位
-    type:1,
-    status:0,
-    counter_img:'../../imgs/toolbar/sms@-kol.png',
-    counter_mark:'通告',
-    hub_icon:'/imgs/icon/edit.png',
-
-
+    message: [],
+    position: false, //职位
+    type: 1,
+    status: 0,
+    counter_img: '../../imgs/toolbar/sms@-kol.png',
+    counter_mark: '通告',
+    hub_icon: '/imgs/icon/edit.png',
 
   },
 
@@ -49,28 +49,33 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userInfo']) {
           that.setData({
-            authHidding:true,
-            loadingHidden:true
+            authHidding: true,
+            loadingHidden: true
           })
-        }else{
+        } else {
           that._loadData();
         }
       }
     })
   },
 
-  bindGetUserInfo: function (e) {
+  bindGetUserInfo: function(e) {
+
     var that = this
     var userInfo = e.detail.rawData
+
+
     that.setData({
-      loadingHidden:false
-    })    
+      loadingHidden: false
+    })
+
+
     wx.setStorageSync('userInfo', e.detail.userInfo)
     my.getUserAhth(userInfo, (data) => {
       var data = JSON.parse(data);
@@ -90,9 +95,9 @@ Page({
           status: 0
         })
         wx.showToast({
-          title: '授权失败',//提示文字
-          duration: 500,//显示时长
-          mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+          title: '授权失败', //提示文字
+          duration: 500, //显示时长
+          mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
           icon: 'none', //图标，支持"success"、"loading"  
         })
       }
@@ -100,43 +105,41 @@ Page({
     });
   },
 
-/*
-获取用户授权
-*/
+  /*
+  获取用户授权
+  */
 
-  authLogin: throttle(function (e) {
+  authLogin: throttle(function(e) {
     wx.navigateTo({
       url: '../../pages/login/login',
     })
   }, 1000),
-  
+
   /*
   身份切换
   */
-  sureCallBack_01: throttle(function (e) {
+  sureCallBack_01: throttle(function(e) {
     var that = this
     var type = e.currentTarget.dataset.type
-    if (type == undefined || type == null || type == 0){
-        type = 1;
+    if (type == undefined || type == null || type == 0) {
+      type = 1;
     }
     console.log(type)
     that.setData({
-      loadingHidden:false,
+      loadingHidden: false,
       presentation: '正在切换'
     })
 
     my.blockedOut(type, (data) => {
-
-      var data = JSON.parse(data); 
-
-      
-      if (data.code == 201){
+      var data = JSON.parse(data);
+      console.log(data)
+      if (data.code == 201) {
         if (data.data.type == 1) {
           var counter_mark = 'Hub'
           var column_title = '发布的Hub'
-          var hub_icon = "/imgs/icon/edit.png"
           var follow_title = '关注的KOL'
           var type = 2
+          var hub_icon = "/imgs/icon/edit.png"
           var counter_img = "../../imgs/toolbar/sms@-hub.png";
           var status = data.data.status
         } else {
@@ -148,7 +151,7 @@ Page({
           var counter_img = "../../imgs/toolbar/sms@-kol.png";
           var status = data.data.status
         }
-        
+
         console.log(data.data)
         that.setData({
           counter_mark: counter_mark,
@@ -156,22 +159,20 @@ Page({
           column_title: column_title,
           follow_title: follow_title,
           message: data.data,
-          loadingHidden:true,
+          loadingHidden: true,
           type: type,
           hub_icon: hub_icon,
           status: status
         })
-      }else{
+      } else {
         that.setData({
           message: '',
         })
-    
+
       }
     })
 
   }, 1000),
-
-
 
   // 我的账号
   account() {
@@ -180,7 +181,7 @@ Page({
     })
   },
   // 我报名的栏目
-  sign:function() {
+  sign: function() {
     let type = this.data.type;
     console.log(type)
 
@@ -190,7 +191,7 @@ Page({
   },
 
   //关注的达人
-  follow: function (e) {
+  follow: function(e) {
 
     wx.navigateTo({
       url: '../../pages/follow/follow',
@@ -198,91 +199,84 @@ Page({
 
   },
   //商务通讯录
-  service: function (e) {
+  service: function(e) {
     console.log('通讯录')
   },
 
-  edit_data:function(e){
-    var that  = this;
+  edit_data: function(e) {
+    var that = this;
     that.setData({
       showList: false,
     })
 
   },
   /*加载所有数据*/
-  _loadData: function (callback) {
+  _loadData: function(callback) {
     var that = this
-   var userInfo = wx.getStorageSync('userInfo'); 
 
-      //let message = wx.getStorageSync('HubKol');
-      //if (message == '' || message == null || message == undefined){
-      my.roleStatus((data) => {
+    var userInfo = wx.getStorageSync('userInfo');
+    my.roleStatus((data) => {
 
       var data = JSON.parse(data);
-     
+
       if (data.code == 201) {
-          // wx.setStorageSync('HubKol', data.data);
-          if (data.data.type == 1) {
-            //HUB
-            var type = 2   
-            var counter_mark = 'HUB'
-            var column_title = '发布的Hub'
-            var counter_img = '../../imgs/toolbar/sms@-hub.png'
-            var hub_icon = "/imgs/icon/send.png"
-          } else {
-            
-            //KOL
-            var type = 1
-            var counter_mark = 'KOL'
-            var column_title = '参与的Hub'
-            var counter_img = '../../imgs/toolbar/sms@-kol.png'
-            var hub_icon = "/imgs/icon/edit.png"
-          }
+        // wx.setStorageSync('HubKol', data.data);
+        if (data.data.type == 1) {
+          //HUB
+          var type = 2
+          var counter_mark = 'HUB'
+          var column_title = '发布的Hub'
+          var counter_img = '../../imgs/toolbar/sms@-hub.png'
+          var hub_icon = "/imgs/icon/send.png"
+        } else {
 
-          data.data['wx_name'] = data.data['wechat']
-
-          //已填写资料
-          that.setData({
-            type: type,
-            message: data.data,
-            status: data.data.status,
-            counter_img: counter_img,
-            label: false,
-            position: true,//职位
-            picker_02_data: data.data.platform,
-            userInfo: userInfo,
-            loadingHidden:true,
-            hub_icon: hub_icon,
-            column_title: column_title
-          })
+          //KOL
+          var type = 1
+          var counter_mark = 'KOL'
+          var column_title = '参与的Hub'
+          var counter_img = '../../imgs/toolbar/sms@-kol.png'
+          var hub_icon = "/imgs/icon/edit.png"
         }
-      })
+
+        data.data['wx_name'] = data.data['wechat']
+
+        //已填写资料
+        that.setData({
+          type: type,
+          message: data.data,
+          status: data.data.status,
+          counter_img: counter_img,
+          label: false,
+          position: true, //职位
+          picker_02_data: data.data.platform,
+          userInfo: userInfo,
+          loadingHidden: true,
+          hub_icon: hub_icon,
+          column_title: column_title
+        })
+      }
+    })
 
   },
 
-  material:function(e){
-    var that    = this
+  material: function(e) {
+    var that = this
     var message = that.data.message
-    var type    = e.currentTarget.dataset.type
+    console.log(message)
+    var type = e.currentTarget.dataset.type
 
-    
-    if(message  == ""){
-      var  message = [];
+    if (message == "") {
+      var message = [];
       message.type = type;
     }
 
-
-    if (!message['wx_name']){
+    if (!message['wx_name']) {
       message['wx_name'] = message['wechat']
     }
 
-  
     var message = JSON.stringify(message)
 
-
- 
- 
-    //跳转
+    // //跳转
     wx.navigateTo({
       url: '../../pages/material/material?message=' + encodeURIComponent(message),
     })
@@ -300,14 +294,14 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-   onShow: function () {
-     
+  onShow: function() {
+
     var that = this
 
-     that.setData({
-       message: that.data.message
-     })
-  
+    that.setData({
+      message: that.data.message
+    })
+
   },
 
   /**
@@ -354,10 +348,10 @@ function throttle(fn, gapTime) {
 
   let _lastTime = null
   // 返回新的函数
-  return function () {
-    let _nowTime = + new Date()
+  return function() {
+    let _nowTime = +new Date()
     if (_nowTime - _lastTime > gapTime || !_lastTime) {
-      fn.apply(this, arguments)   //将this和参数传给原函数
+      fn.apply(this, arguments) //将this和参数传给原函数
       _lastTime = _nowTime
     }
   }
