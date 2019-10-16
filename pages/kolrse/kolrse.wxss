@@ -569,6 +569,7 @@ button::after {
 }
 
 .bottom_left {
+
   display: flex;
   padding-left: 50px;
   line-height: 200rpx;
@@ -576,6 +577,7 @@ button::after {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+
 }
 
 .bottom_left p {
@@ -611,11 +613,13 @@ button::after {
 }
 
 .bottom_right {
+
   display: flex;
   line-height: 200rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 350rpx;
+
 }
 
 .bottom_right p {

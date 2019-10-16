@@ -68,6 +68,8 @@ Page({
     })
 
     var tags = wx.getStorageSync('record').tages
+    console.log(tags)
+    
     //粉丝
     var fans = wx.getStorageSync('record').fans
     //平台

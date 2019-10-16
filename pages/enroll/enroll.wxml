@@ -1,13 +1,46 @@
-<view class="wrap">
 
-  <view class="head">
+<view class="wrap"> 
+ 
+  <view class="wrap-left" > 
+   <view class="symbol" > 
+ 
+   <view  class="nva_img" >用户</view> 
+ 
+<view class="item_book_ava {{item.check}}" wx:for="{{arr}}" > 
+ 
+<image class="item_book_img"  bindtap="nva_kol"  data-id="{{item.kol_id}}"  src="{{item.list['avatar_url']}}"></image> 
+ 
+</view> 
 
-     <view class="first" wx:for="{{arr}}" wx:for-index="idx" wx:for-item="itemName">
-      <image src="{{itemName.avatar_url}}"></image>
-      <view class="name" bindtap="copy" data-info="{{itemName.wechat}}">
+    
+   </view> 
+  </view> 
+ 
+<view class="scroll_box">  
+    <scroll-view class="scroll-view_x" scroll-x style="width: auto;overflow:hidden;"> 
      
-         <span> {{itemName.wechat}} </span>
-      </view>
-    </view>
-  </view>
-</view>
+      <view class="item_list"  > 
+ 
+              <view class="item_list_title">                       
+                 <span wx:for="{{list}}" >{{item.id}}</span> 
+              </view> 
+ 
+       
+            <view wx:for="{{arr}}"  >  
+ 
+<span class="item_book_content {{item.check}}">{{item.list['gender']==1?"男":"女"}}</span> 
+ 
+<span class="item_book_content {{item.check}}">13366212180</span> 
+ 
+<span class="item_book_content {{item.check}}">{{item.list['platform_title']}}</span> 
+ 
+<span class="item_book_content {{item.check}}">{{item.list['wechat']}}</span> 
+ 
+<span class="item_book_content {{item.check}}">{{item.list['follow_title']}}</span> 
+   
+           </view> 
+ 
+      </view> 
+    </scroll-view> 
+  </view> 
+</view> 

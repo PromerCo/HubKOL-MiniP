@@ -77,10 +77,15 @@ border-radius:50%;
 }
 
 .icon {
-  display: flex;
+  /* display: flex; */
   position: absolute;
   left: 120rpx;
   top: 100rpx;
+  white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+width: 200rpx;
+
 }
 
 .icon p {
@@ -90,6 +95,15 @@ white-space:nowrap;
 text-overflow:ellipsis;
 overflow:hidden;
 font-size:24rpx;
+}
+.tage_name{
+
+width: 200rpx;
+float: left;
+margin-left: 50rpx !important;
+margin-top: -38rpx !important;
+
+
 }
 
 .text {

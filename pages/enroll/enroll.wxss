@@ -1,4 +1,4 @@
-.wrap {
+/* .wrap {
   width: 100%;
   height: 100%;
 }
@@ -8,7 +8,6 @@ width: 100%;
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
-/* justify-content: space-around; */
 padding-top: 20rpx;
 
 }
@@ -43,3 +42,160 @@ border: 1rpx solid rgb(254, 67, 53);
 color: rgb(254, 67, 53);
 
 }
+
+.leading{
+position: fixed;
+bottom: 0;
+text-align: center;
+width: 100%;
+height: 80rpx;
+background: gray;
+line-height: 80rpx;
+color: white;
+
+} */
+
+
+/* pages/excel/excel.wxss */
+
+.wrap {
+  display: flex;
+  width: 100%;
+
+}
+
+.wrap-left {
+width: 30%;
+display: fixed;
+}
+
+.nva_img{
+  border-right: 1rpx solid #d0d0d0
+
+}
+
+
+.guding{
+  width: 30%;
+display: fixed;
+}
+
+.active{
+  background: #F0F0F0;
+}
+
+.wrap-right {
+  width: 100%;
+  height: 1100rpx;
+  background-color: #F0F0F0;
+}
+
+.wrap-right view{
+  width: 150rpx;
+
+}
+
+table th {
+  white-space: nowrap;
+}
+body, table {
+  font-size: 12px;
+}
+
+table {
+  empty-cells: show;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+table.tab_css_1 {
+  border: 1px solid #cad9ea;
+  color: #666;
+}
+
+table.tab_css_1 th {
+  background-repeat: repeat-x;
+  height: 30px;
+}
+
+table.tab_css_1 td, table.tab_css_1 th {
+  padding: 0 1em 0;
+}
+
+table.tab_css_1 tr.tr_css {
+  background-color: #f5fafe;
+  height: 30px;
+}
+.scroll_box{
+width: 100%;
+overflow: hidden;
+background: #fff;
+white-space: nowrap;
+}
+.item_list{
+width: 42%;
+height: auto;
+display: inline-block;
+}
+.symbol{
+width: 100%;
+line-height: 80rpx;
+text-align: center;
+}
+
+.item_book_title{
+text-align: center;
+height: 80rpx;
+line-height: 80rpx;
+/* border-right: 1rpx solid #d0d0d0; */
+}
+
+.item_book_content{
+text-align: center;
+height: 80rpx;
+line-height: 40px;
+width: 100%;
+display: inline-block;
+
+/* border-right: 1rpx solid #d0d0d0; */
+font-size: 26rpx;
+}
+
+.check{
+ background: rgb(250, 250, 250);
+}
+
+
+.item_book_img{
+width: 60rpx;
+height: 60rpx;
+border-radius: 50%;
+margin-top: 5px;
+}
+
+
+.item_list_title span{
+width: 100%;
+display: inline-block;
+text-align: center;
+/* border-right: 1rpx solid #d0d0d0; */
+height: 80rpx;
+line-height: 80rpx;
+
+
+}
+
+.item_book_ava{
+
+height: 80rpx;
+
+border-right: 1rpx solid #d0d0d0;
+
+}
+

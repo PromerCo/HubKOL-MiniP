@@ -27,7 +27,7 @@
         </view>
         <view class=" bottom_right margin_bottom">
           <image src="../../imgs/icon/tags.png"></image>
-            <p >
+            <p class="tages_title">
              <span wx:for="{{list.tages}}" >#{{item.title}}</span> 
             </p>
         </view>

@@ -69,13 +69,12 @@ Page({
 
     var that = this
     var userInfo = e.detail.rawData
-
     that.setData({
       loadingHidden: false
     })
 
-    wx.setStorageSync('userInfo', e.detail.userInfo)
 
+    wx.setStorageSync('userInfo', e.detail.userInfo)
     my.getUserAhth(userInfo, (data) => {
       var data = JSON.parse(data);
       if (data.code == 201) {

@@ -81,15 +81,11 @@ Page({
       if (res.height === keyboardHeight) return
       const duration = res.height > 0 ? res.duration * 1000 : 0
       keyboardHeight = res.height
-
     })
   
-
     var message = JSON.parse(decodeURIComponent(options.message));
 
     console.log(message)
-
-
 
     var position = wx.getStorageSync('record').position  //职位(暂时未写)
 
@@ -100,6 +96,8 @@ Page({
     if (ploform){
       ploform.splice(0,1)
     }
+
+    console.log(ploform)
     
 
     var fans = wx.getStorageSync('record').fans  //粉丝
@@ -117,6 +115,7 @@ Page({
     }
 
     if (message.type == 2){
+      
       for (var i = 0; i < tag.length; i++) {
         for (var j = 0; j < check_tags.length; j++) {
           if (tag[i]['id'] == check_tags[j]['id']) {
@@ -291,6 +290,8 @@ Page({
         })
      
         } else {
+
+          console.log(data)
 
           wx.showToast({
             title: '请完善资料！',

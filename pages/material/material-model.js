@@ -11,6 +11,7 @@ class Material extends Base {
   /*
   获取角色状态
   */
+  
   roleStatus(callback) {
     var param = {
       url: 'means/miexhibit',
@@ -46,6 +47,9 @@ class Material extends Base {
   saveData(param, callback) {
     var that = this
     var object = param
+    
+    console.log(object.details)
+
     var param = {
       url: 'means/material',
       data: {
