@@ -70,7 +70,10 @@ Page({
     var that = this
     var userInfo = e.detail.rawData
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2635e253c3d15938f4bacd45fdc3346333ae067f
     that.setData({
       loadingHidden: false
     })
@@ -213,7 +216,10 @@ Page({
   /*加载所有数据*/
   _loadData: function(callback) {
     var that = this
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2635e253c3d15938f4bacd45fdc3346333ae067f
     var userInfo = wx.getStorageSync('userInfo');
     my.roleStatus((data) => {
 

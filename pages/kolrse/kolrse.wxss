@@ -569,6 +569,7 @@ button::after {
 }
 
 .bottom_left {
+<<<<<<< HEAD
 
 width: 150rpx;
 white-space: nowrap;
@@ -578,6 +579,15 @@ padding-left: 40px;
 
 
 
+=======
+  display: flex;
+  padding-left: 50px;
+  line-height: 200rpx;
+  width: 200rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+>>>>>>> 2635e253c3d15938f4bacd45fdc3346333ae067f
 }
 
 .bottom_left p {
@@ -613,12 +623,20 @@ padding-left: 40px;
 }
 
 .bottom_right {
+<<<<<<< HEAD
 
 width: 200rpx;
 white-space: nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
 
+=======
+  display: flex;
+  line-height: 200rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 350rpx;
+>>>>>>> 2635e253c3d15938f4bacd45fdc3346333ae067f
 }
 
 .bottom_right p {
@@ -632,7 +650,11 @@ overflow: hidden;
   width: 50rpx;
   height: 50rpx;
   margin-top: 80rpx;
+<<<<<<< HEAD
 
+=======
+  margin-left: -20rpx;
+>>>>>>> 2635e253c3d15938f4bacd45fdc3346333ae067f
 }
 
 .top_center {
