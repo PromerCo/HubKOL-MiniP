@@ -19,9 +19,6 @@ class Follow extends Base {
   }
 
   cancelFoller(parmes, callback){
-
-
-    
     var param = {
       url: 'kol/follow',
       data: { 

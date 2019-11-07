@@ -275,14 +275,10 @@ padding-left:45rpx;
   -webkit-user-modify: read-write-plaintext-only;
 }
 .footer{
-
 position:fixed;
-
 z-index:100000;
 right:12rpx;
 top:12rpx;
-
-
 }
 
 .wux-accordion__hd{
@@ -368,7 +364,6 @@ font-size:28rpx;
   top:0;
   border-bottom:1rpx solid #F0F0F0;
   z-index:10000;
-
 }
 
 .wux-cell__text{

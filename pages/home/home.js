@@ -68,9 +68,8 @@ Page({
     //获取列表信息(data 回调)
     home.getlist(msg,(data) => {
          var list = data.data; 
-      console.log(list)   
          var home_list = that.data.list;
-  
+         
          if (status ==0){
            for (var i = 0; i < list.length; i++) {
              home_list.push(list[i])
@@ -78,9 +77,9 @@ Page({
         }else{
              home_list = list
         }
-      console.log(home_list)
- 
-         wx.stopPullDownRefresh() 
+
+        wx.stopPullDownRefresh(); 
+        
          that.setData({
            list: home_list,
            loadingHidden: true,

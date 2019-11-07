@@ -157,6 +157,7 @@ Page({
     var index =   e.currentTarget.dataset.index
     var tid_s = that.data.tid_s;
     var chek = tags[index];
+    
     if (chek['check'] == 'check'){
     chek['check'] = 'none'
     for (var i = 0; i < tid_s.length; i++) {
@@ -419,10 +420,6 @@ Page({
         }
 
         })
-
-
-
-
 
       }
     })

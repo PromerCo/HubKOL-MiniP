@@ -60,7 +60,6 @@ Page({
       }, duration)
     })
 
-
     //发请求
     var push_id = options.push_id
 
@@ -68,11 +67,7 @@ Page({
       push_id: push_id
     })
 
-    
   },
-
-
-
 
   navHome: throttle(function (e) {
     wx.switchTab({
@@ -236,7 +231,6 @@ Page({
             icon: 'none',
             duration: 1000,
             mask: true,
-       
           })
       } else if (result.code = 417){
         wx.showModal({

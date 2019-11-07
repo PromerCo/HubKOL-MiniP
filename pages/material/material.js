@@ -673,13 +673,11 @@ Page({
               width: '100%',
               success: function (e) {
                 console.log(e)
-
               }
             })
-
           }
-
         })
+        
       }
     })
   },

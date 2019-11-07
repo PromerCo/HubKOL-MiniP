@@ -83,13 +83,11 @@
 
   <!-- 过期时间 -->
  <view class="time name">
-
    <wux-date-picker  mode="date" minDate="{{date}}" value="{{ value1 }}" lang="{{ lang }}" data-index="4" data-mode="month" bind:confirm="onConfirm">
   <input hidden name="expire_time" value='{{expire_time}}'></input>   
   <wux-cell title="截至时间" is-link extra="{{ displayValue1 }}">
   </wux-cell>
    </wux-date-picker>
-
   </view> 
   
 <!-- hidden="{{keyboardHeight > 0 ? false : true}}"  -->

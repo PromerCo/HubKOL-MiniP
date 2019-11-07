@@ -243,7 +243,6 @@ margin:20rpx auto;
 padding-top:20rpx;
 min-height:150px;
 border-top: 1rpx solid rgb(243, 239, 239)
-
 }
 .icon{
   width: 50rpx;
